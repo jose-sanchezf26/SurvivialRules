@@ -9,5 +9,6 @@ namespace MG_BlocksEngine2.Environment
         Transform Transform { get; }
         // v2.5 - added a Programming Environment reference to the Target Object interface 
         I_BE2_ProgrammingEnv ProgrammingEnv { get; set; }
+        Player Player {get;}
     }
 }

@@ -8,5 +8,6 @@ namespace MG_BlocksEngine2.Environment
     {
         public Transform Transform => transform;
         public I_BE2_ProgrammingEnv ProgrammingEnv { get; set; }
+        public Player Player => GetComponent<Player>();
     }
 }
