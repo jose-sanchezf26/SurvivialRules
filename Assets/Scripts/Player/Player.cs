@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     private int tiredness;
     public int maxLevelProperties = 100;
 
+    public float visionRadius = 5f;
+    public int raysCount = 100; // Número de rayos para simular el círculo
+    public LayerMask detectionLayer;
+
 
     public int Health
     {
@@ -125,7 +129,45 @@ public class Player : MonoBehaviour
         agent.SetDestination(position);
     }
 
-    
+    void DetectObjectsInVision()
+    {
+        float angleIncrement = 360f / raysCount; // Incremento angular entre rayos
+
+        for (int i = 0; i < raysCount; i++)
+        {
+            float angle = i * angleIncrement;
+            Vector2 direction = Quaternion.Euler(0, 0, angle) * transform.right;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, visionRadius, detectionLayer);
+
+            if (hit.collider != null)
+            {
+                GameObject detectedObject = hit.collider.gameObject;
+                Debug.Log("Se ha detectado un objeto");
+                // InteractableObject interactableObject = detectedObject.GetComponent<InteractableObject>();
+                // if (interactableObject != null)
+                // {
+                //     interactableObject.Interact();
+                // }
+            }
+        }
+    }
+
+    // Método para visualizar el campo de visión en la escena de Unity
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        float angleIncrement = 360f / raysCount;
+
+        for (int i = 0; i < raysCount; i++)
+        {
+            float angle = i * angleIncrement;
+            Vector2 direction = Quaternion.Euler(0, 0, angle) * transform.right;
+
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)direction * visionRadius);
+        }
+    }           
+
     void Update()
     {
         // ManualControl();
@@ -133,5 +175,6 @@ public class Player : MonoBehaviour
         {
             TimePassage();
         }
+        DetectObjectsInVision();
     }
 }
