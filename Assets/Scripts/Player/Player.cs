@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NavMeshPlus.Extensions;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,7 +10,7 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     // Velocidad de movimiento del jugador
-    public float speed = 5f; 
+    public float speed = 5f;
     // Componente para Pathfinding
     NavMeshAgent agent;
     // Target utilizado para seguimiento
@@ -20,11 +22,12 @@ public class Player : MonoBehaviour
     private int thirst;
     public int drinkAmount = 10;
     private int tiredness;
+    // Valor inicial de las propiedades del jugador
     public int maxLevelProperties = 100;
-
-    public float visionRadius = 5f;
-    public int raysCount = 100; // Número de rayos para simular el círculo
-    public LayerMask detectionLayer;
+    // Guarda el componente encargado de detectar objetos
+    public Detector detector;
+    // Guarda el componente encargado de explorar
+    public Explore explore;
 
 
     public int Health
@@ -59,6 +62,10 @@ public class Player : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
+        //Asigna el detector
+        detector = GetComponent<Detector>();
+        explore = GetComponent<Explore>();
+
         Health = maxLevelProperties;
         Hunger = maxLevelProperties;
         Thirst = maxLevelProperties;
@@ -78,21 +85,17 @@ public class Player : MonoBehaviour
 
     private void ManualControl()
     {
-        // Obtener la entrada del teclado
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        // // Obtener la entrada del teclado
+        // float horizontalInput = Input.GetAxis("Horizontal");
+        // float verticalInput = Input.GetAxis("Vertical");
 
-        // Calcular la dirección del movimiento
-        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
+        // // Calcular la dirección del movimiento
+        // Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
 
-        // Mover el jugador en la dirección calculada
-        transform.Translate(movement * speed * Time.deltaTime);
-    }
-
-    private void PathFinding()
-    {
-
-        agent.SetDestination(target.position);
+        // // Mover el jugador en la dirección calculada
+        // transform.Translate(movement * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.W)) { Explore(); }
+        if (Input.GetKey(KeyCode.S)) { SetTarget(new Vector2(0, 0)); }
     }
 
     public void Eat(int amount)
@@ -104,7 +107,8 @@ public class Player : MonoBehaviour
 
     public void Drink(Well well)
     {
-        if(well.Drink()){
+        if (well.Drink())
+        {
             Thirst += drinkAmount;
         }
         ShowInformation();
@@ -121,60 +125,32 @@ public class Player : MonoBehaviour
     {
         Hunger -= 1;
         Thirst -= 1;
-        Tiredness    -= 1;
+        Tiredness -= 1;
     }
 
     public void SetTarget(Vector2 position)
     {
+        explore.SetActive(false);
         agent.SetDestination(position);
     }
 
-    void DetectObjectsInVision()
+    public void Explore()
     {
-        float angleIncrement = 360f / raysCount; // Incremento angular entre rayos
-
-        for (int i = 0; i < raysCount; i++)
-        {
-            float angle = i * angleIncrement;
-            Vector2 direction = Quaternion.Euler(0, 0, angle) * transform.right;
-
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, visionRadius, detectionLayer);
-
-            if (hit.collider != null)
-            {
-                GameObject detectedObject = hit.collider.gameObject;
-                Debug.Log("Se ha detectado un objeto");
-                // InteractableObject interactableObject = detectedObject.GetComponent<InteractableObject>();
-                // if (interactableObject != null)
-                // {
-                //     interactableObject.Interact();
-                // }
-            }
-        }
+        agent.ResetPath();
+        explore.SetActive(true);
     }
-
-    // Método para visualizar el campo de visión en la escena de Unity
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        float angleIncrement = 360f / raysCount;
-
-        for (int i = 0; i < raysCount; i++)
-        {
-            float angle = i * angleIncrement;
-            Vector2 direction = Quaternion.Euler(0, 0, angle) * transform.right;
-
-            Gizmos.DrawLine(transform.position, transform.position + (Vector3)direction * visionRadius);
-        }
-    }           
 
     void Update()
     {
-        // ManualControl();
-        if(Time.time % 1 == 0)
+        ManualControl();
+        if (Time.time % 1 == 0)
         {
             TimePassage();
         }
-        DetectObjectsInVision();
+        detector.DetectObjectsInVision();
+
+        //Se asigna la velocidad del personaje a los componentes de movimiento
+        explore.moveSpeed = speed;
+        agent.speed = speed;
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
@@ -9,13 +10,14 @@ public class FollowPlayer : MonoBehaviour
     public Transform player;
     // Suavidad de la cámara
     public float smoothing = 5f; 
+    public float rigthOffset = 4;
 
     void FixedUpdate()
     {
         if (player != null)
         {
             // Calcula la posición deseada de la cámara
-            Vector3 targetposition = new Vector3(player.position.x, player.position.y, transform.position.z);
+            Vector3 targetposition = new Vector3(player.position.x + rigthOffset, player.position.y, transform.position.z);
 
             // Mueve suavemente la cámara hacia la posición deseada
             transform.position = Vector3.Lerp(transform.position, targetposition, smoothing * Time.fixedDeltaTime);
