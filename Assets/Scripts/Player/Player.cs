@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NavMeshPlus.Extensions;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -28,7 +29,11 @@ public class Player : MonoBehaviour
     public Detector detector;
     // Guarda el componente encargado de explorar
     public Explore explore;
-
+    // Animación del jugador
+    public Animator animator;
+    // Posición anterior para detectar si hay movimiento
+    private Vector2 lastPosition;
+    private Vector2 currentPosition;
 
     public int Health
     {
@@ -65,11 +70,14 @@ public class Player : MonoBehaviour
         //Asigna el detector
         detector = GetComponent<Detector>();
         explore = GetComponent<Explore>();
+        animator = GetComponent<Animator>();
 
         Health = maxLevelProperties;
         Hunger = maxLevelProperties;
         Thirst = maxLevelProperties;
         Tiredness = maxLevelProperties;
+
+        lastPosition = transform.position;
 
         ShowInformation();
     }
@@ -85,17 +93,17 @@ public class Player : MonoBehaviour
 
     private void ManualControl()
     {
-        // // Obtener la entrada del teclado
-        // float horizontalInput = Input.GetAxis("Horizontal");
-        // float verticalInput = Input.GetAxis("Vertical");
+        // Obtener la entrada del teclado
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        // // Calcular la dirección del movimiento
-        // Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
+        // Calcular la dirección del movimiento
+        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
 
-        // // Mover el jugador en la dirección calculada
-        // transform.Translate(movement * speed * Time.deltaTime);
-        if (Input.GetKey(KeyCode.W)) { Explore(); }
-        if (Input.GetKey(KeyCode.S)) { SetTarget(new Vector2(0, 0)); }
+        // Mover el jugador en la dirección calculada
+        transform.Translate(movement * speed * Time.deltaTime);
+        // if (Input.GetKey(KeyCode.W)) { Explore(); }
+        // if (Input.GetKey(KeyCode.S)) { SetTarget(new Vector2(0, 0)); }
     }
 
     public void Eat(int amount)
@@ -152,5 +160,18 @@ public class Player : MonoBehaviour
         //Se asigna la velocidad del personaje a los componentes de movimiento
         explore.moveSpeed = speed;
         agent.speed = speed;
+
+        //Se detecta si hay movimiento
+        currentPosition = transform.position;
+        if (lastPosition != currentPosition)
+        {
+            animator.SetFloat("Movement", 1);
+        }
+        else
+        {
+            animator.SetFloat("Movement", 0);
+        }
+
+        lastPosition = currentPosition;
     }
 }
