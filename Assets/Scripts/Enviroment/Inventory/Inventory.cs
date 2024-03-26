@@ -12,11 +12,13 @@ public class Inventory : MonoBehaviour
     private void OnEnable()
     {
         Stone.OnStoneCollected += Add;
+        Wood.OnWoodCollected += Add;
     }
 
     private void OnDisable()
     {
         Stone.OnStoneCollected -= Add;
+        Wood.OnWoodCollected -= Add;
     }
 
     public void Add(ItemData itemData)

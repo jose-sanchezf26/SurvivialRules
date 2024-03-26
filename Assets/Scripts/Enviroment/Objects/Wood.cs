@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour, ICollectible
 {
-    public static event HandleStoneCollected OnStoneCollected;
-    public delegate void HandleStoneCollected(ItemData itemData);
-    public ItemData stoneData;
+    public static event HandleWoodCollected OnWoodCollected;
+    public delegate void HandleWoodCollected(ItemData itemData);
+    public ItemData WoodData;
 
     public void Collect()
     {
         Destroy(gameObject);
-        OnStoneCollected?.Invoke(stoneData);
+        OnWoodCollected?.Invoke(WoodData);
     }
 }
