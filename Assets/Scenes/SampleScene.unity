@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1070697615}
   m_HandleRect: {fileID: 1070697614}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -18460,7 +18460,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 686639526}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23722,8 +23722,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 873011499}
   m_HandleRect: {fileID: 873011498}
   m_Direction: 0
-  m_Value: 0.00000047077168
-  m_Size: 0.844358
+  m_Value: 0.00000023538605
+  m_Size: 0.84435815
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -45667,6 +45667,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9071414400311633285, guid: ef679c0720c032343a48014f71c0d68e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -50819,6 +50824,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 9071414400311633285, guid: ef679c0720c032343a48014f71c0d68e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52500,7 +52510,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionRadius: 5
-  raysCount: 100
+  detectionRadius: 5
+  raysCount: 3
   detectionLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -75134,6 +75145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionRadius: 5
+  detectionRadius: 5
   raysCount: 0
   detectionLayer:
     serializedVersion: 2
@@ -95222,7 +95234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Repeat forever
+  m_text: "Rules\t      "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -95256,7 +95268,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -104066,6 +104078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071414400311633285, guid: ef679c0720c032343a48014f71c0d68e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -115636,6 +115653,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9071414400311633285, guid: ef679c0720c032343a48014f71c0d68e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -122142,7 +122164,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1467150676}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.25533593
+  m_Size: 0.23356609
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

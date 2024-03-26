@@ -14,28 +14,31 @@ using UnityEngine.UIElements;
 public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
 {
     I_BE2_BlockSectionHeaderInput _input0;
-     BE2_InputValues _v0;
+    BE2_InputValues _v0;
 
     public new void Function()
     {
         // Obtiene el valor del input del bloque
         _input0 = Section0Inputs[0];
         _v0 = _input0.InputValues;
-        
+
         Vector2 targetPosition = new Vector2();
-        if(_v0.isText)
+        if (_v0.isText)
         {
             //Posibles objetivos para establecer como target del jugador
-            switch(_v0.stringValue)
+            switch (_v0.stringValue)
             {
                 case "Well":
                     targetPosition = FindAnyObjectByType<Well>().transform.position;
                     break;
+                default:
+                    targetPosition = TargetObject.Player.detector.DetectedPosition(_v0.stringValue);
+                    break;
             }
         }
-        
+
         //Comprueba que se haya asignado algún target
-        if(targetPosition != Vector2.zero)
+        if (targetPosition != Vector2.zero)
         {
             TargetObject.Player.SetTarget(targetPosition);
         }
@@ -45,7 +48,7 @@ public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
     public new string Operation()
     {
         string result = "";
-        
+
         return result;
     }
 }
