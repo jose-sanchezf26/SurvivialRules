@@ -5,7 +5,7 @@ public class Explore : MonoBehaviour
     public float moveSpeed = 5f;
     public float changeDirectionInterval = 2f;
     public float directionSmoothing = 0.5f;
-    private bool active = false;
+    public bool active = false;
 
     private float timer;
     private Vector2 currentDirection;
