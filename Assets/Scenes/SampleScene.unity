@@ -869,6 +869,8 @@ GameObject:
   - component: {fileID: 16161272}
   - component: {fileID: 16161273}
   - component: {fileID: 16161274}
+  - component: {fileID: 16161276}
+  - component: {fileID: 16161275}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -922,8 +924,6 @@ MonoBehaviour:
   target: {fileID: 796731092}
   ditanceToFollow: 5
   detectDistance: 5
-  aiChase: {fileID: 0}
-  explore: {fileID: 0}
 --- !u!212 &16161270
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1069,6 +1069,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &16161275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16161265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b008bb9f400fd459603da5e94f9383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  attackRange: 1.5
+  attackCooldown: 2
+--- !u!114 &16161276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16161265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a87480c51510854698027643b42a59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &20018759
 GameObject:
   m_ObjectHideFlags: 0
@@ -52451,6 +52479,7 @@ GameObject:
   - component: {fileID: 796731101}
   - component: {fileID: 796731102}
   - component: {fileID: 796731103}
+  - component: {fileID: 796731104}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -52717,6 +52746,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &796731104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796731092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b008bb9f400fd459603da5e94f9383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  attackRange: 1.5
+  attackCooldown: 2
 --- !u!1 &798836017
 GameObject:
   m_ObjectHideFlags: 0

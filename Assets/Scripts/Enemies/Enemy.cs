@@ -10,19 +10,23 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     public float ditanceToFollow;
     public float detectDistance;
-    public AIChase aiChase;
-    public Explore explore;
+    private AIChase aiChase;
+    private Explore explore;
+    private Attack attack;
+
 
 
     void Start()
     {
         aiChase = GetComponent<AIChase>();
         explore = GetComponent<Explore>();
+        attack = GetComponent<Attack>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Seguimiento del jugador y movimiento
         if (Vector2.Distance(transform.position, target.transform.position) <= ditanceToFollow)
         {
             explore.SetActive(false);
@@ -34,5 +38,8 @@ public class Enemy : MonoBehaviour
             explore.SetActive(true);
             aiChase.enabled = false;
         }
+
+        // Ataque
+        attack.DoAttack("Player");
     }
 }

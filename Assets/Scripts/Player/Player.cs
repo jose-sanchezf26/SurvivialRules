@@ -28,9 +28,11 @@ public class Player : MonoBehaviour
     // Guarda el componente encargado de detectar objetos
     public Detector detector;
     // Guarda el componente encargado de explorar
-    public Explore explore;
+    private Explore explore;
     // Animación del jugador
-    public Animator animator;
+    private Animator animator;
+    // Ataque
+    private Attack attack;
     // Posición anterior para detectar si hay movimiento
     private Vector2 lastPosition;
     private Vector2 currentPosition;
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
         detector = GetComponent<Detector>();
         explore = GetComponent<Explore>();
         animator = GetComponent<Animator>();
+        attack = GetComponent<Attack>();
 
         Health = maxLevelProperties;
         Hunger = maxLevelProperties;
@@ -136,6 +139,11 @@ public class Player : MonoBehaviour
         Tiredness -= 1;
     }
 
+    public void TakeDamage(int amount)
+    {
+        Health -= amount;
+    }
+
     public void SetTarget(Vector2 position)
     {
         explore.SetActive(false);
@@ -187,7 +195,7 @@ public class Player : MonoBehaviour
             TimePassage();
         }
         detector.DetectObjectsInVision();
-
+        attack.DoAttack("Health");
         Movement();
     }
 }
