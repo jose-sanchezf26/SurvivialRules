@@ -5,11 +5,15 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int maxHealth = 100;
+    public ItemData drop;
+    public int nDrop;
     private float currentHealth;
+    private Inventory inventory;
 
     void Start()
     {
         currentHealth = maxHealth;
+        inventory = FindAnyObjectByType<Inventory>();
     }
 
     public void TakeDamage(int damage)
@@ -30,6 +34,10 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log(gameObject.name + " ha muerto");
+        for (int i = 0; i < nDrop; i++)
+        {
+            inventory.Add(drop);
+        }
         Destroy(gameObject);
     }
 }

@@ -1,6 +1,6 @@
 <Block>
   <blockName>Block Ins WhenPlayClicked</blockName>
-  <position>(27.74, -235.05, 0.00)</position>
+  <position>(60.87, -259.26, 0.00)</position>
   <varManagerName></varManagerName>
   <varName />
   <defineID />
@@ -10,7 +10,7 @@
     <Section>
       <childBlocks>
         <Block>
-          <blockName>Block Ins RepeatForever</blockName>
+          <blockName>Block Cst Rules</blockName>
           <position>(0.00, 10.00, 0.00)</position>
           <varManagerName></varManagerName>
           <varName />
@@ -45,7 +45,7 @@
                               <inputs>
                                 <Input>
                                   <isOperation>false</isOperation>
-                                  <value>Stone</value>
+                                  <value>Deer</value>
                                 </Input>
                               </inputs>
                             </Section>
@@ -56,6 +56,73 @@
                         <Input>
                           <isOperation>true</isOperation>
                           <value>false</value>
+                          <operation>
+                            <Block>
+                              <blockName>Block Cst DetectObject</blockName>
+                              <position>(-218.75, 30.00, 0.00)</position>
+                              <varManagerName></varManagerName>
+                              <varName />
+                              <defineID />
+                              <isLocalVar />
+                              <defineItems />
+                              <sections>
+                                <Section>
+                                  <childBlocks />
+                                  <inputs>
+                                    <Input>
+                                      <isOperation>false</isOperation>
+                                      <value>is</value>
+                                    </Input>
+                                    <Input>
+                                      <isOperation>false</isOperation>
+                                      <value>Deer</value>
+                                    </Input>
+                                  </inputs>
+                                </Section>
+                              </sections>
+                            </Block>
+                          </operation>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+                <Block>
+                  <blockName>Block Ins If</blockName>
+                  <position>(20.00, -180.00, 0.00)</position>
+                  <varManagerName></varManagerName>
+                  <varName />
+                  <defineID />
+                  <isLocalVar />
+                  <defineItems />
+                  <sections>
+                    <Section>
+                      <childBlocks>
+                        <Block>
+                          <blockName>Block Cst SetTarget</blockName>
+                          <position>(20.00, 10.00, 0.00)</position>
+                          <varManagerName></varManagerName>
+                          <varName />
+                          <defineID />
+                          <isLocalVar />
+                          <defineItems />
+                          <sections>
+                            <Section>
+                              <childBlocks />
+                              <inputs>
+                                <Input>
+                                  <isOperation>false</isOperation>
+                                  <value>Stone</value>
+                                </Input>
+                              </inputs>
+                            </Section>
+                          </sections>
+                        </Block>
+                      </childBlocks>
+                      <inputs>
+                        <Input>
+                          <isOperation>true</isOperation>
+                          <value>true</value>
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>

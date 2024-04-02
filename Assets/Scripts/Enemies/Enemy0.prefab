@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 7586719382855060229}
   - component: {fileID: -3824418575197143635}
   - component: {fileID: -917289994275717108}
-  m_Layer: 0
+  - component: {fileID: 5944276830873557795}
+  m_Layer: 3
   m_Name: Enemy0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,6 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  drop: {fileID: 0}
+  nDrop: 0
 --- !u!114 &-8013685689879556568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,3 +248,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &5944276830873557795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257002262388973767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa04c2b4e3fc294babd373840449bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
