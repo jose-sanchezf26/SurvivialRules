@@ -18,11 +18,11 @@ public class Player : MonoBehaviour
     [SerializeField] Transform target;
 
     // Propiedades del agente
-    private int health;
-    private int hunger;
-    private int thirst;
+    private float health;
+    private float hunger;
+    private float thirst;
     public int drinkAmount = 10;
-    private int tiredness;
+    private float tiredness;
     // Valor inicial de las propiedades del jugador
     public int maxLevelProperties = 100;
     // Guarda el componente encargado de detectar objetos
@@ -37,25 +37,25 @@ public class Player : MonoBehaviour
     private Vector2 lastPosition;
     private Vector2 currentPosition;
 
-    public int Health
+    public float Health
     {
         get { return health; }
         set { health = Mathf.Clamp(value, 0, 100); } // Ensure health is within the range [0, 100]
     }
 
-    public int Hunger
+    public float Hunger
     {
         get { return hunger; }
         set { hunger = Mathf.Clamp(value, 0, 100); } // Ensure hunger is within the range [0, 100]
     }
 
-    public int Thirst
+    public float Thirst
     {
         get { return thirst; }
         set { thirst = Mathf.Clamp(value, 0, 100); } // Ensure thirst is within the range [0, 100]
     }
 
-    public int Tiredness
+    public float Tiredness
     {
         get { return tiredness; }
         set { tiredness = Mathf.Clamp(value, 0, 100); } // Ensure tiredness is within the range [0, 100]

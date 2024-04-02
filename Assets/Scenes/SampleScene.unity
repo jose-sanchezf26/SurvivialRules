@@ -53556,10 +53556,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a99739caf1b6a2408970675fa818fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 901501188}
-  hunger: {fileID: 1745881972}
-  tiredness: {fileID: 793204142}
-  thirst: {fileID: 1054978346}
+  health: {fileID: 115361801}
+  hunger: {fileID: 2104478536}
+  tiredness: {fileID: 172564612}
+  thirst: {fileID: 836495529}
 --- !u!1 &798836017
 GameObject:
   m_ObjectHideFlags: 0

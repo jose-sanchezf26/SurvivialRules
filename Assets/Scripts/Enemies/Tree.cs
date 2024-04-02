@@ -5,12 +5,9 @@ using UnityEngine.AI;
 
 public class Tree : MonoBehaviour
 {
-    private NavMeshAgent agent;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+
     }
 }
