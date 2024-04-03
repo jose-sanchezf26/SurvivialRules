@@ -1,0 +1,8 @@
+​Green bushes:
+3 versions of 4 bushes in 16x16 so that is 12 sprites.
+2 versions of 6 bushes in 32x32 which are 12 sprites.
+24 total.
+One of them can bite so be carefull.
+No credit needed but it is appreciated link to https://miguelsgp.itch.io/
+
+You can do whatever with the sprites, personal or commercial. I would like that you tell me which sprites you use so I can upload better versions of them, so leave a comment, thanks!​
