@@ -7,5 +7,7 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public string displayName;
+    public int power;
+    public int hungerheal;
     public Sprite icon;
 }

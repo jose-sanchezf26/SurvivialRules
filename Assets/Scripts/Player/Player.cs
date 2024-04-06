@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
 {
     // Velocidad de movimiento del jugador
     public float speed = 5f;
+
+    float timeO = 0f;
+    float interval = 2f;
     // Componente para Pathfinding
     NavMeshAgent agent;
     // Target utilizado para seguimiento
@@ -21,8 +24,9 @@ public class Player : MonoBehaviour
     private float health;
     private float hunger;
     private float thirst;
-    public int drinkAmount = 10;
     private float tiredness;
+
+
     // Valor inicial de las propiedades del jugador
     public int maxLevelProperties = 100;
     // Guarda el componente encargado de detectar objetos
@@ -33,6 +37,9 @@ public class Player : MonoBehaviour
     private Animator animator;
     // Ataque
     private Attack attack;
+    // Inventario
+    private Inventory inventory;
+
     // Posición anterior para detectar si hay movimiento
     private Vector2 lastPosition;
     private Vector2 currentPosition;
@@ -69,11 +76,12 @@ public class Player : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        //Asigna el detector
+        //Obtiene los componentes
         detector = GetComponent<Detector>();
         explore = GetComponent<Explore>();
         animator = GetComponent<Animator>();
         attack = GetComponent<Attack>();
+        inventory = FindAnyObjectByType<Inventory>();
 
         Health = maxLevelProperties;
         Hunger = maxLevelProperties;
@@ -109,21 +117,27 @@ public class Player : MonoBehaviour
         // if (Input.GetKey(KeyCode.S)) { SetTarget(new Vector2(0, 0)); }
     }
 
-    public void Eat(int amount)
+    public void Eat(string item)
     {
-        Hunger -= amount;
-
-        ShowInformation();
-    }
-
-    public void Drink(Well well)
-    {
-        if (well.Drink())
+        ItemData itemData = inventory.GetItemData(item);
+        if (itemData != null)
         {
-            Thirst += drinkAmount;
+            Stay();
+            hunger += itemData.hungerheal;
+            inventory.Remove(itemData);
         }
+
         ShowInformation();
     }
+
+    // public void Drink(Well well)
+    // {
+    //     if (well.Drink())
+    //     {
+    //         Thirst += drinkAmount;
+    //     }
+    //     ShowInformation();
+    // }
 
     public void Rest(int amount)
     {
@@ -132,11 +146,46 @@ public class Player : MonoBehaviour
         ShowInformation();
     }
 
+    Vector2 lastPositionT;
+    //Distancia para el cansancio;
+    public float distanceTiredness = 2f;
+    float intervalT = 2f;
+    float timeOT = 0;
+
+    private void CalculeTiredness()
+    {
+        timeOT += Time.deltaTime;
+        if (timeOT >= intervalT)
+        {
+            if (distanceTiredness < Vector2.Distance(lastPositionT, transform.position))
+            {
+                Tiredness -= 1;
+            }
+            timeOT = 0f;
+            lastPositionT = transform.position;
+        }
+    }
+
     public void TimePassage()
     {
-        Hunger -= 1;
-        Thirst -= 1;
-        Tiredness -= 1;
+        Hunger -= 2;
+        Thirst -= 2;
+        if (Hunger < 20 && Thirst < 20)
+        {
+            TakeDamage(1);
+        }
+        if (Tiredness < 50)
+        {
+            speed = 4f;
+            if (Tiredness < 25)
+            {
+                speed = 2.5f;
+            }
+        }
+        else
+        {
+            speed = 5f;
+        }
     }
 
     public void TakeDamage(int amount)
@@ -156,13 +205,25 @@ public class Player : MonoBehaviour
         explore.SetActive(true);
     }
 
+    public void CancelMovement()
+    {
+        agent.ResetPath();
+        explore.SetActive(false);
+    }
+
+    IEnumerator Stay()
+    {
+        CancelMovement();
+        yield return new WaitForSeconds(2);
+    }
+
     private void Movement()
     {
         //Se asigna la velocidad del personaje a los componentes de movimiento
         explore.moveSpeed = speed;
         agent.speed = speed;
 
-        //Se detecta si hay movimiento
+        //Se detecta si hay movimiento y aplica efecto de cansancio
         currentPosition = transform.position;
         if (lastPosition != currentPosition)
         {
@@ -190,10 +251,15 @@ public class Player : MonoBehaviour
     void Update()
     {
         ManualControl();
-        if (Time.time % 1 == 0)
+
+        timeO += Time.deltaTime;
+        if (timeO >= interval)
         {
             TimePassage();
+            timeO = 0f;
         }
+        CalculeTiredness();
+
         detector.DetectObjectsInVision();
         attack.DoAttack("Health");
         Movement();

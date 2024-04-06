@@ -1,6 +1,22 @@
 <Block>
+  <blockName>Block Cst Rules</blockName>
+  <position>(163.71, -1164.12, 0.00)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <defineID />
+  <isLocalVar />
+  <defineItems />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
+<Block>
   <blockName>Block Ins WhenPlayClicked</blockName>
-  <position>(60.87, -259.26, 0.00)</position>
+  <position>(53.40, -236.84, 0.00)</position>
   <varManagerName></varManagerName>
   <varName />
   <defineID />
@@ -21,8 +37,97 @@
             <Section>
               <childBlocks>
                 <Block>
-                  <blockName>Block Ins If</blockName>
+                  <blockName>Block Cst Rule</blockName>
                   <position>(20.00, 10.00, 0.00)</position>
+                  <varManagerName></varManagerName>
+                  <varName />
+                  <defineID />
+                  <isLocalVar />
+                  <defineItems />
+                  <sections>
+                    <Section>
+                      <childBlocks>
+                        <Block>
+                          <blockName>Block Cst Eat</blockName>
+                          <position>(20.00, 10.00, 0.00)</position>
+                          <varManagerName></varManagerName>
+                          <varName />
+                          <defineID />
+                          <isLocalVar />
+                          <defineItems />
+                          <sections>
+                            <Section>
+                              <childBlocks />
+                              <inputs>
+                                <Input>
+                                  <isOperation>false</isOperation>
+                                  <value>Berrie</value>
+                                </Input>
+                              </inputs>
+                            </Section>
+                          </sections>
+                        </Block>
+                      </childBlocks>
+                      <inputs>
+                        <Input>
+                          <isOperation>true</isOperation>
+                          <value>1</value>
+                          <operation>
+                            <Block>
+                              <blockName>Block Op BiggerThan</blockName>
+                              <position>(-174.11, 35.00, 0.00)</position>
+                              <varManagerName></varManagerName>
+                              <varName />
+                              <defineID />
+                              <isLocalVar />
+                              <defineItems />
+                              <sections>
+                                <Section>
+                                  <childBlocks />
+                                  <inputs>
+                                    <Input>
+                                      <isOperation>false</isOperation>
+                                      <value>50</value>
+                                    </Input>
+                                    <Input>
+                                      <isOperation>true</isOperation>
+                                      <value>0</value>
+                                      <operation>
+                                        <Block>
+                                          <blockName>Block Cst GetProperty</blockName>
+                                          <position>(-91.17, 25.00, 0.00)</position>
+                                          <varManagerName></varManagerName>
+                                          <varName />
+                                          <defineID />
+                                          <isLocalVar />
+                                          <defineItems />
+                                          <sections>
+                                            <Section>
+                                              <childBlocks />
+                                              <inputs>
+                                                <Input>
+                                                  <isOperation>false</isOperation>
+                                                  <value>Hunger</value>
+                                                </Input>
+                                              </inputs>
+                                            </Section>
+                                          </sections>
+                                        </Block>
+                                      </operation>
+                                    </Input>
+                                  </inputs>
+                                </Section>
+                              </sections>
+                            </Block>
+                          </operation>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+                <Block>
+                  <blockName>Block Ins If</blockName>
+                  <position>(20.00, -190.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -89,7 +194,7 @@
                 </Block>
                 <Block>
                   <blockName>Block Ins If</blockName>
-                  <position>(20.00, -180.00, 0.00)</position>
+                  <position>(20.00, -380.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -122,7 +227,7 @@
                       <inputs>
                         <Input>
                           <isOperation>true</isOperation>
-                          <value>true</value>
+                          <value>false</value>
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>

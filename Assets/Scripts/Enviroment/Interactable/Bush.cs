@@ -31,7 +31,8 @@ public class Bush : MonoBehaviour
             // Dar el objeto al jugador
             inventory.Add(berrie);
 
-            // Marcar el arbusto como ya tocado
+            // Marcar el arbusto como ya tocado y cambia su layer para no ser detectable
+            gameObject.layer = 0;
             touched = true;
 
             // Esperar a que se regeneren las bayas
@@ -49,5 +50,6 @@ public class Bush : MonoBehaviour
 
         // Permitir que el arbusto dé otro objeto
         touched = false;
+        gameObject.layer = 3;
     }
 }

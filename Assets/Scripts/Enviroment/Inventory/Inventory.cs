@@ -50,4 +50,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public ItemData GetItemData(string itemName)
+    {
+        foreach (var par in itemDictionary)
+        {
+            if (par.Key.displayName == itemName)
+            {
+                return par.Key;
+            }
+        }
+        return null;
+    }
+
 }

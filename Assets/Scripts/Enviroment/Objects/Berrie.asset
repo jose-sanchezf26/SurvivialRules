@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Berrie
   m_EditorClassIdentifier: 
   displayName: Berrie
+  power: 0
+  hungerheal: 20
   icon: {fileID: 0}
