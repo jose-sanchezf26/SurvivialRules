@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     private float thirst;
     private float tiredness;
 
+    // Cantidad a la hora de beber en un pozo
+    public float drinkAmount = 20;
 
     // Valor inicial de las propiedades del jugador
     public int maxLevelProperties = 100;
@@ -90,6 +92,9 @@ public class Player : MonoBehaviour
 
         lastPosition = transform.position;
 
+        // Busca el pozo más cercano cada x segundos, por temas de optimización
+        InvokeRepeating("NearestWell", 0f, 10f);
+
         ShowInformation();
     }
 
@@ -130,14 +135,37 @@ public class Player : MonoBehaviour
         ShowInformation();
     }
 
-    // public void Drink(Well well)
-    // {
-    //     if (well.Drink())
-    //     {
-    //         Thirst += drinkAmount;
-    //     }
-    //     ShowInformation();
-    // }
+    // Es el pozo que tiene asignado en ese momento
+    public Well well;
+    public void NearestWell()
+    {
+        Well[] wells = FindObjectsOfType<Well>();
+
+        float bestDistance = Mathf.Infinity;
+        Well nearWell = new Well();
+
+        foreach (Well well in wells)
+        {
+            float actualDistance = Vector2.Distance(transform.position, well.transform.position);
+
+            if (actualDistance < bestDistance)
+            {
+                bestDistance = actualDistance;
+                nearWell = well;
+            }
+        }
+
+        well = nearWell;
+    }
+
+    public void Drink()
+    {
+        if (well.Drink(transform.position))
+        {
+            Thirst += drinkAmount;
+        }
+        // ShowInformation();
+    }
 
     public void Rest(int amount)
     {

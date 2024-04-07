@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7629806667369664474}
   - component: {fileID: 3040097299695681061}
   - component: {fileID: 5980666414242768669}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WaterWell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdce05adc00ce2e408a79ae3a4e7dcc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxWaterLevel: 5
+  MaxWaterLevel: 100
+  drinkDistance: 2
+  timeToDrink: 5
+  lastDrink: 0
 --- !u!208 &3040097299695681061
 NavMeshObstacle:
   m_ObjectHideFlags: 0

@@ -58,25 +58,45 @@ public class Detector : MonoBehaviour
             }
         }
 
-        // Actualizar la lista de objetos detectados con el HashSet temporal
-        detectedObjects = newDetectedObjects;
+        // Actualizar la lista de objetos detectados
+        if (newDetectedObjects.Count > 0)
+        {
+            detectedObjects.Clear();
+            detectedObjects = newDetectedObjects;
+        }
+
     }
 
     // Método que comprueba si hay un objeto en concreto detectado
-    public bool ObjectDetected(string objectd)
-    {
-        if (detectedObjects.Count > 0)
-        {
-            foreach (GameObject detectedObject in detectedObjects)
-            {
-                if (detectedObject != null)
-                {
-                    if (detectedObject.GetComponent(objectd) != null)
-                    {
-                        return true;
-                    }
-                }
+    // public bool ObjectDetected(string objectd)
+    // {
+    //     if (detectedObjects.Count > 0)
+    //     {
+    //         foreach (GameObject detectedObject in detectedObjects)
+    //         {
+    //             if (detectedObject != null)
+    //             {
+    //                 if (detectedObject.GetComponent(objectd) != null)
+    //                 {
+    //                     return true;
+    //                 }
+    //             }
 
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    // Método que comprueba si hay un objeto en concreto detectado
+    public bool ObjectDetected(string objectType)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
+        foreach (Collider2D collider in colliders)
+        {
+            GameObject detectedObject = collider.gameObject;
+            if (detectedObject != null && detectedObject.GetComponent(objectType) != null)
+            {
+                return true;
             }
         }
         return false;
@@ -85,17 +105,28 @@ public class Detector : MonoBehaviour
     //Método que devuelve la posición de un objeto detectado, según su nombre de clase
     public Vector2 DetectedPosition(string name)
     {
-        foreach (var objectd in detectedObjects)
+        // foreach (var objectd in detectedObjects)
+        // {
+        //     if (objectd != null)
+        //     {
+        //         if (objectd.GetComponent(name) != null)
+        //         {
+        //             return objectd.transform.position;
+        //         }
+        //     }
+        // }
+
+        // return Vector2.zero;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
+        foreach (Collider2D collider in colliders)
         {
-            if (objectd != null)
+            GameObject detectedObject = collider.gameObject;
+            if (detectedObject != null && detectedObject.GetComponent(name) != null)
             {
-                if (objectd.GetComponent(name) != null)
-                {
-                    return objectd.transform.position;
-                }
+                return detectedObject.transform.position;
             }
         }
-
         return Vector2.zero;
     }
 

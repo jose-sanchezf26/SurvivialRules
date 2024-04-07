@@ -29,7 +29,7 @@ public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
             switch (_v0.stringValue)
             {
                 case "Well":
-                    targetPosition = FindAnyObjectByType<Well>().transform.position;
+                    targetPosition = TargetObject.Player.well.transform.position;
                     break;
                 default:
                     targetPosition = TargetObject.Player.detector.DetectedPosition(_v0.stringValue);
