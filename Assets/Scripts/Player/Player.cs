@@ -152,6 +152,7 @@ public class Player : MonoBehaviour
     float intervalT = 2f;
     float timeOT = 0;
 
+    // Calcula el cansancio del jugador en función de la distancia recorrida en x segundos
     private void CalculeTiredness()
     {
         timeOT += Time.deltaTime;
@@ -161,11 +162,16 @@ public class Player : MonoBehaviour
             {
                 Tiredness -= 1;
             }
+            else
+            {
+                Tiredness += 2;
+            }
             timeOT = 0f;
             lastPositionT = transform.position;
         }
     }
 
+    // Simula el paso del tiempo para los atributos del jugador
     public void TimePassage()
     {
         Hunger -= 2;
