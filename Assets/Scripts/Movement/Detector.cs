@@ -130,6 +130,22 @@ public class Detector : MonoBehaviour
         return Vector2.zero;
     }
 
+    // Devuelve el transform del objeto detectado
+    public Transform DetectedTransform(string name)
+    {
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
+        foreach (Collider2D collider in colliders)
+        {
+            GameObject detectedObject = collider.gameObject;
+            if (detectedObject != null && detectedObject.GetComponent(name) != null)
+            {
+                return detectedObject.transform;
+            }
+        }
+        return null;
+    }
+
 
     // Método para visualizar el campo de visión en la escena de Unity
     void OnDrawGizmos()

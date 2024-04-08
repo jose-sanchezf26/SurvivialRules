@@ -10,13 +10,11 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    // Velocidad de movimiento del jugador
-    public float speed = 5f;
 
     float timeO = 0f;
     float interval = 2f;
     // Componente para Pathfinding
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
     // Target utilizado para seguimiento
     [SerializeField] Transform target;
 
@@ -35,6 +33,8 @@ public class Player : MonoBehaviour
     public Detector detector;
     // Guarda el componente encargado de explorar
     private Explore explore;
+    // Componente encargador de hacer huir al jugador dada la posición de un enemigo
+    private Flee flee;
     // Animación del jugador
     private Animator animator;
     // Ataque
@@ -49,25 +49,31 @@ public class Player : MonoBehaviour
     public float Health
     {
         get { return health; }
-        set { health = Mathf.Clamp(value, 0, 100); } // Ensure health is within the range [0, 100]
+        set { health = Mathf.Clamp(value, 0, 100); }
     }
 
     public float Hunger
     {
         get { return hunger; }
-        set { hunger = Mathf.Clamp(value, 0, 100); } // Ensure hunger is within the range [0, 100]
+        set { hunger = Mathf.Clamp(value, 0, 100); }
     }
 
     public float Thirst
     {
         get { return thirst; }
-        set { thirst = Mathf.Clamp(value, 0, 100); } // Ensure thirst is within the range [0, 100]
+        set { thirst = Mathf.Clamp(value, 0, 100); }
     }
 
     public float Tiredness
     {
         get { return tiredness; }
-        set { tiredness = Mathf.Clamp(value, 0, 100); } // Ensure tiredness is within the range [0, 100]
+        set { tiredness = Mathf.Clamp(value, 0, 100); }
+    }
+
+    public float Speed
+    {
+        get { return agent.speed; }
+        set { agent.speed = value; }
     }
 
     // Inicialización
@@ -81,6 +87,8 @@ public class Player : MonoBehaviour
         //Obtiene los componentes
         detector = GetComponent<Detector>();
         explore = GetComponent<Explore>();
+        flee = GetComponent<Flee>();
+        flee.enabled = false;
         animator = GetComponent<Animator>();
         attack = GetComponent<Attack>();
         inventory = FindAnyObjectByType<Inventory>();
@@ -117,7 +125,7 @@ public class Player : MonoBehaviour
         Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
 
         // Mover el jugador en la dirección calculada
-        transform.Translate(movement * speed * Time.deltaTime);
+        transform.Translate(movement * Speed * Time.deltaTime);
         // if (Input.GetKey(KeyCode.W)) { Explore(); }
         // if (Input.GetKey(KeyCode.S)) { SetTarget(new Vector2(0, 0)); }
     }
@@ -210,15 +218,15 @@ public class Player : MonoBehaviour
         }
         if (Tiredness < 50)
         {
-            speed = 4f;
+            Speed = 4f;
             if (Tiredness < 25)
             {
-                speed = 2.5f;
+                Speed = 2.5f;
             }
         }
         else
         {
-            speed = 5f;
+            Speed = 5f;
         }
     }
 
@@ -236,12 +244,22 @@ public class Player : MonoBehaviour
     public void Explore()
     {
         agent.ResetPath();
+        flee.enabled = false;
         explore.SetActive(true);
+    }
+
+    public void Flee(Transform enemy)
+    {
+        agent.ResetPath();
+        flee.enabled = true;
+        flee.enemy = enemy;
+        explore.SetActive(false);
     }
 
     public void CancelMovement()
     {
         agent.ResetPath();
+        flee.enabled = false;
         explore.SetActive(false);
     }
 
@@ -254,8 +272,8 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         //Se asigna la velocidad del personaje a los componentes de movimiento
-        explore.moveSpeed = speed;
-        agent.speed = speed;
+        explore.moveSpeed = Speed;
+        flee.speed = Speed;
 
         //Se detecta si hay movimiento y aplica efecto de cansancio
         currentPosition = transform.position;
@@ -294,7 +312,7 @@ public class Player : MonoBehaviour
         }
         CalculeTiredness();
 
-        detector.DetectObjectsInVision();
+        // detector.DetectObjectsInVision();
         attack.DoAttack("Health");
         Movement();
     }
