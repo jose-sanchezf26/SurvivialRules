@@ -101,7 +101,7 @@ MonoBehaviour:
   berries: {fileID: 21300000, guid: 2f6475a7bdea309448b3086758788b49, type: 3}
   nberries: {fileID: 21300000, guid: aa36451ea24a6d64898c1bf619ba2bef, type: 3}
   berrie: {fileID: 11400000, guid: 51e2afd0f48afdc48b6bdb05424d795d, type: 2}
-  timeBerries: 5
+  timeBerries: 40
 --- !u!61 &7230249950432888765
 BoxCollider2D:
   m_ObjectHideFlags: 0
