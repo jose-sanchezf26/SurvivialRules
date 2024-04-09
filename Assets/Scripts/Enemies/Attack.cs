@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
 
     private bool canAttack = true;
 
-    public void DoAttack(string enemy)
+    public void DoAttack(string enemy, AttackType type)
     {
         // Se puede realizar el ataque
         if (canAttack)
@@ -25,7 +25,7 @@ public class Attack : MonoBehaviour
                     if (enemy != "Player")
                     {
                         // Hacer daño al enemigo
-                        hitCollider.GetComponent<Health>().TakeDamage(damage);
+                        hitCollider.GetComponent<Health>().TakeDamage(damage, type);
                     }
                     else
                     {

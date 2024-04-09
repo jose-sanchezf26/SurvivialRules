@@ -41,7 +41,7 @@ public class Explore : MonoBehaviour
 
     void SetRandomDirection()
     {
-        // Genera una nueva dirección aleatoria en 2D
+        // Genera una nueva dirección
         targetDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
 

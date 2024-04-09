@@ -103,6 +103,7 @@ MonoBehaviour:
   maxHealth: 20
   drop: {fileID: 11400000, guid: 0ef00d35d35d95040abc769b9286424b, type: 2}
   nDrop: 3
+  attackType: 1
 --- !u!61 &-6648128575707532521
 BoxCollider2D:
   m_ObjectHideFlags: 0

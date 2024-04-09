@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     // Ataque
     private Attack attack;
+    // Tipo de ataque
+    public AttackType attackType;
     // Inventario
     private Inventory inventory;
 
@@ -91,6 +93,8 @@ public class Player : MonoBehaviour
         flee.enabled = false;
         animator = GetComponent<Animator>();
         attack = GetComponent<Attack>();
+        ChangeAttackType(AttackType.Enemy);
+        ChangeDamage(0);
         inventory = FindAnyObjectByType<Inventory>();
 
         Health = maxLevelProperties;
@@ -235,6 +239,21 @@ public class Player : MonoBehaviour
         Health -= amount;
     }
 
+    // Método para cambiar el daño
+    public void ChangeAttackType(AttackType type)
+    {
+        attackType = type;
+    }
+
+
+    // Potencias de daño según el arma equipada
+    public int attackDamage = 10;
+    // Método para modificar la potencia de daño
+    public void ChangeDamage(int newDamage)
+    {
+        attack.damage = newDamage;
+    }
+
     public void SetTarget(Vector2 position)
     {
         explore.SetActive(false);
@@ -313,7 +332,7 @@ public class Player : MonoBehaviour
         CalculeTiredness();
 
         // detector.DetectObjectsInVision();
-        attack.DoAttack("Health");
+        attack.DoAttack("Health", attackType);
         Movement();
     }
 }

@@ -40,6 +40,6 @@ public class Enemy : MonoBehaviour
         }
 
         // Ataque
-        attack.DoAttack("Player");
+        attack.DoAttack("Player", AttackType.Enemy);
     }
 }

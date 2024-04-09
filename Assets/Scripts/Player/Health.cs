@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     public int maxHealth = 100;
     public ItemData drop;
     public int nDrop;
+    public AttackType attackType;
     private float currentHealth;
     private Inventory inventory;
 
@@ -16,9 +17,12 @@ public class Health : MonoBehaviour
         inventory = FindAnyObjectByType<Inventory>();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, AttackType type)
     {
-        currentHealth -= damage;
+        if (type == attackType)
+        {
+            currentHealth -= damage;
+        }
         if (currentHealth <= 0)
         {
             Die();
