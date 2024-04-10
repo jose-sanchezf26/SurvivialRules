@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -66,6 +67,44 @@ public class Inventory : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void CraftItem(CraftRecipe recipe)
+    {
+        bool canDoIt = true;
+
+        // Comprueba que tiene todos los ingredientes
+        foreach (var ingredient in recipe.requiredIngredients)
+        {
+            if (!itemDictionary.ContainsKey(ingredient.item) || itemDictionary[ingredient.item].stackSize < ingredient.amount)
+            {
+                canDoIt = false;
+                break;
+            }
+        }
+
+        if (canDoIt)
+        {
+            // Elimina los items del inventario
+            foreach (var ingredient in recipe.requiredIngredients)
+            {
+                for (int i = 0; i < ingredient.amount; i++)
+                {
+                    Remove(ingredient.item);
+                }
+            }
+
+            // Añade el nuevo item al inventario
+            for (int i = 0; i < recipe.result.amount; i++)
+            {
+                Add(recipe.result.item);
+            }
+            Debug.Log("Objeto " + recipe.result.item.displayName + " crafteado");
+        }
+        else
+        {
+            Debug.Log("Objeto " + recipe.result.item.displayName + " no ha podido ser crafteado");
+        }
     }
 
 }
