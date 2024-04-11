@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NavMeshPlus.Extensions;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
@@ -252,6 +254,35 @@ public class Player : MonoBehaviour
     public void ChangeDamage(int newDamage)
     {
         attack.damage = newDamage;
+    }
+
+    public UnityEngine.UI.Image itemIcon;
+    public TextMeshProUGUI itemName;
+
+    // Método para equiparse un objeto
+    public void EquipObject(string item)
+    {
+        ItemData itemData = inventory.GetItemData(item);
+        if (itemData != null)
+        {
+            itemName.text = itemData.displayName;
+            itemIcon.sprite = itemData.icon;
+
+            ChangeDamage(30);
+            // Según el objeto equipado se modifica el tipo de daño
+            if (item == "Axe")
+            {
+                ChangeAttackType(AttackType.Cut);
+            }
+            if (item == "Pickaxe")
+            {
+                ChangeAttackType(AttackType.Mine);
+            }
+            if (item == "Sword")
+            {
+                ChangeAttackType(AttackType.Enemy);
+            }
+        }
     }
 
     public void SetTarget(Vector2 position)

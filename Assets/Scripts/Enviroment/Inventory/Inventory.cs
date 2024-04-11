@@ -57,6 +57,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
+
+    // Obtiene el ItemData de un objeto del inventario según su nombre
     public ItemData GetItemData(string itemName)
     {
         foreach (var par in itemDictionary)
@@ -69,6 +71,7 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
+    // Método para craftear objetos
     public void CraftItem(CraftRecipe recipe)
     {
         bool canDoIt = true;
