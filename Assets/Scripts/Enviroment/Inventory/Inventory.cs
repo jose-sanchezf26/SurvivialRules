@@ -71,6 +71,12 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
+    // Método que comprueba si el inventario tiene un objeto determinado
+    public bool HasItemData(ItemData itemData)
+    {
+        return itemDictionary.TryGetValue(itemData, out InventoryItem item);
+    }
+
     // Método para craftear objetos
     public void CraftItem(CraftRecipe recipe)
     {

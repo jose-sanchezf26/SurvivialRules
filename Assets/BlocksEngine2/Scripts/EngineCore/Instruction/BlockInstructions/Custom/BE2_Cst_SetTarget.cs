@@ -31,6 +31,9 @@ public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
                 case "Well":
                     targetPosition = TargetObject.Player.well.transform.position;
                     break;
+                case "Campfire":
+                    targetPosition = TargetObject.Player.campfire.transform.position;
+                    break;
                 default:
                     targetPosition = TargetObject.Player.detector.DetectedPosition(_v0.stringValue);
                     break;

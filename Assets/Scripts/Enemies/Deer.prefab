@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  drop: {fileID: 11400000, guid: 0ef00d35d35d95040abc769b9286424b, type: 2}
+  drop: {fileID: 11400000, guid: 9df667efd3c9df145a7f91a9964ca636, type: 2}
   nDrop: 1
   attackType: 0
 --- !u!114 &1798698072320788781

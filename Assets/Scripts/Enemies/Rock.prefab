@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   drop: {fileID: 11400000, guid: 30e6620be5ad68045a2120233d08395a, type: 2}
-  nDrop: 0
+  nDrop: 3
   attackType: 2
 --- !u!114 &55021316029242209
 MonoBehaviour:

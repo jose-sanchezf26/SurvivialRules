@@ -11,8 +11,6 @@ public class BE2_Cst_CutDown : BE2_InstructionBase, I_BE2_Instruction
     public new void Function()
     {
         TargetObject.Player.ChangeAttackType(AttackType.Cut);
-        // Detecta si está equipada un arma
-        TargetObject.Player.ChangeDamage(TargetObject.Player.attackDamage);
         ExecuteNextInstruction();
     }
 

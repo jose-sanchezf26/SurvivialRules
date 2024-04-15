@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -95,8 +96,8 @@ public class Player : MonoBehaviour
         flee.enabled = false;
         animator = GetComponent<Animator>();
         attack = GetComponent<Attack>();
-        ChangeAttackType(AttackType.Enemy);
-        ChangeDamage(0);
+        ChangeAttackType(AttackType.None);
+        ChangeDamage(5);
         inventory = FindAnyObjectByType<Inventory>();
 
         Health = maxLevelProperties;
@@ -150,26 +151,57 @@ public class Player : MonoBehaviour
     }
 
     // Es el pozo que tiene asignado en ese momento
+    [HideInInspector]
     public Well well;
-    public void NearestWell()
+
+    // Es la hoguera más cercana 
+    [HideInInspector]
+    public Campfire campfire;
+
+    public void NearestObjects()
     {
         Well[] wells = FindObjectsOfType<Well>();
+        Campfire[] campfires = FindObjectsOfType<Campfire>();
 
-        float bestDistance = Mathf.Infinity;
+        float bestDistanceW = Mathf.Infinity;
+        float bestDistanceC = Mathf.Infinity;
         Well nearWell = new Well();
+        Campfire nearCampfire = new Campfire();
 
         foreach (Well well in wells)
         {
-            float actualDistance = Vector2.Distance(transform.position, well.transform.position);
+            float actualDistanceW = Vector2.Distance(transform.position, well.transform.position);
 
-            if (actualDistance < bestDistance)
+            if (actualDistanceW < bestDistanceW)
             {
-                bestDistance = actualDistance;
+                bestDistanceW = actualDistanceW;
                 nearWell = well;
+            }
+        }
+        foreach (Campfire campfire in campfires)
+        {
+            float actualDistanceC = Vector2.Distance(transform.position, campfire.transform.position);
+
+            if (actualDistanceC < bestDistanceC)
+            {
+                bestDistanceC = actualDistanceC;
+                nearCampfire = campfire;
             }
         }
 
         well = nearWell;
+        campfire = nearCampfire;
+    }
+
+    public void Cook()
+    {
+        if (campfire.itemToCook != null && Vector2.Distance(transform.position, transform.position) < campfire.cookDistance && inventory.HasItemData(campfire.itemToCook))
+        {
+            CancelMovement();
+            inventory.Remove(campfire.itemToCook);
+            campfire.Delay();
+            campfire.Cook(transform.position);
+        }
     }
 
     public void Drink()
@@ -241,7 +273,7 @@ public class Player : MonoBehaviour
         Health -= amount;
     }
 
-    // Método para cambiar el daño
+    // Método para cambiar el tipo de daño
     public void ChangeAttackType(AttackType type)
     {
         attackType = type;
@@ -268,19 +300,18 @@ public class Player : MonoBehaviour
             itemName.text = itemData.displayName;
             itemIcon.sprite = itemData.icon;
 
-            ChangeDamage(30);
             // Según el objeto equipado se modifica el tipo de daño
-            if (item == "Axe")
+            if (item == "Axe" && attackType == AttackType.Cut)
             {
-                ChangeAttackType(AttackType.Cut);
+                ChangeDamage(30);
             }
-            if (item == "Pickaxe")
+            if (item == "Pickaxe" && attackType == AttackType.Mine)
             {
-                ChangeAttackType(AttackType.Mine);
+                ChangeDamage(30);
             }
-            if (item == "Sword")
+            if (item == "Sword" && attackType == AttackType.Enemy)
             {
-                ChangeAttackType(AttackType.Enemy);
+                ChangeDamage(30);
             }
         }
     }
@@ -350,6 +381,34 @@ public class Player : MonoBehaviour
         lastPosition = currentPosition;
     }
 
+    // Prefabs para poder construir
+    public GameObject campfirePrefab;
+
+    // Comprueba si se puede construir una estructura a un lado del jugador, y en ese caso la coloca en dicha posición
+    public void Build(GameObject structure, float checkRadius)
+    {
+        if (structure != null)
+        {
+            Vector2 spawn = new Vector2(transform.position.x - 3, transform.position.y);
+
+            // Comprueba que no hay colisiones con otros objetos
+            if (Physics.OverlapSphere(spawn, checkRadius).Length == 0)
+            {
+                campfire = Instantiate(structure, spawn, Quaternion.identity).GetComponent<Campfire>();
+            }
+        }
+    }
+
+    // Función que comprueba si se coloca una hoguera o refugio mediante la presión de teclas
+    public void Controls()
+    {
+        // Si presionas C se creará una hoguera cerca del jugador
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Build(campfirePrefab, 3f);
+        }
+    }
+
     void Update()
     {
         ManualControl();
@@ -364,6 +423,7 @@ public class Player : MonoBehaviour
 
         // detector.DetectObjectsInVision();
         attack.DoAttack("Health", attackType);
+        Controls();
         Movement();
     }
 }
