@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // Seguimiento del jugador y movimiento
-        if (Vector2.Distance(transform.position, target.transform.position) <= ditanceToFollow)
+        if (Vector2.Distance(transform.position, target.transform.position) <= ditanceToFollow && !target.GetComponent<Player>().Hidden)
         {
             explore.SetActive(false);
             aiChase.enabled = true;

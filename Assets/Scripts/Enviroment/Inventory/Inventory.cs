@@ -11,7 +11,8 @@ public class Inventory : MonoBehaviour
 
     public List<InventoryItem> inventory = new List<InventoryItem>();
     private Dictionary<ItemData, InventoryItem> itemDictionary = new Dictionary<ItemData, InventoryItem>();
-
+    public ItemData campfireData;
+    public ItemData cabageData;
 
     private void OnEnable()
     {

@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
+using UnityEditor.Overlays;
 
 public class Player : MonoBehaviour
 {
@@ -158,15 +159,21 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Campfire campfire;
 
+    // Es la cabaña más cercana
+    public Cabage cabage;
+
     public void NearestObjects()
     {
         Well[] wells = FindObjectsOfType<Well>();
         Campfire[] campfires = FindObjectsOfType<Campfire>();
+        Cabage[] cabages = FindObjectsOfType<Cabage>();
 
         float bestDistanceW = Mathf.Infinity;
         float bestDistanceC = Mathf.Infinity;
+        float bestDistanceCa = Mathf.Infinity;
         Well nearWell = new Well();
         Campfire nearCampfire = new Campfire();
+        Cabage nearCabage = new Cabage();
 
         foreach (Well well in wells)
         {
@@ -188,22 +195,35 @@ public class Player : MonoBehaviour
                 nearCampfire = campfire;
             }
         }
+        foreach (Cabage cabage in cabages)
+        {
+            float actualDistanceCa = Vector2.Distance(transform.position, cabage.transform.position);
+
+            if (actualDistanceCa < bestDistanceCa)
+            {
+                bestDistanceCa = actualDistanceCa;
+                nearCabage = cabage;
+            }
+        }
 
         well = nearWell;
         campfire = nearCampfire;
+        cabage = nearCabage;
     }
 
+    // Método para cocinar en una hoguera
     public void Cook()
     {
-        if (campfire.itemToCook != null && Vector2.Distance(transform.position, transform.position) < campfire.cookDistance && inventory.HasItemData(campfire.itemToCook))
+        if (campfire.itemToCook != null && Vector2.Distance(transform.position, campfire.transform.position) < campfire.cookDistance && inventory.HasItemData(campfire.itemToCook))
         {
             CancelMovement();
             inventory.Remove(campfire.itemToCook);
             campfire.Delay();
-            campfire.Cook(transform.position);
+            campfire.Cook();
         }
     }
 
+    // Método para beber en un pozo
     public void Drink()
     {
         if (well.Drink(transform.position))
@@ -213,11 +233,41 @@ public class Player : MonoBehaviour
         // ShowInformation();
     }
 
-    public void Rest(int amount)
+    // Campo para el modo oculto, para evitar que te detecten los enemigos
+    private bool hidden = false;
+    public bool Hidden
     {
-        Tiredness -= amount;
+        get { return hidden; }
+        set { hidden = value; }
+    }
 
-        ShowInformation();
+
+    // Método para descansar
+    public void Rest()
+    {
+        if (Vector2.Distance(transform.position, cabage.transform.position) <= cabage.restDistance)
+        {
+            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+            sprite.enabled = false;
+            hidden = true;
+            CancelMovement();
+
+            StartCoroutine(IncreaseTirednessOverTime(2f));
+        }
+    }
+
+    // Método que hace que incremente el nivel de cansancio cada x segundos
+    IEnumerator IncreaseTirednessOverTime(float s)
+    {
+        while (Tiredness < maxLevelProperties)
+        {
+            Tiredness += 5;
+            yield return new WaitForSeconds(s);
+        }
+
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.enabled = true;
+        hidden = false;
     }
 
     Vector2 lastPositionT;
@@ -234,11 +284,11 @@ public class Player : MonoBehaviour
         {
             if (distanceTiredness < Vector2.Distance(lastPositionT, transform.position))
             {
-                Tiredness -= 1;
+                Tiredness -= 4;
             }
             else
             {
-                Tiredness += 2;
+                Tiredness += 1;
             }
             timeOT = 0f;
             lastPositionT = transform.position;
@@ -383,9 +433,10 @@ public class Player : MonoBehaviour
 
     // Prefabs para poder construir
     public GameObject campfirePrefab;
+    public GameObject cabagePrefab;
 
     // Comprueba si se puede construir una estructura a un lado del jugador, y en ese caso la coloca en dicha posición
-    public void Build(GameObject structure, float checkRadius)
+    public bool Build(GameObject structure, float checkRadius)
     {
         if (structure != null)
         {
@@ -394,18 +445,38 @@ public class Player : MonoBehaviour
             // Comprueba que no hay colisiones con otros objetos
             if (Physics.OverlapSphere(spawn, checkRadius).Length == 0)
             {
-                campfire = Instantiate(structure, spawn, Quaternion.identity).GetComponent<Campfire>();
+                if (structure == campfirePrefab)
+                {
+                    campfire = Instantiate(structure, spawn, Quaternion.identity).GetComponent<Campfire>();
+                }
+                else
+                {
+                    cabage = Instantiate(structure, spawn, Quaternion.identity).GetComponent<Cabage>();
+                }
+                return true;
             }
         }
+        return false;
     }
 
     // Función que comprueba si se coloca una hoguera o refugio mediante la presión de teclas
     public void Controls()
     {
         // Si presionas C se creará una hoguera cerca del jugador
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && inventory.HasItemData(inventory.campfireData))
         {
-            Build(campfirePrefab, 3f);
+            if (Build(campfirePrefab, 3f))
+            {
+                inventory.Remove(inventory.campfireData);
+            }
+        }
+        // Si presionas C se creará una hoguera cerca del jugador
+        if (Input.GetKeyDown(KeyCode.V) && inventory.HasItemData(inventory.cabageData))
+        {
+            if (Build(cabagePrefab, 3f))
+            {
+                inventory.Remove(inventory.cabageData);
+            }
         }
     }
 

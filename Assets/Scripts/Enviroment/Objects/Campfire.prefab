@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b856077d4406d884cba1a38fa7812f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: be713d77048044d40933837cee0d871b, type: 2}
   itemToCook: {fileID: 11400000, guid: 9df667efd3c9df145a7f91a9964ca636, type: 2}
   CookedItem: {fileID: 11400000, guid: d09785b10e429de49919748866aa4fba, type: 2}
   cookDistance: 1

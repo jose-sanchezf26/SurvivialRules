@@ -19,7 +19,7 @@ public class Campfire : MonoBehaviour
         inventory = FindAnyObjectByType<Inventory>();
     }
 
-    public void Cook(Vector2 playerPosition)
+    public void Cook()
     {
         Delay();
 
