@@ -144,7 +144,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.95300007, y: 0.42, z: 0.1}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.83, z: 0}
   m_TimeToStationary: 0.5
@@ -160,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b856077d4406d884cba1a38fa7812f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: be713d77048044d40933837cee0d871b, type: 2}
   itemToCook: {fileID: 11400000, guid: 9df667efd3c9df145a7f91a9964ca636, type: 2}
   CookedItem: {fileID: 11400000, guid: d09785b10e429de49919748866aa4fba, type: 2}
   cookDistance: 1

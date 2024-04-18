@@ -9,7 +9,7 @@ public class FollowPlayer : MonoBehaviour
     // Jugador al que sigue la cámara
     public Transform player;
     // Suavidad de la cámara
-    public float smoothing = 5f; 
+    public float smoothing = 5f;
     public float rigthOffset = 4;
 
     void FixedUpdate()

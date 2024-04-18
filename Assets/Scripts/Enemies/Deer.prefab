@@ -141,7 +141,7 @@ MonoBehaviour:
   maxHealth: 50
   drop: {fileID: 11400000, guid: 9df667efd3c9df145a7f91a9964ca636, type: 2}
   nDrop: 1
-  attackType: 0
+  attackType: 1
 --- !u!114 &1798698072320788781
 MonoBehaviour:
   m_ObjectHideFlags: 0
