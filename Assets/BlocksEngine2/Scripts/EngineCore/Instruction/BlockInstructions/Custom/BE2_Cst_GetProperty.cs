@@ -12,8 +12,8 @@ using System.Globalization;
 
 public class BE2_Cst_GetProperty : BE2_InstructionBase, I_BE2_Instruction
 {
-     I_BE2_BlockSectionHeaderInput _input0;
-     BE2_InputValues _v0;
+    I_BE2_BlockSectionHeaderInput _input0;
+    BE2_InputValues _v0;
 
     public new void Function()
     {
@@ -26,20 +26,20 @@ public class BE2_Cst_GetProperty : BE2_InstructionBase, I_BE2_Instruction
         _input0 = Section0Inputs[0];
         _v0 = _input0.InputValues;
 
-        if(_v0.isText)
+        if (_v0.isText)
         {
-            switch(_v0.stringValue)
+            switch (_v0.stringValue)
             {
-                case "Health": 
+                case "Health":
                     result = TargetObject.Player.Health.ToString(CultureInfo.InvariantCulture);
-                    break; 
-                case "Thrist": 
+                    break;
+                case "Thirst":
                     result = TargetObject.Player.Thirst.ToString(CultureInfo.InvariantCulture);
                     break;
-                case "Hunger": 
+                case "Hunger":
                     result = TargetObject.Player.Hunger.ToString(CultureInfo.InvariantCulture);
                     break;
-                case "Tiredness": 
+                case "Tiredness":
                     result = TargetObject.Player.Tiredness.ToString(CultureInfo.InvariantCulture);
                     break;
             }

@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         lastPosition = transform.position;
 
         // Busca el pozo más cercano cada x segundos, por temas de optimización
-        InvokeRepeating("NearestWell", 0f, 10f);
+        InvokeRepeating("NearestObjects", 0f, 10f);
 
         ShowInformation();
     }
@@ -176,9 +176,9 @@ public class Player : MonoBehaviour
         float bestDistanceW = Mathf.Infinity;
         float bestDistanceC = Mathf.Infinity;
         float bestDistanceCa = Mathf.Infinity;
-        Well nearWell = new Well();
-        Campfire nearCampfire = new Campfire();
-        Cabage nearCabage = new Cabage();
+        Well nearWell;
+        Campfire nearCampfire;
+        Cabage nearCabage;
 
         foreach (Well well in wells)
         {
@@ -188,6 +188,7 @@ public class Player : MonoBehaviour
             {
                 bestDistanceW = actualDistanceW;
                 nearWell = well;
+                this.well = well;
             }
         }
         foreach (Campfire campfire in campfires)
@@ -198,6 +199,7 @@ public class Player : MonoBehaviour
             {
                 bestDistanceC = actualDistanceC;
                 nearCampfire = campfire;
+                this.campfire = campfire;
             }
         }
         foreach (Cabage cabage in cabages)
@@ -208,12 +210,9 @@ public class Player : MonoBehaviour
             {
                 bestDistanceCa = actualDistanceCa;
                 nearCabage = cabage;
+                this.cabage = cabage;
             }
         }
-
-        well = nearWell;
-        campfire = nearCampfire;
-        cabage = nearCabage;
     }
 
     // Método para cocinar en una hoguera
@@ -231,11 +230,14 @@ public class Player : MonoBehaviour
     // Método para beber en un pozo
     public void Drink()
     {
-        if (well.Drink(transform.position))
+        if (well != null)
         {
-            Thirst += drinkAmount;
+            if (well.Drink(transform.position))
+            {
+                Thirst += drinkAmount;
+            }
+            // ShowInformation();
         }
-        // ShowInformation();
     }
 
     // Campo para el modo oculto, para evitar que te detecten los enemigos
