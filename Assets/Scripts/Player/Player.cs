@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     public AttackType attackType;
     // Inventario
     private Inventory inventory;
+    // Componente para cambiar de color cuando le golpean
+    private ChangeHitColor changeHitColor;
 
     // Posición anterior para detectar si hay movimiento
     private Vector2 lastPosition;
@@ -100,6 +102,7 @@ public class Player : MonoBehaviour
         ChangeAttackType(AttackType.None);
         ChangeDamage(5);
         inventory = FindAnyObjectByType<Inventory>();
+        changeHitColor = GetComponent<ChangeHitColor>();
 
         Health = maxLevelProperties;
         Hunger = maxLevelProperties;
@@ -332,6 +335,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int amount)
     {
         Health -= amount;
+        changeHitColor.isHit = true;
     }
 
     // Método para cambiar el tipo de daño

@@ -10,11 +10,13 @@ public class Health : MonoBehaviour
     public AttackType attackType;
     private float currentHealth;
     private Inventory inventory;
+    private ChangeHitColor changeHitColor;
 
     void Start()
     {
         currentHealth = maxHealth;
         inventory = FindAnyObjectByType<Inventory>();
+        changeHitColor = GetComponent<ChangeHitColor>();
     }
 
     public void TakeDamage(int damage, AttackType type)
@@ -26,6 +28,10 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+        }
+        if (changeHitColor != null)
+        {
+            changeHitColor.isHit = true;
         }
     }
 

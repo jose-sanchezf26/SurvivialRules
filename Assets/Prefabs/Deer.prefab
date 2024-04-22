@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 761388846827491195}
   - component: {fileID: 1061706766057485731}
   - component: {fileID: 8688240348136109963}
+  - component: {fileID: 2904539797798716521}
   m_Layer: 3
   m_Name: Deer
   m_TagString: Untagged
@@ -334,3 +335,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2904539797798716521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669300631278352441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0128328b3c51e640abbbac9bf8c8a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1222852246735285311}
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  hitDuration: 0.5
+  isHit: 0

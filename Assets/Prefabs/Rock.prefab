@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 55021316029242209}
   - component: {fileID: 1390623333984432546}
   - component: {fileID: 62785417644562345}
+  - component: {fileID: 6730021963555727819}
   m_Layer: 3
   m_Name: Rock
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a87480c51510854698027643b42a59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 80
   drop: {fileID: 11400000, guid: 30e6620be5ad68045a2120233d08395a, type: 2}
   nDrop: 3
   attackType: 3
@@ -177,3 +178,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.656, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &6730021963555727819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129309978473108196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0128328b3c51e640abbbac9bf8c8a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8181408655052038724}
+  hitColor: {r: 0.003648994, g: 0.58498484, b: 0.7735849, a: 1}
+  hitDuration: 0.5
+  isHit: 0

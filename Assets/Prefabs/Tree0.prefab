@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6648128575707532521}
   - component: {fileID: 2276984666495095232}
   - component: {fileID: 7364883308438147545}
+  - component: {fileID: 5786771268153265301}
   m_Layer: 3
   m_Name: Tree0
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a87480c51510854698027643b42a59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 80
   drop: {fileID: 11400000, guid: 0ef00d35d35d95040abc769b9286424b, type: 2}
   nDrop: 3
   attackType: 2
@@ -177,3 +178,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: -0.15, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &5786771268153265301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328847852039038146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0128328b3c51e640abbbac9bf8c8a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6564032541277920147}
+  hitColor: {r: 0.003921569, g: 0.58431375, b: 0.77254903, a: 1}
+  hitDuration: 0.5
+  isHit: 0
