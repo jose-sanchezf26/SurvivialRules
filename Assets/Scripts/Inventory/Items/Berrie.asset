@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a29cab50b8d04244964df4b28aad1b1, type: 3}
   m_Name: Berrie
   m_EditorClassIdentifier: 
-  displayName: Berrie
+  displayName: Berry
   power: 0
   hungerheal: 20
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f30523ff16003b740afe5e43eec8c375, type: 3}

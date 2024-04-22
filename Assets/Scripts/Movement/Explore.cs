@@ -17,6 +17,11 @@ public class Explore : MonoBehaviour
         SetRandomDirection();
     }
 
+    public void SetSpeed(float s)
+    {
+        moveSpeed = s;
+    }
+
     void Update()
     {
         if (active)

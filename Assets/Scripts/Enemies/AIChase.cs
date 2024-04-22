@@ -21,15 +21,13 @@ public class AIChase : MonoBehaviour
         agent.updateUpAxis = false;
     }
 
+    public void SetSpeed(float s)
+    {
+        agent.speed = s;
+    }
+
     void Update()
     {
-        // distance = Vector2.Distance(transform.position, targetPosition);
-        // Vector2 direction = targetPosition - transform.position;
-        // direction.Normalize();
-        // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // transform.position = Vector2.MoveTowards(this.transform.position, targetPosition, speed * Time.deltaTime);
-        // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         if (targetPosition != Vector2.zero)
         {
             agent.SetDestination(targetPosition);

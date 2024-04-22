@@ -114,6 +114,11 @@ public class Player : MonoBehaviour
         ShowInformation();
     }
 
+    public bool ItemInInventory(string item)
+    {
+        return inventory.HasItem(item);
+    }
+
 
     void ShowInformation()
     {
@@ -301,6 +306,10 @@ public class Player : MonoBehaviour
         Hunger -= 2;
         Thirst -= 2;
         if (Hunger < 20 && Thirst < 20)
+        {
+            TakeDamage(1);
+        }
+        if (Hunger == 0 || Thirst == 0)
         {
             TakeDamage(1);
         }
