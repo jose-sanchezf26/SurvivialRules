@@ -24,14 +24,14 @@ public class Health : MonoBehaviour
         if (type == attackType)
         {
             currentHealth -= damage;
+            if (changeHitColor != null)
+            {
+                changeHitColor.isHit = true;
+            }
         }
         if (currentHealth <= 0)
         {
             Die();
-        }
-        if (changeHitColor != null)
-        {
-            changeHitColor.isHit = true;
         }
     }
 

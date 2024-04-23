@@ -11,9 +11,14 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
 using UnityEditor.Overlays;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+
+    // Evento para ventana de muerte
+    [HideInInspector]
+    public UnityEvent PlayerDeath;
 
     float timeO = 0f;
     float interval = 2f;
@@ -305,11 +310,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    private bool isDie = false;
     // Simula el paso del tiempo para los atributos del jugador
     public void TimePassage()
     {
         Hunger -= 2;
         Thirst -= 2;
+        //TODO Parte para detectar que ha muerto
+        if (Health <= 0)
+        {
+            Die();
+        }
+        if (Hunger > 80 && Thirst < 80)
+        {
+            Heal(1);
+        }
         if (Hunger < 20 && Thirst < 20)
         {
             TakeDamage(1);
@@ -332,10 +347,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Método para la muerte del jugador
+    private void Die()
+    {
+        Restart(false);
+        isDie = true;
+        PlayerDeath.Invoke();
+    }
+
+    // Método para quitar vida
     public void TakeDamage(int amount)
     {
         Health -= amount;
         changeHitColor.isHit = true;
+    }
+
+    // Método para curar vida
+    public void Heal(int amount)
+    {
+        Health += amount;
     }
 
     // Método para cambiar el tipo de daño
@@ -381,12 +411,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Establece un objetivo para el Path Finding
     public void SetTarget(Vector2 position)
     {
         explore.SetActive(false);
         agent.SetDestination(position);
     }
 
+    // Activa el modo explorar
     public void Explore()
     {
         agent.ResetPath();
@@ -394,6 +426,7 @@ public class Player : MonoBehaviour
         explore.SetActive(true);
     }
 
+    // Método para huir de enemigos
     public void Flee(Transform enemy)
     {
         agent.ResetPath();
@@ -402,11 +435,26 @@ public class Player : MonoBehaviour
         explore.SetActive(false);
     }
 
+    // Método que cancela el movimiento del personaje
     public void CancelMovement()
     {
         agent.ResetPath();
         flee.enabled = false;
         explore.SetActive(false);
+    }
+
+    // Método para establecer las características del personaje
+    public void Restart(bool attributes)
+    {
+        if (attributes)
+        {
+            Health = maxLevelProperties;
+            Thirst = maxLevelProperties;
+            Tiredness = maxLevelProperties;
+            Hunger = maxLevelProperties;
+        }
+        CancelMovement();
+        attackType = AttackType.None;
     }
 
     IEnumerator Stay()
@@ -502,7 +550,10 @@ public class Player : MonoBehaviour
         timeO += Time.deltaTime;
         if (timeO >= interval)
         {
-            TimePassage();
+            if (!isDie)
+            {
+                TimePassage();
+            }
             timeO = 0f;
         }
         CalculeTiredness();
