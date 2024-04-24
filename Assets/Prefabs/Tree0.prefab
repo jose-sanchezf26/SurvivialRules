@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2276984666495095232}
   - component: {fileID: 7364883308438147545}
   - component: {fileID: 5786771268153265301}
+  - component: {fileID: -2720863487938789958}
   m_Layer: 3
   m_Name: Tree0
   m_TagString: Untagged
@@ -194,3 +195,16 @@ MonoBehaviour:
   hitColor: {r: 0.003921569, g: 0.58431375, b: 0.77254903, a: 1}
   hitDuration: 0.5
   isHit: 0
+--- !u!114 &-2720863487938789958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328847852039038146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26ddf391a4c7604caf0ba796f11741b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Tree

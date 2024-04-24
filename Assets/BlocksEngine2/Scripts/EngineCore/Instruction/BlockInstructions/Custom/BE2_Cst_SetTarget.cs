@@ -34,6 +34,9 @@ public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
                 case "Campfire":
                     targetPosition = TargetObject.Player.campfire.transform.position;
                     break;
+                case "Cabage":
+                    targetPosition = TargetObject.Player.cabage.transform.position;
+                    break;
                 default:
                     targetPosition = TargetObject.Player.detector.DetectedPosition(_v0.stringValue);
                     break;
@@ -43,6 +46,7 @@ public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
         //Comprueba que se haya asignado algún target
         if (targetPosition != Vector2.zero)
         {
+            TargetObject.Player.target = _v0.stringValue;
             TargetObject.Player.SetTarget(targetPosition);
         }
         ExecuteNextInstruction();

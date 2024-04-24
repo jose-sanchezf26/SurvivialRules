@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8583871950262870520}
   - component: {fileID: 7860135488993552591}
   - component: {fileID: 8146405475296645686}
+  - component: {fileID: 4878312262371948553}
   m_Layer: 3
   m_Name: Cabage
   m_TagString: Untagged
@@ -161,3 +162,16 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &4878312262371948553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037221694851148629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26ddf391a4c7604caf0ba796f11741b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Cabage

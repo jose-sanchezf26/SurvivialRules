@@ -94,9 +94,13 @@ public class Detector : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             GameObject detectedObject = collider.gameObject;
-            if (detectedObject != null && detectedObject.GetComponent(objectType) != null)
+            DetectableName detectableName = detectedObject.GetComponent<DetectableName>();
+            if (detectedObject != null && detectableName != null)
             {
-                return true;
+                if (detectableName.displayName == objectType)
+                {
+                    return true;
+                }
             }
         }
         return false;
@@ -122,9 +126,13 @@ public class Detector : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             GameObject detectedObject = collider.gameObject;
-            if (detectedObject != null && detectedObject.GetComponent(name) != null)
+            DetectableName detectableName = detectedObject.GetComponent<DetectableName>();
+            if (detectedObject != null && detectableName != null)
             {
-                return detectedObject.transform.position;
+                if (detectableName.displayName == name)
+                {
+                    return detectedObject.transform.position;
+                }
             }
         }
         return Vector2.zero;
@@ -144,6 +152,23 @@ public class Detector : MonoBehaviour
             }
         }
         return null;
+    }
+
+    // Método para devolver una lista de objetos detectados en el momento
+    public List<DetectableName> DetectableNames()
+    {
+        List<DetectableName> detectableNames = new List<DetectableName>();
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
+        foreach (Collider2D collider in colliders)
+        {
+            GameObject detectedObject = collider.gameObject;
+            DetectableName detectableName = detectedObject.GetComponent<DetectableName>();
+            if (detectedObject != null && detectableName != null)
+            {
+                detectableNames.Add(detectableName);
+            }
+        }
+        return detectableNames;
     }
 
 

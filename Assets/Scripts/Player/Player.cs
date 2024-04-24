@@ -24,8 +24,10 @@ public class Player : MonoBehaviour
     float interval = 2f;
     // Componente para Pathfinding
     private NavMeshAgent agent;
+
     // Target utilizado para seguimiento
-    [SerializeField] Transform target;
+    [HideInInspector]
+    public string target;
 
     // Propiedades del agente
     private float health;
@@ -101,7 +103,6 @@ public class Player : MonoBehaviour
         detector = GetComponent<Detector>();
         explore = GetComponent<Explore>();
         flee = GetComponent<Flee>();
-        flee.enabled = false;
         animator = GetComponent<Animator>();
         attack = GetComponent<Attack>();
         ChangeAttackType(AttackType.None);
@@ -125,6 +126,15 @@ public class Player : MonoBehaviour
     public bool ItemInInventory(string item)
     {
         return inventory.HasItem(item);
+    }
+
+    // Métodos para incluir información en la base de hechos
+
+
+    // Método para actualizar la lista de objetos detectados
+    public List<DetectableName> NamesDetected()
+    {
+        return detector.DetectableNames();
     }
 
 
@@ -386,12 +396,16 @@ public class Player : MonoBehaviour
     public UnityEngine.UI.Image itemIcon;
     public TextMeshProUGUI itemName;
 
+    [HideInInspector]
+    public ItemData equippedItem;
+
     // Método para equiparse un objeto
     public void EquipObject(string item)
     {
         ItemData itemData = inventory.GetItemData(item);
         if (itemData != null)
         {
+            equippedItem = itemData;
             itemName.text = itemData.displayName;
             itemIcon.sprite = itemData.icon;
 
@@ -415,6 +429,7 @@ public class Player : MonoBehaviour
     public void SetTarget(Vector2 position)
     {
         explore.SetActive(false);
+        flee.SetActive(false);
         agent.SetDestination(position);
     }
 
@@ -422,7 +437,8 @@ public class Player : MonoBehaviour
     public void Explore()
     {
         agent.ResetPath();
-        flee.enabled = false;
+        if (agent.destination == null) { Debug.Log("el path ha sido borrado"); }
+        flee.SetActive(false);
         explore.SetActive(true);
     }
 
@@ -430,16 +446,16 @@ public class Player : MonoBehaviour
     public void Flee(Transform enemy)
     {
         agent.ResetPath();
-        flee.enabled = true;
-        flee.enemy = enemy;
         explore.SetActive(false);
+        flee.SetActive(true);
+        flee.enemy = enemy;
     }
 
     // Método que cancela el movimiento del personaje
     public void CancelMovement()
     {
         agent.ResetPath();
-        flee.enabled = false;
+        flee.SetActive(false);
         explore.SetActive(false);
     }
 
@@ -461,6 +477,26 @@ public class Player : MonoBehaviour
     {
         CancelMovement();
         yield return new WaitForSeconds(2);
+    }
+
+    // Método que devuelve string que indica el movimiento que se está realizando
+    public string GetMovement()
+    {
+        string result = "";
+        if (explore.active)
+        {
+            result = "Explore";
+        }
+        else if (flee.active)
+        {
+            result = "Flee";
+        }
+        else if (agent.destination != null)
+        {
+            result = "Target " + target;
+        }
+        result += "\n";
+        return result;
     }
 
     private void Movement()

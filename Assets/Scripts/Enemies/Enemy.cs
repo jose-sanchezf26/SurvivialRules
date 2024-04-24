@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public int Health = 100;
-    public float chaseSpeed = 5f;
-    public float exploreSpeed = 5f;
+    public float chaseSpeed = 3f;
+    public float exploreSpeed = 3f;
     public GameObject target;
     public float ditanceToFollow;
     public float detectDistance;
