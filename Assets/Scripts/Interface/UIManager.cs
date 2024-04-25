@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public Canvas[] blockEngine;
     public Canvas inventory;
     public UnityEngine.UI.Image deathImage;
+    public UnityEngine.UI.Image BHImage;
     private Player player;
     private bool notDie = true;
 
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
         SetEnabled(true);
         inventory.enabled = false;
         deathImage.gameObject.SetActive(false);
+        BHImage.gameObject.SetActive(false);
         player = FindAnyObjectByType<Player>();
         player.PlayerDeath.AddListener(ShowDeathImage);
     }
@@ -49,6 +51,10 @@ public class UIManager : MonoBehaviour
                 deathImage.gameObject.SetActive(!deathImage.gameObject.activeSelf);
             }
 
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
         }
 
         CreateBH();
@@ -124,5 +130,15 @@ public class UIManager : MonoBehaviour
 
 
         return result;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Play()
+    {
+        Time.timeScale = 1f;
     }
 }
