@@ -1,0 +1,107 @@
+<Block>
+  <blockName>Block Ins WhenPlayClicked</blockName>
+  <position>(253.79, -222.76, 0.00)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <defineID />
+  <isLocalVar />
+  <defineItems />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Ins If</blockName>
+          <position>(0.00, 10.00, 0.00)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <defineID />
+          <isLocalVar />
+          <defineItems />
+          <sections>
+            <Section>
+              <childBlocks>
+                <Block>
+                  <blockName>Block Cst SetTarget</blockName>
+                  <position>(20.00, 10.00, 0.00)</position>
+                  <varManagerName></varManagerName>
+                  <varName />
+                  <defineID />
+                  <isLocalVar />
+                  <defineItems />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>Pozo</value>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+              </childBlocks>
+              <inputs>
+                <Input>
+                  <isOperation>true</isOperation>
+                  <value>0</value>
+                  <operation>
+                    <Block>
+                      <blockName>Block Op BiggerThan</blockName>
+                      <position>(-190.14, 35.00, 0.00)</position>
+                      <varManagerName></varManagerName>
+                      <varName />
+                      <defineID />
+                      <isLocalVar />
+                      <defineItems />
+                      <sections>
+                        <Section>
+                          <childBlocks />
+                          <inputs>
+                            <Input>
+                              <isOperation>true</isOperation>
+                              <value></value>
+                              <operation>
+                                <Block>
+                                  <blockName>Block Cst GetProperty</blockName>
+                                  <position>(-200.77, 25.00, 0.00)</position>
+                                  <varManagerName></varManagerName>
+                                  <varName />
+                                  <defineID />
+                                  <isLocalVar />
+                                  <defineItems />
+                                  <sections>
+                                    <Section>
+                                      <childBlocks />
+                                      <inputs>
+                                        <Input>
+                                          <isOperation>false</isOperation>
+                                          <value>Health</value>
+                                        </Input>
+                                      </inputs>
+                                    </Section>
+                                  </sections>
+                                </Block>
+                              </operation>
+                            </Input>
+                            <Input>
+                              <isOperation>false</isOperation>
+                              <value>50</value>
+                            </Input>
+                          </inputs>
+                        </Section>
+                      </sections>
+                    </Block>
+                  </operation>
+                </Input>
+              </inputs>
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
+
