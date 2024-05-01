@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI objectsDetectedText;
     // Texto de propiedades del jugador
     public TextMeshProUGUI properties;
+    // Texto con el tiempo sobrevivido
+    public TextMeshProUGUI textTime;
 
     // Variable para comprobar el tiempo
     private float timeO = 0f;
@@ -33,6 +35,7 @@ public class UIManager : MonoBehaviour
         BHImage.gameObject.SetActive(false);
         player = FindAnyObjectByType<Player>();
         player.PlayerDeath.AddListener(ShowDeathImage);
+        startTime = Time.time;
     }
 
     void Update()
@@ -57,12 +60,17 @@ public class UIManager : MonoBehaviour
             BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
         }
 
+        // Modifica base de hechos
         CreateBH();
+        // Actualiza el tiempo sobrevivido
+        TimeTracker();
     }
 
+    public TextMeshProUGUI textTimeDeath;
     private void ShowDeathImage()
     {
         deathImage.gameObject.SetActive(true);
+        textTimeDeath.text = "You survived " + minutes + " minutes and " + seconds + " seconds";
         SetEnabled(false);
         inventory.enabled = false;
         notDie = false;
@@ -132,6 +140,23 @@ public class UIManager : MonoBehaviour
         return result;
     }
 
+    private float startTime = 0;
+    private int minutes = 0;
+    private int seconds = 0;
+    public void TimeTracker()
+    {
+        // Calcula el tiempo transcurrido desde el inicio del juego
+        float elapsedTime = Time.time - startTime;
+
+        // Formatea el tiempo en minutos y segundos
+        minutes = Mathf.FloorToInt(elapsedTime / 60);
+        seconds = Mathf.FloorToInt(elapsedTime % 60);
+
+        // Actualiza el texto del temporizador
+        textTime.text = "Time survived: ";
+        textTime.text += string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
     public void Pause()
     {
         Time.timeScale = 0f;
@@ -141,4 +166,6 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
+
 }

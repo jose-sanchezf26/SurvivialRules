@@ -11,6 +11,15 @@ public class FollowPlayer : MonoBehaviour
     // Suavidad de la cámara
     public float smoothing = 5f;
     public float rigthOffset = 4;
+    public float minZoom = 5f;
+    public float maxZoom = 15f;
+    public float zoomSpeed = 5f;
+    private Camera cam;
+
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     void FixedUpdate()
     {
@@ -21,6 +30,15 @@ public class FollowPlayer : MonoBehaviour
 
             // Mueve suavemente la cámara hacia la posición deseada
             transform.position = Vector3.Lerp(transform.position, targetposition, smoothing * Time.fixedDeltaTime);
+        }
+
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0f)
+        {
+            float newSize = cam.orthographicSize - scroll * zoomSpeed;
+            newSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+            cam.orthographicSize = newSize;
         }
     }
 }
