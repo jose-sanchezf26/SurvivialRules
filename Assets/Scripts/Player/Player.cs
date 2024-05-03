@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         attack = GetComponent<Attack>();
         ChangeAttackType(AttackType.None);
-        ChangeDamage(5);
+        ChangeDamage(10);
         inventory = FindAnyObjectByType<Inventory>();
         changeHitColor = GetComponent<ChangeHitColor>();
 
@@ -266,18 +266,25 @@ public class Player : MonoBehaviour
         set { hidden = value; }
     }
 
+    [HideInInspector]
+    public bool isResting = false;
 
     // Método para descansar
     public void Rest()
     {
-        if (Vector2.Distance(transform.position, cabage.transform.position) <= cabage.restDistance)
+        if (cabage != null)
         {
-            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-            sprite.enabled = false;
-            hidden = true;
-            CancelMovement();
+            if (Vector2.Distance(transform.position, cabage.transform.position) <= cabage.restDistance && cabage.CanRest() && !isResting)
+            {
+                isResting = true;
+                SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+                sprite.enabled = false;
+                hidden = true;
+                CancelMovement();
 
-            StartCoroutine(IncreaseTirednessOverTime(2f));
+                StartCoroutine(IncreaseTirednessOverTime(2f));
+                cabage.UpdateCoolDown();
+            }
         }
     }
 
@@ -286,10 +293,10 @@ public class Player : MonoBehaviour
     {
         while (Tiredness < maxLevelProperties)
         {
-            Tiredness += 5;
+            Tiredness += 20f;
             yield return new WaitForSeconds(s);
         }
-
+        isResting = false;
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = true;
         hidden = false;
@@ -309,11 +316,11 @@ public class Player : MonoBehaviour
         {
             if (distanceTiredness < Vector2.Distance(lastPositionT, transform.position))
             {
-                Tiredness -= 4;
+                Tiredness -= 3;
             }
             else
             {
-                Tiredness += 1;
+                Tiredness += 2;
             }
             timeOT = 0f;
             lastPositionT = transform.position;
@@ -326,7 +333,6 @@ public class Player : MonoBehaviour
     {
         Hunger -= 2;
         Thirst -= 2;
-        //TODO Parte para detectar que ha muerto
         if (Health <= 0)
         {
             Die();
@@ -335,25 +341,25 @@ public class Player : MonoBehaviour
         {
             Heal(1);
         }
-        if (Hunger < 20 && Thirst < 20)
+        if (Hunger == 0)
         {
             TakeDamage(1);
         }
-        if (Hunger == 0 || Thirst == 0)
+        if (Thirst == 0)
         {
             TakeDamage(1);
         }
         if (Tiredness < 50)
         {
-            Speed = 4f;
+            Speed = 5.5f;
             if (Tiredness < 25)
             {
-                Speed = 2.5f;
+                Speed = 4f;
             }
         }
         else
         {
-            Speed = 5f;
+            Speed = 7f;
         }
     }
 
@@ -542,7 +548,7 @@ public class Player : MonoBehaviour
             Vector2 spawn = new Vector2(transform.position.x - 3, transform.position.y);
 
             // Comprueba que no hay colisiones con otros objetos
-            if (Physics.OverlapSphere(spawn, checkRadius).Length == 0)
+            if (Physics2D.OverlapCircleAll(spawn, checkRadius).Length == 0)
             {
                 if (structure == campfirePrefab)
                 {
@@ -564,7 +570,7 @@ public class Player : MonoBehaviour
         // Si presionas C se creará una hoguera cerca del jugador
         if (Input.GetKeyDown(KeyCode.C) && inventory.HasItemData(inventory.campfireData))
         {
-            if (Build(campfirePrefab, 3f))
+            if (Build(campfirePrefab, 1.5f))
             {
                 inventory.Remove(inventory.campfireData);
             }
@@ -572,7 +578,7 @@ public class Player : MonoBehaviour
         // Si presionas C se creará una hoguera cerca del jugador
         if (Input.GetKeyDown(KeyCode.V) && inventory.HasItemData(inventory.cabageData))
         {
-            if (Build(cabagePrefab, 3f))
+            if (Build(cabagePrefab, 1.5f))
             {
                 inventory.Remove(inventory.cabageData);
             }

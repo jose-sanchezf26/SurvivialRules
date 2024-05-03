@@ -6,16 +6,16 @@ public class Cabage : MonoBehaviour
 {
     // Distancia a la que necesita estar el jugador para descansar
     public float restDistance = 1f;
+    private float cooldown = 20f;
+    private float lastUsedTime = -Mathf.Infinity;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool CanRest()
     {
-
+        return Time.time - lastUsedTime >= cooldown;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateCoolDown()
     {
-
+        lastUsedTime = Time.time;
     }
 }

@@ -29,13 +29,13 @@ public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
             switch (_v0.stringValue)
             {
                 case "Well":
-                    targetPosition = TargetObject.Player.well.transform.position;
+                    if (TargetObject.Player.well != null) { targetPosition = TargetObject.Player.well.transform.position; }
                     break;
                 case "Campfire":
-                    targetPosition = TargetObject.Player.campfire.transform.position;
+                    if (TargetObject.Player.campfire != null) { targetPosition = TargetObject.Player.campfire.transform.position; }
                     break;
                 case "Cabage":
-                    targetPosition = TargetObject.Player.cabage.transform.position;
+                    if (TargetObject.Player.cabage != null) { targetPosition = TargetObject.Player.cabage.transform.position; }
                     break;
                 default:
                     targetPosition = TargetObject.Player.detector.DetectedPosition(_v0.stringValue);

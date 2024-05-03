@@ -46,8 +46,8 @@ public class Spawn : MonoBehaviour
             if (enemy != null)
             {
                 enemy.target = FindAnyObjectByType<Player>().gameObject;
-                NavMeshAgent agent = GetComponent<NavMeshAgent>();
-                //agent.Warp(transform.position);
+                NavMeshAgent agent = actualAgent.GetComponent<NavMeshAgent>();
+                // agent.Warp(transform.position);
             }
 
         }

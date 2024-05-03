@@ -20,6 +20,7 @@ public class WindowsManager : MonoBehaviour
     public void OpenGameScene()
     {
         SceneManager.LoadScene("Game");
+        Time.timeScale = 1f;
     }
 
     public void QuitGame()
@@ -29,6 +30,7 @@ public class WindowsManager : MonoBehaviour
 
     public void OpenMenuScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 }

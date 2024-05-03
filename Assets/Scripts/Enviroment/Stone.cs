@@ -11,6 +11,7 @@ public class Stone : MonoBehaviour, ICollectible
 
     public void Collect()
     {
+        FindAnyObjectByType<Player>().Speed = 2f;
         Destroy(gameObject);
         OnStoneCollected?.Invoke(stoneData);
     }

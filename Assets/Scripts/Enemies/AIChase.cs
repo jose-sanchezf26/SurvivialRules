@@ -14,7 +14,7 @@ public class AIChase : MonoBehaviour
     private float distance;
     private NavMeshAgent agent;
 
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;

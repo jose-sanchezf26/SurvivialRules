@@ -74,6 +74,7 @@ public class UIManager : MonoBehaviour
         SetEnabled(false);
         inventory.enabled = false;
         notDie = false;
+        Time.timeScale = 0f;
     }
 
     private void SetEnabled(bool enabled)

@@ -11,6 +11,7 @@ public class Wood : MonoBehaviour, ICollectible
 
     public void Collect()
     {
+        FindAnyObjectByType<Player>().Speed = 2f;
         Destroy(gameObject);
         OnWoodCollected?.Invoke(WoodData);
     }
