@@ -1,0 +1,127 @@
+<Block>
+  <blockName>Block Ins WhenPlayClicked</blockName>
+  <position>(168.50, -287.33, 0.00)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <defineID />
+  <isLocalVar />
+  <defineItems />
+  <sections>
+    <Section>
+      <childBlocks>
+        <Block>
+          <blockName>Block Cst Rules</blockName>
+          <position>(0.00, 10.00, 0.00)</position>
+          <varManagerName></varManagerName>
+          <varName />
+          <defineID />
+          <isLocalVar />
+          <defineItems />
+          <sections>
+            <Section>
+              <childBlocks>
+                <Block>
+                  <blockName>Block Cst Rule</blockName>
+                  <position>(20.00, 10.00, 0.00)</position>
+                  <varManagerName></varManagerName>
+                  <varName />
+                  <defineID />
+                  <isLocalVar />
+                  <defineItems />
+                  <sections>
+                    <Section>
+                      <childBlocks>
+                        <Block>
+                          <blockName>Block Cst SetTarget</blockName>
+                          <position>(20.00, 10.00, 0.00)</position>
+                          <varManagerName></varManagerName>
+                          <varName />
+                          <defineID />
+                          <isLocalVar />
+                          <defineItems />
+                          <sections>
+                            <Section>
+                              <childBlocks />
+                              <inputs>
+                                <Input>
+                                  <isOperation>false</isOperation>
+                                  <value>Campfire</value>
+                                </Input>
+                              </inputs>
+                            </Section>
+                          </sections>
+                        </Block>
+                        <Block>
+                          <blockName>Block Cst Cook</blockName>
+                          <position>(20.00, -60.00, 0.00)</position>
+                          <varManagerName></varManagerName>
+                          <varName />
+                          <defineID />
+                          <isLocalVar />
+                          <defineItems />
+                          <sections>
+                            <Section>
+                              <childBlocks />
+                              <inputs />
+                            </Section>
+                          </sections>
+                        </Block>
+                      </childBlocks>
+                      <inputs>
+                        <Input>
+                          <isOperation>true</isOperation>
+                          <value>true</value>
+                          <operation>
+                            <Block>
+                              <blockName>Block Cst Have</blockName>
+                              <position>(-50.38, 30.00, 0.00)</position>
+                              <varManagerName></varManagerName>
+                              <varName />
+                              <defineID />
+                              <isLocalVar />
+                              <defineItems />
+                              <sections>
+                                <Section>
+                                  <childBlocks />
+                                  <inputs>
+                                    <Input>
+                                      <isOperation>false</isOperation>
+                                      <value>Meat</value>
+                                    </Input>
+                                  </inputs>
+                                </Section>
+                              </sections>
+                            </Block>
+                          </operation>
+                        </Input>
+                      </inputs>
+                    </Section>
+                  </sections>
+                </Block>
+                <Block>
+                  <blockName>Block Cst Explore</blockName>
+                  <position>(20.00, -250.00, 0.00)</position>
+                  <varManagerName></varManagerName>
+                  <varName />
+                  <defineID />
+                  <isLocalVar />
+                  <defineItems />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs />
+                    </Section>
+                  </sections>
+                </Block>
+              </childBlocks>
+              <inputs />
+            </Section>
+          </sections>
+        </Block>
+      </childBlocks>
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
+

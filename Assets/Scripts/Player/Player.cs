@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
         // Mover el jugador en la dirección calculada
         transform.Translate(movement * Speed * Time.deltaTime);
-        // if (Input.GetKey(KeyCode.W)) { Explore(); }
+        // if (Input.GetKey(KeyCode.W)) { Explore(); }1
         // if (Input.GetKey(KeyCode.S)) { SetTarget(new Vector2(0, 0)); }
     }
 
@@ -233,14 +233,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    [HideInInspector]
+    public bool isCooking = false;
     // Método para cocinar en una hoguera
     public void Cook()
     {
         if (campfire.itemToCook != null && Vector2.Distance(transform.position, campfire.transform.position) < campfire.cookDistance && inventory.HasItemData(campfire.itemToCook))
         {
+            isCooking = true;
             CancelMovement();
             inventory.Remove(campfire.itemToCook);
-            campfire.Delay();
             campfire.Cook();
         }
     }
@@ -382,6 +384,17 @@ public class Player : MonoBehaviour
     public void Heal(int amount)
     {
         Health += amount;
+    }
+
+    // Método para consumir una venda y curarse
+    public void HealBandage()
+    {
+        if (inventory.HasItem("Bandage"))
+        {
+            ItemData bandage = inventory.GetItemData("Bandage");
+            Heal(bandage.hungerheal);
+            inventory.Remove(bandage);
+        }
     }
 
     // Método para cambiar el tipo de daño

@@ -21,14 +21,14 @@ public class Campfire : MonoBehaviour
 
     public void Cook()
     {
-        Delay();
-
-        inventory.Add(CookedItem);
+        StartCoroutine(Delay());
     }
 
     public IEnumerator Delay()
     {
         yield return new WaitForSeconds(cookTime);
+        inventory.Add(CookedItem);
+        FindAnyObjectByType<Player>().isCooking = false;
     }
 
 

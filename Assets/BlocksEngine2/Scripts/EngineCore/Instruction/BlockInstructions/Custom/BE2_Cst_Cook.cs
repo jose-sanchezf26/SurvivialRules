@@ -9,11 +9,14 @@ using MG_BlocksEngine2.Block;
 public class BE2_Cst_Cook : BE2_InstructionBase, I_BE2_Instruction
 {
 
-
+    public new bool ExecuteInUpdate => true;
     public new void Function()
     {
         TargetObject.Player.Cook();
-        ExecuteNextInstruction();
+        if (!TargetObject.Player.isCooking)
+        {
+            ExecuteNextInstruction();
+        }
     }
 
     public new string Operation()
