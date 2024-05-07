@@ -31,7 +31,8 @@ public class BE2_Cst_Rule : BE2_InstructionBase, I_BE2_Instruction
 
             if (_value == "1" || _value == "true")
             {
-                _isFirstPlay = false;
+                // _isFirstPlay = false;
+
                 ExecuteSection(0);
             }
             else

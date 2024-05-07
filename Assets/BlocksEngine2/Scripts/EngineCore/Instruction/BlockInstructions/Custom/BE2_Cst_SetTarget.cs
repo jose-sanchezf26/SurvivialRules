@@ -6,6 +6,7 @@ using UnityEngine;
 using MG_BlocksEngine2.Block.Instruction;
 using MG_BlocksEngine2.Block;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 
 // --- additional BE2 namespaces used for specific cases as accessing BE2 variables or the event manager
 // using MG_BlocksEngine2.Core;
@@ -49,6 +50,11 @@ public class BE2_Cst_SetTarget : BE2_InstructionBase, I_BE2_Instruction
             TargetObject.Player.target = _v0.stringValue;
             TargetObject.Player.SetTarget(targetPosition);
         }
+
+
+        do { }
+        while (TargetObject.Player.agent.path.status != NavMeshPathStatus.PathComplete);
+
         ExecuteNextInstruction();
     }
 

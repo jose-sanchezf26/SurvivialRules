@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     // Variable para comprobar el tiempo
     private float timeO = 0f;
-    private float interval = 1f;
+    private float interval = 0.25f;
 
 
     void Start()

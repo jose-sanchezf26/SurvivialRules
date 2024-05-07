@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     float timeO = 0f;
     float interval = 2f;
     // Componente para Pathfinding
-    private NavMeshAgent agent;
+    [HideInInspector]
+    public NavMeshAgent agent;
 
     // Target utilizado para seguimiento
     [HideInInspector]
