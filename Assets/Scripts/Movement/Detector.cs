@@ -109,19 +109,6 @@ public class Detector : MonoBehaviour
     //Método que devuelve la posición de un objeto detectado, según su nombre de clase
     public Vector2 DetectedPosition(string name)
     {
-        // foreach (var objectd in detectedObjects)
-        // {
-        //     if (objectd != null)
-        //     {
-        //         if (objectd.GetComponent(name) != null)
-        //         {
-        //             return objectd.transform.position;
-        //         }
-        //     }
-        // }
-
-        // return Vector2.zero;
-
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
         foreach (Collider2D collider in colliders)
         {

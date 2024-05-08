@@ -4,10 +4,13 @@ using UnityEngine;
 
 using MG_BlocksEngine2.Block.Instruction;
 using MG_BlocksEngine2.Block;
+using TMPro;
+using Microsoft.Unity.VisualStudio.Editor;
 
 
 public class BE2_Cst_Rule : BE2_InstructionBase, I_BE2_Instruction
 {
+    public UnityEngine.UI.Image executionImage;
     I_BE2_BlockSectionHeaderInput _input0;
     string _value;
     bool _isFirstPlay = true;
@@ -32,12 +35,13 @@ public class BE2_Cst_Rule : BE2_InstructionBase, I_BE2_Instruction
             if (_value == "1" || _value == "true")
             {
                 // _isFirstPlay = false;
-
+                executionImage.gameObject.SetActive(true);
                 ExecuteSection(0);
             }
             else
             {
                 _isFirstPlay = true;
+                executionImage.gameObject.SetActive(false);
                 ExecuteNextInstruction();
             }
         }
