@@ -10,7 +10,7 @@
     <Section>
       <childBlocks>
         <Block>
-          <blockName>Block Cst Rules</blockName>
+          <blockName>Block Cst RulesWithSeconds</blockName>
           <position>(0.00, 10.00, 0.00)</position>
           <varManagerName></varManagerName>
           <varName />
@@ -50,7 +50,7 @@
                       <inputs>
                         <Input>
                           <isOperation>true</isOperation>
-                          <value>true</value>
+                          <value>false</value>
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>
@@ -132,7 +132,7 @@
                       <inputs>
                         <Input>
                           <isOperation>true</isOperation>
-                          <value>false</value>
+                          <value>true</value>
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>
@@ -164,8 +164,28 @@
                     </Section>
                   </sections>
                 </Block>
+                <Block>
+                  <blockName>Block Cst Explore</blockName>
+                  <position>(20.00, -440.00, 0.00)</position>
+                  <varManagerName></varManagerName>
+                  <varName />
+                  <defineID />
+                  <isLocalVar />
+                  <defineItems />
+                  <sections>
+                    <Section>
+                      <childBlocks />
+                      <inputs />
+                    </Section>
+                  </sections>
+                </Block>
               </childBlocks>
-              <inputs />
+              <inputs>
+                <Input>
+                  <isOperation>false</isOperation>
+                  <value></value>
+                </Input>
+              </inputs>
             </Section>
           </sections>
         </Block>
