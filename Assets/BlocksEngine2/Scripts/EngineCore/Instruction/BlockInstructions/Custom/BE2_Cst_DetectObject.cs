@@ -31,6 +31,7 @@ public class BE2_Cst_DetectObject : BE2_InstructionBase, I_BE2_Instruction
         if (_v1.isText)
         {
             bool isDetected = TargetObject.Player.detector.ObjectDetected(_v1.stringValue);
+            if (_v0.stringValue != "is") { isDetected = !isDetected; }
             if (isDetected)
             {
                 result = "true";

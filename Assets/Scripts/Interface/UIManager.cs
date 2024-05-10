@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI properties;
     // Texto con el tiempo sobrevivido
     public TextMeshProUGUI textTime;
+    // Panel con las reglas ejecutadas
+    public GameObject rulesPanel;
 
     // Variable para comprobar el tiempo
     private float timeO = 0f;
@@ -43,6 +45,7 @@ public class UIManager : MonoBehaviour
         // Si se pulsa una tecla se puede ver el inventario
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            rulesPanel.SetActive(false);
             if (notDie)
             {
                 SetEnabled(inventory.enabled);
@@ -55,10 +58,20 @@ public class UIManager : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        if (notDie)
         {
-            BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
+            }
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            rulesPanel.SetActive(!rulesPanel.activeSelf);
+            SetEnabled(!rulesPanel.activeSelf);
+            //inventory.enabled = !rulesPanel.activeSelf;
+        }
+
 
         // Modifica base de hechos
         CreateBH();

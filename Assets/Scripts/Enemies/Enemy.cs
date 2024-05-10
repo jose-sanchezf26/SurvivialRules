@@ -45,4 +45,12 @@ public class Enemy : MonoBehaviour
         // Ataque
         attack.DoAttack("Player", AttackType.Enemy);
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, ditanceToFollow);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, detectDistance);
+    }
 }

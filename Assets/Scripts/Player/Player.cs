@@ -30,6 +30,13 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public string target;
 
+    //Texto de las reglas, se puede acceder a este mediante el jugador en la funcionalidad de Blocks Engine
+    [HideInInspector]
+    public string lastRulesText;
+    [HideInInspector]
+    public string actualRulesText;
+    public TextMeshProUGUI rulesText;
+
     // Propiedades del agente
     private float health;
     private float hunger;

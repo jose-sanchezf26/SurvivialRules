@@ -108,10 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  chaseSpeed: 6
-  exploreSpeed: 6
+  chaseSpeed: 6.5
+  exploreSpeed: 6.5
   target: {fileID: 0}
-  ditanceToFollow: 10
+  ditanceToFollow: 5
   detectDistance: 10
 --- !u!114 &-1732805738046012144
 MonoBehaviour:

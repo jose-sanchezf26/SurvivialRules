@@ -1,6 +1,6 @@
 <Block>
   <blockName>Block Ins WhenPlayClicked</blockName>
-  <position>(19.17, -317.49, 0.00)</position>
+  <position>(12.00, -312.71, 0.00)</position>
   <varManagerName></varManagerName>
   <varName />
   <defineID />
@@ -21,7 +21,7 @@
             <Section>
               <childBlocks>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
+                  <blockName>Block Cst RuleWithID</blockName>
                   <position>(20.00, 10.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
@@ -54,7 +54,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>
-                              <position>(-209.54, 30.00, 0.00)</position>
+                              <position>(-304.40, 30.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -78,12 +78,16 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>Regla 1 </value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
+                  <blockName>Block Cst RuleWithID</blockName>
                   <position>(20.00, -180.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
@@ -136,7 +140,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>
-                              <position>(-203.65, 30.00, 0.00)</position>
+                              <position>(-298.51, 30.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -159,6 +163,10 @@
                               </sections>
                             </Block>
                           </operation>
+                        </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>Regla 2</value>
                         </Input>
                       </inputs>
                     </Section>
@@ -183,7 +191,7 @@
               <inputs>
                 <Input>
                   <isOperation>false</isOperation>
-                  <value></value>
+                  <value>2</value>
                 </Input>
               </inputs>
             </Section>
