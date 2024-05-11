@@ -165,8 +165,6 @@ public class Player : MonoBehaviour
 
         // Mover el jugador en la dirección calculada
         transform.Translate(movement * Speed * Time.deltaTime);
-        // if (Input.GetKey(KeyCode.W)) { Explore(); }1
-        // if (Input.GetKey(KeyCode.S)) { SetTarget(new Vector2(0, 0)); }
     }
 
     public void Eat(string item)
@@ -326,11 +324,11 @@ public class Player : MonoBehaviour
         {
             if (distanceTiredness < Vector2.Distance(lastPositionT, transform.position))
             {
-                Tiredness -= 3;
+                Tiredness -= 2;
             }
             else
             {
-                Tiredness += 2;
+                Tiredness += 5;
             }
             timeOT = 0f;
             lastPositionT = transform.position;
@@ -589,15 +587,14 @@ public class Player : MonoBehaviour
     public void Controls()
     {
         // Si presionas C se creará una hoguera cerca del jugador
-        if (Input.GetKeyDown(KeyCode.C) && inventory.HasItemData(inventory.campfireData))
+        if (Input.GetKeyDown(KeyCode.Comma) && inventory.HasItemData(inventory.campfireData))
         {
             if (Build(campfirePrefab, 1.5f))
             {
                 inventory.Remove(inventory.campfireData);
             }
         }
-        // Si presionas C se creará una hoguera cerca del jugador
-        if (Input.GetKeyDown(KeyCode.V) && inventory.HasItemData(inventory.cabageData))
+        if (Input.GetKeyDown(KeyCode.Period) && inventory.HasItemData(inventory.cabageData))
         {
             if (Build(cabagePrefab, 1.5f))
             {

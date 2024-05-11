@@ -13,14 +13,6 @@ public class BE2_Cst_RuleWithID : BE2_InstructionBase, I_BE2_Instruction
     I_BE2_BlockSectionHeaderInput _input1;
     string _value;
     bool _isFirstPlay = true;
-    float startTime = 0;
-    float minutes;
-    float seconds;
-
-    // void Start()
-    // {
-    //     startTime = Time.time;
-    // }
 
     protected override void OnButtonStop()
     {
@@ -42,16 +34,17 @@ public class BE2_Cst_RuleWithID : BE2_InstructionBase, I_BE2_Instruction
 
             if (_value == "1" || _value == "true")
             {
-                // _isFirstPlay = false;
+                _isFirstPlay = false;
                 executionImage.gameObject.SetActive(true);
                 TargetObject.Player.actualRulesText = /*+ TimeTracker()*/ "Rule : " + _input1.StringValue + "\n\n";
-                ExecuteSection(0);
                 if (TargetObject.Player.actualRulesText != TargetObject.Player.lastRulesText)
                 {
                     TargetObject.Player.rulesText.text += TargetObject.Player.actualRulesText;
                     TargetObject.Player.lastRulesText = TargetObject.Player.actualRulesText;
                 }
                 TargetObject.Player.actualRulesText = "";
+                ExecuteSection(0);
+
             }
             else
             {
@@ -65,19 +58,6 @@ public class BE2_Cst_RuleWithID : BE2_InstructionBase, I_BE2_Instruction
             _isFirstPlay = true;
             // ExecuteNextInstruction();
         }
-    }
-
-    public string TimeTracker()
-    {
-        // Calcula el tiempo transcurrido desde el inicio del juego
-        float elapsedTime = Time.time - startTime;
-
-        // Formatea el tiempo en minutos y segundos
-        minutes = Mathf.FloorToInt(elapsedTime / 60);
-        seconds = Mathf.FloorToInt(elapsedTime % 60);
-
-        // Actualiza el texto del temporizador
-        return string.Format("[{0:00}:{1:00}] ", minutes, seconds);
     }
 
     // v2.12 - added Reset method to the instructions to enable reuse by Function Blocks

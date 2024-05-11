@@ -10,7 +10,8 @@ public class BE2_Cst_Rules : BE2_InstructionBase, I_BE2_Instruction
 {
     public new void Function()
     {
-        ExecuteSection(0);
+        if (!TargetObject.Player.agent.hasPath) { ExecuteSection(0); }
+
         Debug.Log("Ya ha terminado de ejecutarse");
     }
 }

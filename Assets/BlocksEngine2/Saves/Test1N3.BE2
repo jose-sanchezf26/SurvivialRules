@@ -1,6 +1,6 @@
 <Block>
   <blockName>Block Ins WhenPlayClicked</blockName>
-  <position>(-48.49, 67.11, 0.00)</position>
+  <position>(-1041.21, 56.65, 0.00)</position>
   <varManagerName></varManagerName>
   <varName />
   <defineID />
@@ -21,7 +21,7 @@
             <Section>
               <childBlocks>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
+                  <blockName>Block Cst RuleWithID</blockName>
                   <position>(20.00, 10.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
@@ -50,11 +50,11 @@
                       <inputs>
                         <Input>
                           <isOperation>true</isOperation>
-                          <value>1</value>
+                          <value>0</value>
                           <operation>
                             <Block>
                               <blockName>Block Op BiggerThan</blockName>
-                              <position>(-187.45, 35.00, 0.00)</position>
+                              <position>(-256.64, 35.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -70,7 +70,7 @@
                                     </Input>
                                     <Input>
                                       <isOperation>true</isOperation>
-                                      <value>79</value>
+                                      <value>100</value>
                                       <operation>
                                         <Block>
                                           <blockName>Block Cst GetProperty</blockName>
@@ -100,12 +100,16 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>1</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
+                  <blockName>Block Cst RuleWithID</blockName>
                   <position>(20.00, -190.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
@@ -138,7 +142,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>
-                              <position>(-209.54, 30.00, 0.00)</position>
+                              <position>(-278.73, 30.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -162,80 +166,17 @@
                             </Block>
                           </operation>
                         </Input>
-                      </inputs>
-                    </Section>
-                  </sections>
-                </Block>
-                <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -380.00, 0.00)</position>
-                  <varManagerName></varManagerName>
-                  <varName />
-                  <defineID />
-                  <isLocalVar />
-                  <defineItems />
-                  <sections>
-                    <Section>
-                      <childBlocks>
-                        <Block>
-                          <blockName>Block Cst SetTarget</blockName>
-                          <position>(20.00, 10.00, 0.00)</position>
-                          <varManagerName></varManagerName>
-                          <varName />
-                          <defineID />
-                          <isLocalVar />
-                          <defineItems />
-                          <sections>
-                            <Section>
-                              <childBlocks />
-                              <inputs>
-                                <Input>
-                                  <isOperation>false</isOperation>
-                                  <value>Bush</value>
-                                </Input>
-                              </inputs>
-                            </Section>
-                          </sections>
-                        </Block>
-                      </childBlocks>
-                      <inputs>
                         <Input>
-                          <isOperation>true</isOperation>
-                          <value>false</value>
-                          <operation>
-                            <Block>
-                              <blockName>Block Cst DetectObject</blockName>
-                              <position>(-199.08, 30.00, 0.00)</position>
-                              <varManagerName></varManagerName>
-                              <varName />
-                              <defineID />
-                              <isLocalVar />
-                              <defineItems />
-                              <sections>
-                                <Section>
-                                  <childBlocks />
-                                  <inputs>
-                                    <Input>
-                                      <isOperation>false</isOperation>
-                                      <value>is</value>
-                                    </Input>
-                                    <Input>
-                                      <isOperation>false</isOperation>
-                                      <value>Bush</value>
-                                    </Input>
-                                  </inputs>
-                                </Section>
-                              </sections>
-                            </Block>
-                          </operation>
+                          <isOperation>false</isOperation>
+                          <value>2</value>
                         </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -570.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -380.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -287,7 +228,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Op BiggerThan</blockName>
-                              <position>(-164.23, 35.00, 0.00)</position>
+                              <position>(-233.42, 35.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -303,7 +244,7 @@
                                     </Input>
                                     <Input>
                                       <isOperation>true</isOperation>
-                                      <value>66</value>
+                                      <value>100</value>
                                       <operation>
                                         <Block>
                                           <blockName>Block Cst GetProperty</blockName>
@@ -333,13 +274,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>3</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -840.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -650.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -411,7 +356,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Op And</blockName>
-                              <position>(-342.90, 35.00, 0.00)</position>
+                              <position>(-412.09, 35.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -483,13 +428,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>4</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -1180.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -990.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -519,7 +468,7 @@
                           </sections>
                         </Block>
                         <Block>
-                          <blockName>Block Cst CutDown</blockName>
+                          <blockName>Block Cst Mine</blockName>
                           <position>(20.00, -60.00, 0.00)</position>
                           <varManagerName></varManagerName>
                           <varName />
@@ -561,7 +510,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Op And</blockName>
-                              <position>(-368.65, 35.00, 0.00)</position>
+                              <position>(-437.84, 35.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -599,7 +548,7 @@
                                     </Input>
                                     <Input>
                                       <isOperation>true</isOperation>
-                                      <value>false</value>
+                                      <value>true</value>
                                       <operation>
                                         <Block>
                                           <blockName>Block Cst DetectObject</blockName>
@@ -633,13 +582,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>5</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -1520.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -1330.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -669,7 +622,7 @@
                           </sections>
                         </Block>
                         <Block>
-                          <blockName>Block Cst CutDown</blockName>
+                          <blockName>Block Cst Attack</blockName>
                           <position>(20.00, -60.00, 0.00)</position>
                           <varManagerName></varManagerName>
                           <varName />
@@ -711,7 +664,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Op And</blockName>
-                              <position>(-365.60, 35.00, 0.00)</position>
+                              <position>(-434.79, 35.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -783,13 +736,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>6</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -1860.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -1670.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -826,7 +783,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Op And</blockName>
-                              <position>(-328.28, 40.00, 0.00)</position>
+                              <position>(-397.47, 40.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -920,13 +877,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>7</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -2070.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -1880.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -963,7 +924,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Op And</blockName>
-                              <position>(-326.39, 40.00, 0.00)</position>
+                              <position>(-395.58, 40.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -1057,13 +1018,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>8</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -2280.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -2090.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -1100,7 +1065,7 @@
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>
-                              <position>(-203.29, 30.00, 0.00)</position>
+                              <position>(-272.48, 30.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -1124,13 +1089,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>9</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Rule</blockName>
-                  <position>(20.00, -2470.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -2280.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -1163,11 +1132,11 @@
                       <inputs>
                         <Input>
                           <isOperation>true</isOperation>
-                          <value>false</value>
+                          <value>true</value>
                           <operation>
                             <Block>
                               <blockName>Block Cst DetectObject</blockName>
-                              <position>(-203.65, 30.00, 0.00)</position>
+                              <position>(-272.84, 30.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -1191,13 +1160,17 @@
                             </Block>
                           </operation>
                         </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>10</value>
+                        </Input>
                       </inputs>
                     </Section>
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Explore</blockName>
-                  <position>(20.00, -2660.00, 0.00)</position>
+                  <blockName>Block Cst RuleWithID</blockName>
+                  <position>(20.00, -2470.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
                   <defineID />
@@ -1205,8 +1178,33 @@
                   <defineItems />
                   <sections>
                     <Section>
-                      <childBlocks />
-                      <inputs />
+                      <childBlocks>
+                        <Block>
+                          <blockName>Block Cst Explore</blockName>
+                          <position>(20.00, 10.00, 0.00)</position>
+                          <varManagerName></varManagerName>
+                          <varName />
+                          <defineID />
+                          <isLocalVar />
+                          <defineItems />
+                          <sections>
+                            <Section>
+                              <childBlocks />
+                              <inputs />
+                            </Section>
+                          </sections>
+                        </Block>
+                      </childBlocks>
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>true</value>
+                        </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>11</value>
+                        </Input>
+                      </inputs>
                     </Section>
                   </sections>
                 </Block>

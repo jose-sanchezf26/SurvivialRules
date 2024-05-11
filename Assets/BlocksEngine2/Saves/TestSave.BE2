@@ -210,7 +210,7 @@
                               <inputs>
                                 <Input>
                                   <isOperation>true</isOperation>
-                                  <value>0</value>
+                                  <value>1</value>
                                   <operation>
                                     <Block>
                                       <blockName>Block Op BiggerThan</blockName>
@@ -226,7 +226,7 @@
                                           <inputs>
                                             <Input>
                                               <isOperation>true</isOperation>
-                                              <value>36</value>
+                                              <value>100</value>
                                               <operation>
                                                 <Block>
                                                   <blockName>Block Cst GetProperty</blockName>
@@ -268,7 +268,7 @@
                       <inputs>
                         <Input>
                           <isOperation>true</isOperation>
-                          <value>1</value>
+                          <value>0</value>
                           <operation>
                             <Block>
                               <blockName>Block Op BiggerThan</blockName>
@@ -288,7 +288,7 @@
                                     </Input>
                                     <Input>
                                       <isOperation>true</isOperation>
-                                      <value>36</value>
+                                      <value>100</value>
                                       <operation>
                                         <Block>
                                           <blockName>Block Cst GetProperty</blockName>
@@ -1181,7 +1181,7 @@
                   </sections>
                 </Block>
                 <Block>
-                  <blockName>Block Cst Explore</blockName>
+                  <blockName>Block Cst RuleWithID</blockName>
                   <position>(20.00, -2590.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
@@ -1190,8 +1190,33 @@
                   <defineItems />
                   <sections>
                     <Section>
-                      <childBlocks />
-                      <inputs />
+                      <childBlocks>
+                        <Block>
+                          <blockName>Block Cst Explore</blockName>
+                          <position>(20.00, 10.00, 0.00)</position>
+                          <varManagerName></varManagerName>
+                          <varName />
+                          <defineID />
+                          <isLocalVar />
+                          <defineItems />
+                          <sections>
+                            <Section>
+                              <childBlocks />
+                              <inputs />
+                            </Section>
+                          </sections>
+                        </Block>
+                      </childBlocks>
+                      <inputs>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>true</value>
+                        </Input>
+                        <Input>
+                          <isOperation>false</isOperation>
+                          <value>explore</value>
+                        </Input>
+                      </inputs>
                     </Section>
                   </sections>
                 </Block>

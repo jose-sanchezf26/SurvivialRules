@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // Si se pulsa una tecla se puede ver el inventario
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             rulesPanel.SetActive(false);
             if (notDie)
@@ -60,12 +61,12 @@ public class UIManager : MonoBehaviour
         }
         if (notDie)
         {
-            if (Input.GetKeyDown(KeyCode.H))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
             }
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             rulesPanel.SetActive(!rulesPanel.activeSelf);
             SetEnabled(!rulesPanel.activeSelf);
@@ -127,7 +128,7 @@ public class UIManager : MonoBehaviour
     private string GetProperties()
     {
         int maxLevelProperties = player.maxLevelProperties;
-        string result = "Base de Hechos:\n";
+        string result = "Knowledge base:\n\n";
         result += "Health: " + player.Health.ToString() + " / " + maxLevelProperties + "\n";
         result += "Hunger: " + player.Hunger.ToString() + " / " + maxLevelProperties + "\n";
         result += "Thirst: " + player.Thirst.ToString() + " / " + maxLevelProperties + "\n";

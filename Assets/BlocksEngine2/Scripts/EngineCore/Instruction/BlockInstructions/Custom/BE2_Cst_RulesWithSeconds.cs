@@ -40,7 +40,7 @@ public class BE2_Cst_RulesWithSeconds : BE2_InstructionBase, I_BE2_Instruction
         {
             _counter = 0;
             _firstPlay = true;
-            ExecuteSection(0);
+            if (!TargetObject.Player.agent.hasPath) { ExecuteSection(0); }
         }
 
     }
