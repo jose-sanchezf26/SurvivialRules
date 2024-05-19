@@ -5,7 +5,7 @@ using UnityEngine;
 using MG_BlocksEngine2.Block.Instruction;
 using MG_BlocksEngine2.Block;
 using TMPro;
-using Microsoft.Unity.VisualStudio.Editor;
+// using Microsoft.Unity.VisualStudio.Editor;
 
 
 public class BE2_Cst_Rule : BE2_InstructionBase, I_BE2_Instruction

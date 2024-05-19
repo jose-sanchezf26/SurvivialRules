@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using Unity.VisualScripting.ReorderableList;
+// using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
