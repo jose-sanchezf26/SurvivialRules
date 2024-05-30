@@ -16,28 +16,6 @@ public class Detector : MonoBehaviour
 
     public void DetectObjectsInVision()
     {
-        // float angleIncrement = 360f / raysCount; // Incremento angular entre rayos
-
-        // for (int i = 0; i < raysCount; i++)
-        // {
-        //     float angle = i * angleIncrement;
-        //     Vector2 direction = Quaternion.Euler(0, 0, angle) * transform.right;
-
-        //     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, visionRadius, detectionLayer);
-
-        //     if (hit.collider != null)
-        //     {
-        //         GameObject detectedObject = hit.collider.gameObject;
-
-        //         if (!detectedObjects.Contains(detectedObject))
-        //         {
-        //             detectedObjects.Add(detectedObject);
-        //         }
-        //         Debug.Log("Se ha detectado un objeto");
-
-        //     }
-        // }
-
         // Detecta todos los colliders dentro del círculo de detección
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
 
@@ -66,26 +44,6 @@ public class Detector : MonoBehaviour
         }
 
     }
-
-    // Método que comprueba si hay un objeto en concreto detectado
-    // public bool ObjectDetected(string objectd)
-    // {
-    //     if (detectedObjects.Count > 0)
-    //     {
-    //         foreach (GameObject detectedObject in detectedObjects)
-    //         {
-    //             if (detectedObject != null)
-    //             {
-    //                 if (detectedObject.GetComponent(objectd) != null)
-    //                 {
-    //                     return true;
-    //                 }
-    //             }
-
-    //         }
-    //     }
-    //     return false;
-    // }
 
     // Método que comprueba si hay un objeto en concreto detectado
     public bool ObjectDetected(string objectType)

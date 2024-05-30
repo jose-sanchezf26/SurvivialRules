@@ -605,7 +605,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        ManualControl();
+        // ManualControl();
 
         timeO += Time.deltaTime;
         if (timeO >= interval)

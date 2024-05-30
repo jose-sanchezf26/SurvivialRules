@@ -19,12 +19,6 @@ public class Flee : MonoBehaviour
     {
         if (active)
         {
-            // Vector2 fleeDirection = (transform.position - enemy.position).normalized;
-
-            // float currentSpeed = Mathf.Min(speed, rb.velocity.magnitude);
-
-            // rb.velocity = fleeDirection * currentSpeed;
-
             // Calculate flee direction (away from the enemy)
             Vector3 fleeDirection = (transform.position - enemy.position).normalized;
 

@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
     private string GetProperties()
     {
         int maxLevelProperties = player.maxLevelProperties;
-        string result = "Knowledge base:\n\n";
+        string result = "Facts:\n\n";
         result += "Health: " + player.Health.ToString() + " / " + maxLevelProperties + "\n";
         result += "Hunger: " + player.Hunger.ToString() + " / " + maxLevelProperties + "\n";
         result += "Thirst: " + player.Thirst.ToString() + " / " + maxLevelProperties + "\n";
