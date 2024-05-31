@@ -2,7 +2,7 @@
 
 Para instalar y jugar a Survival Rules, sigue estos pasos:
 
-1. Dirígete al apartado de [Releases](link-to-releases) en la parte derecha del repositorio.
+1. Dirígete al apartado de [Releases]([link-to-releases](https://github.com/jose-sanchezf26/SurvivialRules/releases)) en la parte derecha del repositorio.
 
 2. Descarga el archivo comprimido `.zip` llamado `Ejecutable`.
 
