@@ -357,18 +357,20 @@ public class Player : MonoBehaviour
         {
             TakeDamage(1);
         }
-        if (Tiredness < 50)
-        {
-            Speed = 5.5f;
-            if (Tiredness < 25)
-            {
-                Speed = 4f;
-            }
-        }
-        else
-        {
-            Speed = 7f;
-        }
+        // if (Tiredness < 50)
+        // {
+        //     Speed = 5f;
+        //     if (Tiredness < 25)
+        //     {
+        //         Speed = 4f;
+        //     }
+        // }
+        // else
+        // {
+        //     Speed = 7f;
+        // }
+        //Cálculo de la velocidad según el cansancio
+        Speed = 3 + ((5 * Tiredness) / 100);
     }
 
     // Método para la muerte del jugador
@@ -605,7 +607,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // ManualControl();
+        ManualControl();
 
         timeO += Time.deltaTime;
         if (timeO >= interval)

@@ -111,7 +111,7 @@ MonoBehaviour:
   chaseSpeed: 6.5
   exploreSpeed: 6.5
   target: {fileID: 0}
-  ditanceToFollow: 5
+  ditanceToFollow: 4
   detectDistance: 10
 --- !u!114 &-1732805738046012144
 MonoBehaviour:
@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa04c2b4e3fc294babd373840449bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCheckFrequency: 0.1
 --- !u!114 &2177732658490035308
 MonoBehaviour:
   m_ObjectHideFlags: 0

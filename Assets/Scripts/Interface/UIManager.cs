@@ -44,40 +44,66 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // Si se pulsa una tecla se puede ver el inventario
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            rulesPanel.SetActive(false);
-            if (notDie)
-            {
-                SetEnabled(inventory.enabled);
-                inventory.enabled = !inventory.enabled;
-            }
-            else
-            {
-                SetEnabled(deathImage.gameObject.activeSelf);
-                deathImage.gameObject.SetActive(!deathImage.gameObject.activeSelf);
-            }
+        // if (Input.GetKeyDown(KeyCode.UpArrow))
+        // {
+        //     rulesPanel.SetActive(false);
+        //     if (notDie)
+        //     {
+        //         SetEnabled(inventory.enabled);
+        //         inventory.enabled = !inventory.enabled;
+        //     }
+        //     else
+        //     {
+        //         SetEnabled(deathImage.gameObject.activeSelf);
+        //         deathImage.gameObject.SetActive(!deathImage.gameObject.activeSelf);
+        //     }
 
-        }
+        // }
+        // if (notDie)
+        // {
+        //     if (Input.GetKeyDown(KeyCode.RightArrow))
+        //     {
+        //         BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
+        //     }
+        // }
+        // if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // {
+        //     rulesPanel.SetActive(!rulesPanel.activeSelf);
+        //     SetEnabled(!rulesPanel.activeSelf);
+        //     //inventory.enabled = !rulesPanel.activeSelf;
+        // }
+
+        //NUEVO CONTROL DE VENTANAS
         if (notDie)
         {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                rulesPanel.SetActive(false);
+                SetEnabled(false);
+                inventory.enabled = true;
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                rulesPanel.SetActive(false);
+                SetEnabled(true);
+                inventory.enabled = false;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                rulesPanel.SetActive(true);
+                SetEnabled(false);
+                inventory.enabled = false;
+            }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
             }
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            rulesPanel.SetActive(!rulesPanel.activeSelf);
-            SetEnabled(!rulesPanel.activeSelf);
-            //inventory.enabled = !rulesPanel.activeSelf;
-        }
 
-
-        // Modifica base de hechos
-        CreateBH();
-        // Actualiza el tiempo sobrevivido
-        TimeTracker();
+            // Modifica base de hechos
+            CreateBH();
+            // Actualiza el tiempo sobrevivido
+            TimeTracker();
+        }
     }
 
     public TextMeshProUGUI textTimeDeath;
@@ -87,6 +113,7 @@ public class UIManager : MonoBehaviour
         textTimeDeath.text = "You survived " + minutes + " minutes and " + seconds + " seconds";
         SetEnabled(false);
         inventory.enabled = false;
+        BHImage.gameObject.SetActive(false);
         notDie = false;
         Time.timeScale = 0f;
     }
