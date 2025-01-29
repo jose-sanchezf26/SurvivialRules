@@ -7,6 +7,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+!/[Aa]ssets/
+!/[Pp]ackages/
+!/[Pp]rojectSettings/
+!/[Aa]ssets.meta
+
+
 # User-specific files
 *.rsuser
 *.suo
