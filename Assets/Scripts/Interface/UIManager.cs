@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public HelpManager helpManager;
+
     public Canvas[] blockEngine;
     public Canvas inventory;
     public UnityEngine.UI.Image deathImage;
@@ -74,7 +76,7 @@ public class UIManager : MonoBehaviour
         // }
 
         //NUEVO CONTROL DE VENTANAS
-        if (notDie)
+        if (notDie & !helpManager.isTutorialActive)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
