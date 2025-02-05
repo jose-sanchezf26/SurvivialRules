@@ -6,6 +6,8 @@ using MG_BlocksEngine2.Block;
 using MG_BlocksEngine2.Core;
 using MG_BlocksEngine2.UI;
 using MG_BlocksEngine2.Environment;
+using System.Text.RegularExpressions;
+using System.Collections.Concurrent;
 
 namespace MG_BlocksEngine2.DragDrop
 {
@@ -91,7 +93,7 @@ namespace MG_BlocksEngine2.DragDrop
             BE2_MainEventsManager.Instance.StartListening(BE2EventTypes.OnPrimaryKeyUp, OnPointerUp);
 
         }
-        
+
         // v2.12.1 - BE2_DragDropManager.OnPointerDown made non coroutine
         void OnPointerDown()
         {
@@ -120,7 +122,7 @@ namespace MG_BlocksEngine2.DragDrop
         {
             if (CurrentDrag != null)
             {
-		// v2.11.1 - added handler method to the BE2_DragDropManager.OnDrag for the new Block drag events
+                // v2.11.1 - added handler method to the BE2_DragDropManager.OnDrag for the new Block drag events
                 if (!isDragging)
                 {
                     StartCoroutine(C_HandleDragEvents(CurrentDrag.Block));
@@ -156,6 +158,7 @@ namespace MG_BlocksEngine2.DragDrop
 
             BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDrop, block as Object ? block : null);
             BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypes.OnBlockDrop);
+            string blockName = ExtractBlockName(block.ToString());
 
             if (block as Object != null)
             {
@@ -165,24 +168,37 @@ namespace MG_BlocksEngine2.DragDrop
                 if (block.ParentSection == null)
                 {
                     BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtProgrammingEnv, block);
+                    EventLogger.Instance.LogEvent("Ha dejado el bloque " + blockName + " en el entorno");
                 }
                 else
                 {
                     if (block.Transform.parent.GetComponent<I_BE2_BlockSectionHeader>() != null)
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtInputSpot, block);
+                        EventLogger.Instance.LogEvent("Ha introducido el bloque " + blockName + " al inputspot otro bloque");
                     }
                     else
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtStack, block);
+                        EventLogger.Instance.LogEvent("Ha añadido el bloque " + blockName + " a otro bloque");
                     }
                 }
             }
             else
             {
                 BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropDestroy, null);
+                EventLogger.Instance.LogEvent("Ha eliminado un bloque");
             }
         }
+
+        private string ExtractBlockName(string blockInstruction)
+        {
+            string pattern = @"Block (Ins|Cst|Op) (\w+)\s*\(";
+            Match match = Regex.Match(blockInstruction, pattern);
+            if (match.Success) { return match.Groups[2].Value; }
+            return string.Empty;
+        }
+
 
         IEnumerator C_HandleDragEvents(I_BE2_Block block)
         {
@@ -200,19 +216,23 @@ namespace MG_BlocksEngine2.DragDrop
 
             if (block as Object != null)
             {
+                string blockName = ExtractBlockName(block.ToString());
                 if (parentHeader != null)
                 {
                     BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromInputSpot, block);
+                    EventLogger.Instance.LogEvent("Ha sacado el bloque " + blockName + " del inputspot de otro");
                 }
                 else
                 {
                     if (block.ParentSection == null)
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromProgrammingEnv, block);
+                        EventLogger.Instance.LogEvent("Ha seleccionado el bloque " + blockName + " del entorno");
                     }
                     else
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromStack, block);
+                        EventLogger.Instance.LogEvent("Ha añadido el bloque " + blockName + " del stack");
                     }
                 }
             }

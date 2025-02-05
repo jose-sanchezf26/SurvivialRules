@@ -39,6 +39,8 @@ public class HelpManager : MonoBehaviour
             DBPanel.SetActive(false);
             isTutorialActive = true;
             Time.timeScale = 0;
+
+            EventLogger.Instance.LogEvent("Ha iniciado el tutorial");
         }
     }
 
@@ -78,5 +80,6 @@ public class HelpManager : MonoBehaviour
         KBPanel.SetActive(true);
         isTutorialActive = false;
         Time.timeScale = 1;
+        EventLogger.Instance.LogEvent("Ha terminado el tutorial");
     }
 }

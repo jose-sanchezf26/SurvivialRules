@@ -204,11 +204,13 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
+        EventLogger.Instance.LogEvent("Ha pausado el juego");
     }
 
     public void Play()
     {
         Time.timeScale = 1f;
+        EventLogger.Instance.LogEvent("Ha ejecutado/reanudado el juego");
     }
 
 
