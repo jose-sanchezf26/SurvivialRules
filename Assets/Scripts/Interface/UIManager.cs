@@ -78,25 +78,29 @@ public class UIManager : MonoBehaviour
         //NUEVO CONTROL DE VENTANAS
         if (notDie & !helpManager.isTutorialActive)
         {
+            // Abrir el inventario y el sistema de crafteo
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 rulesPanel.SetActive(false);
                 SetEnabled(false);
                 inventory.enabled = true;
             }
+            // Abrir la Base de Conocimientos
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 rulesPanel.SetActive(false);
                 SetEnabled(true);
                 inventory.enabled = false;
             }
+            // Abrir el log de las reglas
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 rulesPanel.SetActive(true);
                 SetEnabled(false);
                 inventory.enabled = false;
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            // Abrir la Base de Hechos
+            if (Input.GetKeyDown(KeyCode.RightArrow) & !rulesPanel.activeSelf)
             {
                 BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
             }
