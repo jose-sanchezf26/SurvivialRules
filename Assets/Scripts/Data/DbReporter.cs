@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using System.Net.WebSockets;
 using System.Threading;
+using Unity.VisualScripting;
 
 public class DbReporter : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class DbReporter : MonoBehaviour
     public class DataObj
     {
         public string type;
+        public string user = FlowManager.instance.loggedInUser ?? "unknown";
         public string data;
         public Action<string> callback;
 
