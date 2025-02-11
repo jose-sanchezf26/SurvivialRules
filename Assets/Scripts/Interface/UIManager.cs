@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour
     private float timeO = 0f;
     private float interval = 0.25f;
 
+    // Texto para visualizar la velocidad del juego
+    public TextMeshProUGUI speedText;
+
 
     void Start()
     {
@@ -215,6 +218,32 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         EventLogger.Instance.LogEvent("Ha ejecutado/reanudado el juego");
+    }
+
+    public void ModifySpeed()
+    {
+        if (Time.timeScale == 3f)
+        {
+            Time.timeScale = 1f;
+            speedText.text = "x1";
+            EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x1");
+        } else 
+        {
+            if (Time.timeScale == 1f)
+            {
+                Time.timeScale = 2f;
+                speedText.text = "x2";
+                EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x2");
+            } else 
+            {
+                if (Time.timeScale == 2f) 
+                {
+                    Time.timeScale = 3f;
+                    speedText.text = "x3";
+                    EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x3");
+                }
+            }
+        }
     }
 
 
