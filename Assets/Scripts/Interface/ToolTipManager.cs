@@ -31,4 +31,9 @@ public class TooltipManager : MonoBehaviour
     {
         tooltipPanel.SetActive(false);
     }
+
+    public bool IsTooltipActive()
+    {
+        return tooltipPanel.activeSelf;
+    }
 }
