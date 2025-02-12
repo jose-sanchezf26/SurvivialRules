@@ -44,7 +44,7 @@ public class DbReporter : MonoBehaviour
     public class DataObj
     {
         public string type;
-        public string user = FlowManager.instance.loggedInUser ?? "unknown";
+        public string user;
         public string data;
         public Action<string> callback;
 
@@ -53,6 +53,7 @@ public class DbReporter : MonoBehaviour
             type = newType;
             data = newData;
             callback = newCallback;
+            if (FlowManager.instance != null) { user = FlowManager.instance.loggedInUser; } else { user = "unknown"; }
         }
 
         public string ToJson() => JsonUtility.ToJson(this);

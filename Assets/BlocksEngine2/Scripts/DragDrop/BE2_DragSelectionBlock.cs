@@ -53,7 +53,7 @@ namespace MG_BlocksEngine2.DragDrop
             // CODIGO PARA AÑADIR INFORMACIÓN DEL LOG
 
             string blockName = ExtractBlockName(instantiatedBlock.ToString());
-            EventLogger.Instance.LogEvent("Ha seleccionado el bloque " + blockName + " del selector de bloques");
+            EventLogger.Instance.LogEvent("Ha seleccionado el bloque " + blockName + " del selector de bloques", "");
 
             // ***
 

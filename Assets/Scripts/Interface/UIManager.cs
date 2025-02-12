@@ -211,13 +211,13 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        EventLogger.Instance.LogEvent("Ha pausado el juego");
+        EventLogger.Instance.LogEvent("Ha pausado el juego", "navigation");
     }
 
     public void Play()
     {
         Time.timeScale = 1f;
-        EventLogger.Instance.LogEvent("Ha ejecutado/reanudado el juego");
+        EventLogger.Instance.LogEvent("Ha ejecutado/reanudado el juego", "navigation");
     }
 
     public void ModifySpeed()
@@ -226,21 +226,23 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1f;
             speedText.text = "x1";
-            EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x1");
-        } else 
+            EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x1", "navigation");
+        }
+        else
         {
             if (Time.timeScale == 1f)
             {
                 Time.timeScale = 2f;
                 speedText.text = "x2";
-                EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x2");
-            } else 
+                EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x2", "navigation");
+            }
+            else
             {
-                if (Time.timeScale == 2f) 
+                if (Time.timeScale == 2f)
                 {
                     Time.timeScale = 3f;
                     speedText.text = "x3";
-                    EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x3");
+                    EventLogger.Instance.LogEvent("Se ha modificado la velocidad del juego a x3", "navigation");
                 }
             }
         }

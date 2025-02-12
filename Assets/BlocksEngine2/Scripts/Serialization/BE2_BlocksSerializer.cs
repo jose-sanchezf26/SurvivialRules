@@ -54,6 +54,22 @@ namespace MG_BlocksEngine2.Serializer
             return xmlString;
         }
 
+        public static string BlocksCodeToXMLWithList(List<I_BE2_Block> blocks)
+        {
+            string xmlString = "";
+            // v2.12 - the serialized blocks are reordered by placing the Define Function blocks first on the file
+            // to guarantee that related Function Blocks are deserialization correctly
+            List<I_BE2_Block> orderedBlocks = new List<I_BE2_Block>();
+            orderedBlocks.AddRange(blocks.OrderBy(OrderOnType));
+            foreach (I_BE2_Block block in orderedBlocks)
+            {
+                xmlString += SerializableToXML(BlockToSerializable(block));
+                xmlString += "\n#\n";
+            }
+
+            return xmlString;
+        }
+
         // v2.12 - function to define the order of the serialized blocks
         private static int OrderOnType(I_BE2_Block block)
         {

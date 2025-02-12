@@ -1,6 +1,6 @@
 <Block>
   <blockName>Block Ins WhenPlayClicked</blockName>
-  <position>(12.00, -312.71, 0.00)</position>
+  <position>(61.52, -226.57, 0.00)</position>
   <varManagerName></varManagerName>
   <varName />
   <defineID />
@@ -10,7 +10,7 @@
     <Section>
       <childBlocks>
         <Block>
-          <blockName>Block Cst RulesWithSeconds</blockName>
+          <blockName>Block Cst Rules</blockName>
           <position>(0.00, 10.00, 0.00)</position>
           <varManagerName></varManagerName>
           <varName />
@@ -21,7 +21,7 @@
             <Section>
               <childBlocks>
                 <Block>
-                  <blockName>Block Cst RuleWithID</blockName>
+                  <blockName>Block Cst Rule</blockName>
                   <position>(20.00, 10.00, 0.00)</position>
                   <varManagerName></varManagerName>
                   <varName />
@@ -32,7 +32,7 @@
                     <Section>
                       <childBlocks>
                         <Block>
-                          <blockName>Block Cst Flee</blockName>
+                          <blockName>Block Cst Wait</blockName>
                           <position>(20.00, 10.00, 0.00)</position>
                           <varManagerName></varManagerName>
                           <varName />
@@ -50,11 +50,11 @@
                       <inputs>
                         <Input>
                           <isOperation>true</isOperation>
-                          <value>false</value>
+                          <value></value>
                           <operation>
                             <Block>
-                              <blockName>Block Cst DetectObject</blockName>
-                              <position>(-304.40, 30.00, 0.00)</position>
+                              <blockName>Block Op Sum</blockName>
+                              <position>(-60.67, 30.00, 0.00)</position>
                               <varManagerName></varManagerName>
                               <varName />
                               <defineID />
@@ -66,11 +66,11 @@
                                   <inputs>
                                     <Input>
                                       <isOperation>false</isOperation>
-                                      <value>is</value>
+                                      <value></value>
                                     </Input>
                                     <Input>
                                       <isOperation>false</isOperation>
-                                      <value>Enemy</value>
+                                      <value></value>
                                     </Input>
                                   </inputs>
                                 </Section>
@@ -78,122 +78,12 @@
                             </Block>
                           </operation>
                         </Input>
-                        <Input>
-                          <isOperation>false</isOperation>
-                          <value>Regla 1 </value>
-                        </Input>
                       </inputs>
-                    </Section>
-                  </sections>
-                </Block>
-                <Block>
-                  <blockName>Block Cst RuleWithID</blockName>
-                  <position>(20.00, -180.00, 0.00)</position>
-                  <varManagerName></varManagerName>
-                  <varName />
-                  <defineID />
-                  <isLocalVar />
-                  <defineItems />
-                  <sections>
-                    <Section>
-                      <childBlocks>
-                        <Block>
-                          <blockName>Block Cst SetTarget</blockName>
-                          <position>(20.00, 10.00, 0.00)</position>
-                          <varManagerName></varManagerName>
-                          <varName />
-                          <defineID />
-                          <isLocalVar />
-                          <defineItems />
-                          <sections>
-                            <Section>
-                              <childBlocks />
-                              <inputs>
-                                <Input>
-                                  <isOperation>false</isOperation>
-                                  <value>Wood</value>
-                                </Input>
-                              </inputs>
-                            </Section>
-                          </sections>
-                        </Block>
-                        <Block>
-                          <blockName>Block Cst Cook</blockName>
-                          <position>(20.00, -60.00, 0.00)</position>
-                          <varManagerName></varManagerName>
-                          <varName />
-                          <defineID />
-                          <isLocalVar />
-                          <defineItems />
-                          <sections>
-                            <Section>
-                              <childBlocks />
-                              <inputs />
-                            </Section>
-                          </sections>
-                        </Block>
-                      </childBlocks>
-                      <inputs>
-                        <Input>
-                          <isOperation>true</isOperation>
-                          <value>true</value>
-                          <operation>
-                            <Block>
-                              <blockName>Block Cst DetectObject</blockName>
-                              <position>(-298.51, 30.00, 0.00)</position>
-                              <varManagerName></varManagerName>
-                              <varName />
-                              <defineID />
-                              <isLocalVar />
-                              <defineItems />
-                              <sections>
-                                <Section>
-                                  <childBlocks />
-                                  <inputs>
-                                    <Input>
-                                      <isOperation>false</isOperation>
-                                      <value>is</value>
-                                    </Input>
-                                    <Input>
-                                      <isOperation>false</isOperation>
-                                      <value>Wood</value>
-                                    </Input>
-                                  </inputs>
-                                </Section>
-                              </sections>
-                            </Block>
-                          </operation>
-                        </Input>
-                        <Input>
-                          <isOperation>false</isOperation>
-                          <value>Regla 2</value>
-                        </Input>
-                      </inputs>
-                    </Section>
-                  </sections>
-                </Block>
-                <Block>
-                  <blockName>Block Cst Explore</blockName>
-                  <position>(20.00, -440.00, 0.00)</position>
-                  <varManagerName></varManagerName>
-                  <varName />
-                  <defineID />
-                  <isLocalVar />
-                  <defineItems />
-                  <sections>
-                    <Section>
-                      <childBlocks />
-                      <inputs />
                     </Section>
                   </sections>
                 </Block>
               </childBlocks>
-              <inputs>
-                <Input>
-                  <isOperation>false</isOperation>
-                  <value>2</value>
-                </Input>
-              </inputs>
+              <inputs />
             </Section>
           </sections>
         </Block>
