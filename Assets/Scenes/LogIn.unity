@@ -848,6 +848,8 @@ GameObject:
   - component: {fileID: 699878906}
   - component: {fileID: 699878905}
   - component: {fileID: 699878907}
+  - component: {fileID: 699878908}
+  - component: {fileID: 699878909}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -898,6 +900,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupID: defaultGroup
   loggedInUser: defaultUser
+  game_id: id de partida
+--- !u!114 &699878908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699878904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212020e12c0626341841700b66734e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treeStructure: 
+--- !u!114 &699878909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699878904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8a914460cb0594da4838d5ff7dfd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &739058518
 GameObject:
   m_ObjectHideFlags: 0

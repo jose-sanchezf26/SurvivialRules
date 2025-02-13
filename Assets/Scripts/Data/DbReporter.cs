@@ -74,6 +74,7 @@ public class DbReporter : MonoBehaviour
 
     private ClientWebSocket ws;
     private Queue<DataObj> toPost = new Queue<DataObj>();
+    private Queue<EventData> toPostEventData = new Queue<EventData>();
     private bool needRestart = false;
     private CancellationTokenSource cancelTokenSource;
     private string serverUri = "ws://localhost:10109/ws/";
@@ -122,6 +123,11 @@ public class DbReporter : MonoBehaviour
     {
         instance.toPost.Enqueue(new DataObj(type, data, callback));
     }
+
+    public static void SendEvent(EventData eventData)
+    {
+        instance.toPostEventData.Enqueue(eventData);
+    }
     #endregion
 
     #region WebSocket
@@ -135,7 +141,7 @@ public class DbReporter : MonoBehaviour
             await ws.ConnectAsync(new Uri(serverUri), cancelTokenSource.Token);
             Debug.Log("Conectado a WebSocket");
             _ = Task.Run(() => ListenWebSocket());
-            _ = Task.Run(() => SendQueuedMessages());
+            _ = Task.Run(() => SendQueuedMessagesEventData());
         }
         catch (Exception ex)
         {
@@ -166,6 +172,21 @@ public class DbReporter : MonoBehaviour
             {
                 DataObj dataObj = toPost.Dequeue();
                 string jsonMessage = dataObj.ToJson();
+                var bytes = Encoding.UTF8.GetBytes(jsonMessage);
+                await ws.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, cancelTokenSource.Token);
+            }
+            await Task.Delay(100);
+        }
+    }
+
+    private async Task SendQueuedMessagesEventData()
+    {
+        while (ws.State == WebSocketState.Open)
+        {
+            if (toPostEventData.Count > 0)
+            {
+                EventData eventData = toPostEventData.Dequeue();
+                string jsonMessage = eventData.ToJson();
                 var bytes = Encoding.UTF8.GetBytes(jsonMessage);
                 await ws.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, cancelTokenSource.Token);
             }

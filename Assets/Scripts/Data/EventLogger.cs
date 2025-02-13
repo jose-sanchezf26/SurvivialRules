@@ -12,7 +12,7 @@ using UnityEngine;
 public class EventLogger : MonoBehaviour
 {
     // Lista para almacenar los eventos
-    private List<string> eventLog = new List<string>();
+    private List<EventData> eventLog = new List<EventData>();
 
     // Singleton para que sea accesible desde cualquier parte del juego
     public static EventLogger Instance;
@@ -38,20 +38,46 @@ public class EventLogger : MonoBehaviour
     }
 
     // Método para añadir un evento
-    public void LogEvent(string eventDescription, string type)
+    // public void LogEvent(string eventDescription, string type)
+    // {
+    //     // string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    //     string timestamp = System.DateTime.Now.ToString("HH:mm:ss");
+    //     eventLog.Add($"{timestamp}: {eventDescription}");
+    //     Debug.Log(timestamp + " " + eventDescription);
+    //     I_BE2_ProgrammingEnv i_BE2_ProgrammingEnv = FindFirstObjectByType<BE2_ProgrammingEnv>();
+
+    //     // Identifica el tipo de evento
+    //     if (type == "modifySBR")
+    //     {
+    //         Debug.Log(CreateSBRString(i_BE2_ProgrammingEnv));
+    //     }
+
+    //     // Si ya hay 10 eventos, los envía al servidor
+    //     if (eventLog.Count == MAX_EVENTS)
+    //     {
+    //         SendEvents("game_events");
+    //     }
+    // }
+
+    public void LogEvent(EventData eventData)
     {
-        // string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        string timestamp = System.DateTime.Now.ToString("HH:mm:ss");
-        eventLog.Add($"{timestamp}: {eventDescription}");
-        Debug.Log(timestamp + " " + eventDescription);
         I_BE2_ProgrammingEnv i_BE2_ProgrammingEnv = FindFirstObjectByType<BE2_ProgrammingEnv>();
 
         // Identifica el tipo de evento
-        if (type == "modifySBR")
+        if (eventData is ModifySBREvent modifySBREvent)
         {
-            Debug.Log(CreateSBRString(i_BE2_ProgrammingEnv));
+            string sbr = CreateSBRString(i_BE2_ProgrammingEnv);
+            modifySBREvent.sbr = sbr;
+            eventLog.Add(modifySBREvent);
+            SendEvent(eventData);
+            Debug.Log(sbr);
         }
-
+        else
+        {
+            eventLog.Add(eventData);
+            SendEvent(eventData);
+        }
+        Debug.Log(JsonUtility.ToJson(eventData));
         // Si ya hay 10 eventos, los envía al servidor
         if (eventLog.Count == MAX_EVENTS)
         {
@@ -62,17 +88,25 @@ public class EventLogger : MonoBehaviour
     // Guardar los eventos en un archivo al final de la sesión
     public void SaveLog()
     {
-        string filePath = Path.Combine(Application.persistentDataPath, "event_log.txt");
-        File.WriteAllLines(filePath, eventLog.ToArray());
-        Debug.Log($"Log guardado en: {filePath}");
+        // string filePath = Path.Combine(Application.persistentDataPath, "event_log.txt");
+        // File.WriteAllLines(filePath, eventLog.ToArray());
+        // Debug.Log($"Log guardado en: {filePath}");
     }
 
     // Método para enviar los eventos al servidor
     public void SendEvents(string type)
     {
-        string jsonData = JsonUtility.ToJson(new EventData(eventLog));
+        string jsonData = JsonUtility.ToJson(new EventsData(eventLog));
         DbReporter.SendEvent(type, jsonData);
-        Debug.Log("Eventos enviados al servidor");
+        Debug.Log(jsonData);
+        eventLog.Clear();
+    }
+
+    public void SendEvent(EventData eventData)
+    {
+        string jsonData = JsonUtility.ToJson(eventData);
+        DbReporter.SendEvent(eventData);
+        Debug.Log(jsonData);
         eventLog.Clear();
     }
 
@@ -84,10 +118,10 @@ public class EventLogger : MonoBehaviour
 
     // Clase para estructurar los eventos en JSON
     [System.Serializable]
-    private class EventData
+    private class EventsData
     {
-        public List<string> events;
-        public EventData(List<string> events)
+        public List<EventData> events;
+        public EventsData(List<EventData> events)
         {
             this.events = events;
         }

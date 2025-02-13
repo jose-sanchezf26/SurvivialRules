@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,18 +22,23 @@ public class WindowsManager : MonoBehaviour
 
     public void OpenGameScene()
     {
+        FlowManager.instance.GenerateGameID(true);
+        EventLogger.Instance.LogEvent(new EventData("sr-start_game"));
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
     }
 
     public void QuitGame()
     {
+        EventLogger.Instance.LogEvent(new EventData("sr-log_out"));
         Application.Quit();
     }
 
     public void OpenMenuScene()
     {
         Time.timeScale = 1f;
+        FlowManager.instance.GenerateGameID(false);
+        EventLogger.Instance.LogEvent(new EventData("sr-end_game"));
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -56,6 +62,8 @@ public class WindowsManager : MonoBehaviour
         if (user == "Jose")
         {
             FlowManager.instance.loggedInUser = user;
+            EventData logInEvent = new EventData("sr-log_in");
+            EventLogger.Instance.LogEvent(logInEvent);
             return true;
         }
 
