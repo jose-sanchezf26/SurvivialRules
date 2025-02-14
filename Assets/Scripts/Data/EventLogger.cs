@@ -64,25 +64,23 @@ public class EventLogger : MonoBehaviour
         I_BE2_ProgrammingEnv i_BE2_ProgrammingEnv = FindFirstObjectByType<BE2_ProgrammingEnv>();
 
         // Identifica el tipo de evento
-        if (eventData is ModifySBREvent modifySBREvent)
+        if (eventData is DropBlockEvent dropBlockEvent)
         {
             string sbr = CreateSBRString(i_BE2_ProgrammingEnv);
-            modifySBREvent.sbr = sbr;
-            eventLog.Add(modifySBREvent);
+            dropBlockEvent.sbr = sbr;
+            eventLog.Add(dropBlockEvent);
             SendEvent(eventData);
-            Debug.Log(sbr);
         }
         else
         {
             eventLog.Add(eventData);
             SendEvent(eventData);
         }
-        Debug.Log(JsonUtility.ToJson(eventData));
         // Si ya hay 10 eventos, los envía al servidor
-        if (eventLog.Count == MAX_EVENTS)
-        {
-            SendEvents("game_events");
-        }
+        // if (eventLog.Count == MAX_EVENTS)
+        // {
+        //     SendEvents("game_events");
+        // }
     }
 
     // Guardar los eventos en un archivo al final de la sesión

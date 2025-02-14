@@ -16,6 +16,7 @@ namespace MG_BlocksEngine2.Block
         public Transform Transform => _transform ? _transform : transform;
         public I_BE2_BlockSection ParentSection { get; set; }
         public I_BE2_Drag Drag { get; set; }
+        public int id { get; set; }
 
         void Awake()
         {

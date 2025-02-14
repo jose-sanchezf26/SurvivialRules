@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using MG_BlocksEngine2.DragDrop;
 using MG_BlocksEngine2.Block.Instruction;
 using MG_BlocksEngine2.Core;
+using System.Text.RegularExpressions;
 
 namespace MG_BlocksEngine2.Block
 {
@@ -21,6 +22,10 @@ namespace MG_BlocksEngine2.Block
         public I_BE2_BlockSection ParentSection { get; set; }
         public I_BE2_Drag Drag { get; set; }
 
+        // Creación del campo de id del bloque
+        private static int nextId = 0;
+        public int id { get; set; }
+
         void OnValidate()
         {
             Awake();
@@ -28,6 +33,9 @@ namespace MG_BlocksEngine2.Block
 
         void Awake()
         {
+            // Se le asigna un id al bloque
+            id = nextId++;
+
             _transform = transform;
             Layout = GetComponent<I_BE2_BlockLayout>();
             Instruction = GetComponent<I_BE2_Instruction>();
@@ -46,6 +54,19 @@ namespace MG_BlocksEngine2.Block
         void OnEnable()
         {
             BE2_MainEventsManager.Instance.StartListening(BE2EventTypes.OnPrimaryKeyUpEnd, GetParentSection);
+        }
+
+        void OnDestroy()
+        {
+            EventLogger.Instance.LogEvent(new CreateBlockEvent("sr-delete_block", ExtractBlockName(this.ToString()), id.ToString()));
+        }
+
+        private string ExtractBlockName(string blockInstruction)
+        {
+            string pattern = @"Block (Ins|Cst|Op) (\w+)\s*\(";
+            Match match = Regex.Match(blockInstruction, pattern);
+            if (match.Success) { return match.Groups[2].Value; }
+            return string.Empty;
         }
 
         void OnDisable()

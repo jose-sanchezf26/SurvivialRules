@@ -168,26 +168,27 @@ namespace MG_BlocksEngine2.DragDrop
                 if (block.ParentSection == null)
                 {
                     BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtProgrammingEnv, block);
-                    EventLogger.Instance.LogEvent(new ModifySBREvent("sr-modify_SBR", "Ha dejado el bloque " + blockName + " en el entorno", ""));
+                    EventLogger.Instance.LogEvent(new DropBlockEvent("sr-drop_env", blockName, block.id.ToString(), block.Transform.localPosition));
                 }
                 else
                 {
+                    I_BE2_Block parentBlock = block.Transform.parent.transform.parent.transform.parent.GetComponent<I_BE2_Block>();
+                    string parentBlockName = ExtractBlockName(parentBlock.ToString());
                     if (block.Transform.parent.GetComponent<I_BE2_BlockSectionHeader>() != null)
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtInputSpot, block);
-                        EventLogger.Instance.LogEvent(new ModifySBREvent("sr-modify_SBR", "Ha introducido el bloque " + blockName + " al inputspot otro bloque", ""));
+                        EventLogger.Instance.LogEvent(new DropBlockFromEvent("sr-drop_input", blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition));
                     }
                     else
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtStack, block);
-                        EventLogger.Instance.LogEvent(new ModifySBREvent("sr-modify_SBR", "Ha añadido el bloque " + blockName + " a otro bloque", ""));
+                        EventLogger.Instance.LogEvent(new DropBlockFromEvent("sr-drop_stack", blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition));
                     }
                 }
             }
             else
             {
                 BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropDestroy, null);
-                EventLogger.Instance.LogEvent(new ModifySBREvent("sr-modify_SBR", "Ha eliminado un bloque", ""));
             }
         }
 
@@ -202,12 +203,15 @@ namespace MG_BlocksEngine2.DragDrop
 
         IEnumerator C_HandleDragEvents(I_BE2_Block block)
         {
+            I_BE2_Block parentBlock = null;
             I_BE2_BlockSectionHeader parentHeader = null;
             if (block as Object != null)
             {
                 block.Instruction.InstructionBase.BlocksStack = block.Transform.GetComponentInParent<I_BE2_BlocksStack>();
                 block.ParentSection = block.Transform.GetComponentInParent<I_BE2_BlockSection>();
                 parentHeader = block.Transform.parent.GetComponent<I_BE2_BlockSectionHeader>();
+                if (block.Transform.parent != null)
+                    parentBlock = block.Transform.parent.transform.parent.transform.parent.GetComponent<I_BE2_Block>();
             }
 
             yield return new WaitForEndOfFrame();
@@ -220,8 +224,7 @@ namespace MG_BlocksEngine2.DragDrop
                 if (parentHeader != null)
                 {
                     BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromInputSpot, block);
-                    // TODO DECIDIR SI INCLUIR ESTOS EVENTOS
-                    // EventLogger.Instance.LogEvent("Ha sacado el bloque " + blockName + " del inputspot de otro", "modifySBR");
+                    EventLogger.Instance.LogEvent(new SelectBlockFromEvent("sr-select_f_input", blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition));
                 }
                 else
                 {
@@ -229,11 +232,13 @@ namespace MG_BlocksEngine2.DragDrop
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromProgrammingEnv, block);
                         // EventLogger.Instance.LogEvent("Ha seleccionado el bloque " + blockName + " del entorno", "");
+                        EventLogger.Instance.LogEvent(new SelectBlockEvent("sr-select_f_env", blockName, block.id.ToString(), block.Transform.localPosition));
                     }
                     else
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromStack, block);
                         // EventLogger.Instance.LogEvent("Ha añadido el bloque " + blockName + " del stack", "");
+                        EventLogger.Instance.LogEvent(new SelectBlockFromEvent("sr-select_f_stack", blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition));
                     }
                 }
             }

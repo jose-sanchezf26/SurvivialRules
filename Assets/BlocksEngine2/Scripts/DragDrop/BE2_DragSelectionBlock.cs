@@ -54,8 +54,7 @@ namespace MG_BlocksEngine2.DragDrop
 
             string blockName = ExtractBlockName(instantiatedBlock.ToString());
             // TODO DECIDIR SI INCLUIR ESTE EVENTO
-            // EventLogger.Instance.LogEvent("Ha seleccionado el bloque " + blockName + " del selector de bloques", "");
-
+            EventLogger.Instance.LogEvent(new CreateBlockEvent("sr-create_block", ExtractBlockName(this.ToString()), instantiatedBlock.GetComponent<I_BE2_Block>().id.ToString()));
             // ***
 
             instantiatedBlock.name = _uiSelectionBlock.prefabBlock.name;
