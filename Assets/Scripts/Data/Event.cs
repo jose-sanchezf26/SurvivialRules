@@ -48,7 +48,7 @@ public class ModifySBREvent : PlayerEvent
     // Cadena correspondiente al SBR
     [JsonProperty]
     public string sbr;
-    public ModifySBREvent(string eventType) : base()
+    public ModifySBREvent() : base()
     {
         this.sbr = "";
     }

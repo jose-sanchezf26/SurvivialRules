@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour
             // Abrir el inventario y el sistema de crafteo
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                EventLogger.Instance.LogEvent(new EventData("sr-open_inventory", new PlayerEvent()));
                 rulesPanel.SetActive(false);
                 SetEnabled(false);
                 inventory.enabled = true;
@@ -91,6 +92,7 @@ public class UIManager : MonoBehaviour
             // Abrir la Base de Conocimientos
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+                EventLogger.Instance.LogEvent(new EventData("sr-open_kb", new PlayerEvent()));
                 rulesPanel.SetActive(false);
                 SetEnabled(true);
                 inventory.enabled = false;
@@ -98,6 +100,7 @@ public class UIManager : MonoBehaviour
             // Abrir el log de las reglas
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                EventLogger.Instance.LogEvent(new EventData("sr-open_rules_log", new PlayerEvent()));
                 rulesPanel.SetActive(true);
                 SetEnabled(false);
                 inventory.enabled = false;
@@ -105,6 +108,10 @@ public class UIManager : MonoBehaviour
             // Abrir la Base de Hechos
             if (Input.GetKeyDown(KeyCode.RightArrow) & !rulesPanel.activeSelf)
             {
+                if (BHImage.gameObject.activeSelf)
+                    EventLogger.Instance.LogEvent(new EventData("sr-close_fb", new PlayerEvent()));
+                else
+                    EventLogger.Instance.LogEvent(new EventData("sr-open_fb", new PlayerEvent()));
                 BHImage.gameObject.SetActive(!BHImage.gameObject.activeSelf);
             }
 
@@ -211,13 +218,13 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        EventLogger.Instance.LogEvent(new EventData("sr-pause", new PlayerEvent()));
+        EventLogger.Instance.LogEvent(new EventData("sr-pause", new ModifySBREvent()));
     }
 
     public void Play()
     {
         Time.timeScale = 1f;
-        EventLogger.Instance.LogEvent(new EventData("sr-continue", new PlayerEvent()));
+        EventLogger.Instance.LogEvent(new EventData("sr-continue", new ModifySBREvent()));
     }
 
     public void ModifySpeed()

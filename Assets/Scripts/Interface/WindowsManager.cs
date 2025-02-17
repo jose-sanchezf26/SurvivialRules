@@ -37,8 +37,8 @@ public class WindowsManager : MonoBehaviour
     public void OpenMenuScene()
     {
         Time.timeScale = 1f;
-        FlowManager.instance.GenerateGameID(false);
         EventLogger.Instance.LogEvent(new EventData("sr-end_game", new PlayerEvent()));
+        FlowManager.instance.GenerateGameID(false);
         SceneManager.LoadScene("MainMenu");
     }
 

@@ -71,6 +71,13 @@ public class EventLogger : MonoBehaviour
             eventLog.Add(eventData);
             SendEvent(eventData);
         }
+        else if (eventData.data is ModifySBREvent modifySBREvent)
+        {
+            string sbr = CreateSBRString(i_BE2_ProgrammingEnv);
+            modifySBREvent.sbr = sbr;
+            eventLog.Add(eventData);
+            SendEvent(eventData);
+        }
         else
         {
             eventLog.Add(eventData);
