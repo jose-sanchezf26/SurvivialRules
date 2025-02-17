@@ -23,14 +23,14 @@ public class WindowsManager : MonoBehaviour
     public void OpenGameScene()
     {
         FlowManager.instance.GenerateGameID(true);
-        EventLogger.Instance.LogEvent(new EventData("sr-start_game"));
+        EventLogger.Instance.LogEvent(new EventData("sr-start_game", new PlayerEvent()));
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
     }
 
     public void QuitGame()
     {
-        EventLogger.Instance.LogEvent(new EventData("sr-log_out"));
+        EventLogger.Instance.LogEvent(new EventData("sr-log_out", new PlayerEvent()));
         Application.Quit();
     }
 
@@ -38,7 +38,7 @@ public class WindowsManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         FlowManager.instance.GenerateGameID(false);
-        EventLogger.Instance.LogEvent(new EventData("sr-end_game"));
+        EventLogger.Instance.LogEvent(new EventData("sr-end_game", new PlayerEvent()));
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -62,7 +62,7 @@ public class WindowsManager : MonoBehaviour
         if (user == "Jose")
         {
             FlowManager.instance.loggedInUser = user;
-            EventData logInEvent = new EventData("sr-log_in");
+            EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
             EventLogger.Instance.LogEvent(logInEvent);
             return true;
         }

@@ -64,11 +64,11 @@ public class EventLogger : MonoBehaviour
         I_BE2_ProgrammingEnv i_BE2_ProgrammingEnv = FindFirstObjectByType<BE2_ProgrammingEnv>();
 
         // Identifica el tipo de evento
-        if (eventData is DropBlockEvent dropBlockEvent)
+        if (eventData.data is DropBlockEvent dropBlockEvent)
         {
             string sbr = CreateSBRString(i_BE2_ProgrammingEnv);
             dropBlockEvent.sbr = sbr;
-            eventLog.Add(dropBlockEvent);
+            eventLog.Add(eventData);
             SendEvent(eventData);
         }
         else
@@ -96,7 +96,6 @@ public class EventLogger : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(new EventsData(eventLog));
         DbReporter.SendEvent(type, jsonData);
-        Debug.Log(jsonData);
         eventLog.Clear();
     }
 
@@ -104,7 +103,6 @@ public class EventLogger : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(eventData);
         DbReporter.SendEvent(eventData);
-        Debug.Log(jsonData);
         eventLog.Clear();
     }
 

@@ -168,7 +168,7 @@ namespace MG_BlocksEngine2.DragDrop
                 if (block.ParentSection == null)
                 {
                     BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtProgrammingEnv, block);
-                    EventLogger.Instance.LogEvent(new DropBlockEvent("sr-drop_env", blockName, block.id.ToString(), block.Transform.localPosition));
+                    EventLogger.Instance.LogEvent(new EventData("sr-drop_env", new DropBlockEvent(blockName, block.id.ToString(), block.Transform.localPosition)));
                 }
                 else
                 {
@@ -177,12 +177,12 @@ namespace MG_BlocksEngine2.DragDrop
                     if (block.Transform.parent.GetComponent<I_BE2_BlockSectionHeader>() != null)
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtInputSpot, block);
-                        EventLogger.Instance.LogEvent(new DropBlockFromEvent("sr-drop_input", blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition));
+                        EventLogger.Instance.LogEvent(new EventData("sr-drop_input", new DropBlockFromEvent(blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition)));
                     }
                     else
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtStack, block);
-                        EventLogger.Instance.LogEvent(new DropBlockFromEvent("sr-drop_stack", blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition));
+                        EventLogger.Instance.LogEvent(new EventData("sr-drop_stack", new DropBlockFromEvent(blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition)));
                     }
                 }
             }
@@ -224,7 +224,7 @@ namespace MG_BlocksEngine2.DragDrop
                 if (parentHeader != null)
                 {
                     BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromInputSpot, block);
-                    EventLogger.Instance.LogEvent(new SelectBlockFromEvent("sr-select_f_input", blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition));
+                    EventLogger.Instance.LogEvent(new EventData("sr-select_f_input", new SelectBlockFromEvent(blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition)));
                 }
                 else
                 {
@@ -232,13 +232,13 @@ namespace MG_BlocksEngine2.DragDrop
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromProgrammingEnv, block);
                         // EventLogger.Instance.LogEvent("Ha seleccionado el bloque " + blockName + " del entorno", "");
-                        EventLogger.Instance.LogEvent(new SelectBlockEvent("sr-select_f_env", blockName, block.id.ToString(), block.Transform.localPosition));
+                        EventLogger.Instance.LogEvent(new EventData("sr-select_f_env", new SelectBlockEvent(blockName, block.id.ToString(), block.Transform.localPosition)));
                     }
                     else
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromStack, block);
                         // EventLogger.Instance.LogEvent("Ha añadido el bloque " + blockName + " del stack", "");
-                        EventLogger.Instance.LogEvent(new SelectBlockFromEvent("sr-select_f_stack", blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition));
+                        EventLogger.Instance.LogEvent(new EventData("sr-select_f_stack", new SelectBlockFromEvent(blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition)));
                     }
                 }
             }

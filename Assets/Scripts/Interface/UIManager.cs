@@ -211,13 +211,13 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        EventLogger.Instance.LogEvent(new EventData("sr-pause"));
+        EventLogger.Instance.LogEvent(new EventData("sr-pause", new PlayerEvent()));
     }
 
     public void Play()
     {
         Time.timeScale = 1f;
-        EventLogger.Instance.LogEvent(new EventData("sr-continue"));
+        EventLogger.Instance.LogEvent(new EventData("sr-continue", new PlayerEvent()));
     }
 
     public void ModifySpeed()
@@ -226,7 +226,7 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1f;
             speedText.text = "x1";
-            EventLogger.Instance.LogEvent(new EventData("sr-mod_speed_x1"));
+            EventLogger.Instance.LogEvent(new EventData("sr-mod_speed_x1", new PlayerEvent()));
         }
         else
         {
@@ -234,7 +234,7 @@ public class UIManager : MonoBehaviour
             {
                 Time.timeScale = 2f;
                 speedText.text = "x2";
-                EventLogger.Instance.LogEvent(new EventData("sr-mod_speed_x2"));
+                EventLogger.Instance.LogEvent(new EventData("sr-mod_speed_x2", new PlayerEvent()));
             }
             else
             {
@@ -242,7 +242,7 @@ public class UIManager : MonoBehaviour
                 {
                     Time.timeScale = 3f;
                     speedText.text = "x3";
-                    EventLogger.Instance.LogEvent(new EventData("sr-mod_speed_x3"));
+                    EventLogger.Instance.LogEvent(new EventData("sr-mod_speed_x3", new PlayerEvent()));
                 }
             }
         }

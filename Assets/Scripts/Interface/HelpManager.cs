@@ -40,7 +40,7 @@ public class HelpManager : MonoBehaviour
             isTutorialActive = true;
             Time.timeScale = 0;
 
-            EventLogger.Instance.LogEvent(new EventData("sr-start_tutorial"));
+            EventLogger.Instance.LogEvent(new EventData("sr-start_tutorial", new PlayerEvent()));
         }
     }
 
@@ -80,6 +80,6 @@ public class HelpManager : MonoBehaviour
         KBPanel.SetActive(true);
         isTutorialActive = false;
         Time.timeScale = 1;
-        EventLogger.Instance.LogEvent(new EventData("sr-end_tutorial"));
+        EventLogger.Instance.LogEvent(new EventData("sr-end_tutorial", new PlayerEvent()));
     }
 }
