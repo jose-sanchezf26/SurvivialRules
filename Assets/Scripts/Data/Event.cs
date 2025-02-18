@@ -58,6 +58,22 @@ public class ModifySBREvent : PlayerEvent
 }
 
 [JsonObject(MemberSerialization.OptIn)]
+public class ModifySpeedEvent : PlayerEvent
+{
+    // Velocidad anterior
+    [JsonProperty]
+    public string oldSpeed;
+    // Velocidad actual
+    [JsonProperty]
+    public string newSpeed;
+    public ModifySpeedEvent(string oldSpeed, string newSpeed) : base()
+    {
+        this.oldSpeed = oldSpeed;
+        this.newSpeed = newSpeed;
+    }
+}
+
+[JsonObject(MemberSerialization.OptIn)]
 public class DropBlockEvent : PlayerEvent
 {
     [JsonProperty]
