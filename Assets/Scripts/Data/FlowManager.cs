@@ -6,7 +6,8 @@ public class FlowManager : MonoBehaviour
     public static FlowManager instance;
     public string groupID = "defaultGroup";
     public string loggedInUser = "defaultUser";
-    public string game_id = "id de partida";
+    public string session_id;
+    public string game_id;
     public SelectedSet selectedSet;
 
     internal void GenerateGameID(bool generate)

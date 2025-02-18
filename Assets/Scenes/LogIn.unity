@@ -900,7 +900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupID: defaultGroup
   loggedInUser: defaultUser
-  game_id: id de partida
+  session_id: id de sesion
+  game_id: 
 --- !u!114 &699878908
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class EventData
 {
     // Usuario
     public string user;
+    // ID de la sesión
+    public string session_id;
     // ID de la partida
     public string game_id;
     // Tipo de evento
@@ -23,6 +25,7 @@ public class EventData
     {
         user = FlowManager.instance.loggedInUser;
         game_id = FlowManager.instance.game_id;
+        session_id = FlowManager.instance.session_id;
         this.data = data;
         this.eventType = eventType;
         time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");

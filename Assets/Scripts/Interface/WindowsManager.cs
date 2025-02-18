@@ -62,6 +62,7 @@ public class WindowsManager : MonoBehaviour
         if (user == "Jose")
         {
             FlowManager.instance.loggedInUser = user;
+            FlowManager.instance.session_id = Guid.NewGuid().ToString();
             EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
             EventLogger.Instance.LogEvent(logInEvent);
             return true;

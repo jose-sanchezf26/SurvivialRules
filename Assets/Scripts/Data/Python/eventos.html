@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Eventos de survival Rules</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="eventos-de-survival-rules">Eventos de survival Rules</h1>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Game ID</th>
+<th>Event Type</th>
+<th>Time</th>
+<th>Data</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jose</td>
+<td></td>
+<td>sr-log_in</td>
+<td>17/02/2025 17:01:21</td>
+<td>{}</td>
+<td>Inicia sesión</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td></td>
+<td>sr-log_out</td>
+<td>17/02/2025 17:18:20</td>
+<td>{}</td>
+<td>Cierra sesión</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:18:07</td>
+<td>sr-start_game</td>
+<td>17/02/2025 17:18:20</td>
+<td>{}</td>
+<td>Empieza una partida</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:18:07</td>
+<td>sr-end_game</td>
+<td>17/02/2025 17:20:20</td>
+<td>{}</td>
+<td>Termina una partida</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-open_fb</td>
+<td>17/02/2025 17:24:21</td>
+<td>{}</td>
+<td>Abre la base de hechos</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:01:22</td>
+<td>sr-close_fb</td>
+<td>17/02/2025 17:01:43</td>
+<td>{}</td>
+<td>Cierra la base de hechos</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-open_kb</td>
+<td>17/02/2025 17:24:20</td>
+<td>{}</td>
+<td>Abre la base de conocimientos</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-open_rules_log</td>
+<td>17/02/2025 17:24:19</td>
+<td>{}</td>
+<td>Abre el log de las reglas</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-open_inventory</td>
+<td>17/02/2025 17:24:16</td>
+<td>{}</td>
+<td>Abre el inventario</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-start_tutorial</td>
+<td>17/02/2025 17:28:09</td>
+<td>{}</td>
+<td>Empieza el tutorial</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-end_tutorial</td>
+<td>17/02/2025 17:28:22</td>
+<td>{}</td>
+<td>Termina el tutorial</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-create_block</td>
+<td>17/02/2025 17:29:18</td>
+<td>{&quot;blockType&quot;: &quot;WhenPlayClicked&quot;, &quot;blockId&quot;: &quot;84&quot;}</td>
+<td>Crea un bloque</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-delete_block</td>
+<td>17/02/2025 17:37:01</td>
+<td>{&quot;blockType&quot;: &quot;WhenPlayClicked&quot;, &quot;blockId&quot;: &quot;84&quot;}</td>
+<td>Elimina un bloque</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-drop_env</td>
+<td>17/02/2025 17:29:19</td>
+<td>{&quot;blockType&quot;: &quot;WhenPlayClicked&quot;, &quot;blockId&quot;: &quot;84&quot;, &quot;positionX&quot;: 209.94165, &quot;positionY&quot;: -275.427, &quot;sbr&quot;: &quot;<Block>...</Block>&quot;}</td>
+<td>Deja un bloque en el entorno</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-select_f_env</td>
+<td>17/02/2025 17:39:45</td>
+<td>{&quot;blockType&quot;: &quot;Explore&quot;, &quot;blockId&quot;: &quot;85&quot;, &quot;positionX&quot;: -82.62988, &quot;positionY&quot;: 44.09955}</td>
+<td>Selecciona un bloque que estaba en el entorno</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-drop_stack</td>
+<td>17/02/2025 17:31:20</td>
+<td>{&quot;parentBlockType&quot;: &quot;WhenPlayClicked&quot;, &quot;parentBlockId&quot;: &quot;84&quot;, &quot;blockType&quot;: &quot;Explore&quot;, &quot;blockId&quot;: &quot;85&quot;, &quot;positionX&quot;: 0.0, &quot;positionY&quot;: 10.0, &quot;sbr&quot;: &quot;<Block>...</Block>&quot;}</td>
+<td>Suelta un bloque dentro de otro</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-select_f_stack</td>
+<td>17/02/2025 17:31:21</td>
+<td>{&quot;parentBlockType&quot;: &quot;WhenPlayClicked&quot;, &quot;parentBlockId&quot;: &quot;84&quot;, &quot;blockType&quot;: &quot;Explore&quot;, &quot;blockId&quot;: &quot;85&quot;, &quot;positionX&quot;: -61.7938652, &quot;positionY&quot;: 48.7296562}</td>
+<td>Selecciona un bloque que estaba en otro</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-drop_input</td>
+<td>17/02/2025 17:34:12</td>
+<td>{&quot;parentBlockType&quot;: &quot;SetTarget&quot;, &quot;parentBlockId&quot;: &quot;86&quot;, &quot;blockType&quot;: &quot;Sum&quot;, &quot;blockId&quot;: &quot;87&quot;, &quot;positionX&quot;: -46.2100067, &quot;positionY&quot;: 30.0, &quot;sbr&quot;: &quot;<Block>...</Block>&quot;}</td>
+<td>Suelta un bloque en la sección de input de otro</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-select_f_input</td>
+<td>17/02/2025 17:34:12</td>
+<td>{&quot;parentBlockType&quot;: &quot;SetTarget&quot;, &quot;parentBlockId&quot;: &quot;86&quot;, &quot;blockType&quot;: &quot;Sum&quot;, &quot;blockId&quot;: &quot;87&quot;, &quot;positionX&quot;: -107.567993, &quot;positionY&quot;: 24.5014248}</td>
+<td>Selecciona un bloque que estaba la sección de input de otro</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:49:47</td>
+<td>sr-pause</td>
+<td>17/02/2025 17:49:53</td>
+<td>{&quot;sbr&quot;: &quot;...&quot;}</td>
+<td>Pausa el juego y la ejecución de las reglas</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:49:47</td>
+<td>sr-continue</td>
+<td>17/02/2025 17:49:54</td>
+<td>{&quot;sbr&quot;: &quot;...&quot;}</td>
+<td>Reanuda el juego y ejecuta las reglas de ese instante</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-mod_speed_x1</td>
+<td>17/02/2025 17:43:00</td>
+<td>{}</td>
+<td>Modifica la velocidad del juego a x1</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-mod_speed_x2</td>
+<td>17/02/2025 17:43:01</td>
+<td>{}</td>
+<td>Modifica la velocidad del juego a x2</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Jose - 17/02/2025 17:24:12</td>
+<td>sr-mod_speed_x3</td>
+<td>17/02/2025 17:43:02</td>
+<td>{}</td>
+<td>Modifica la velocidad del juego a x3</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+            
+            
+        </body>
+        </html>
