@@ -126,7 +126,7 @@ public class UIManager : MonoBehaviour
     private void ShowDeathImage()
     {
         deathImage.gameObject.SetActive(true);
-        textTimeDeath.text = "You survived " + minutes + " minutes and " + seconds + " seconds";
+        textTimeDeath.text = "Has sobrevivido " + minutes + " minutos y " + seconds + " segundos";
         SetEnabled(false);
         inventory.enabled = false;
         BHImage.gameObject.SetActive(false);

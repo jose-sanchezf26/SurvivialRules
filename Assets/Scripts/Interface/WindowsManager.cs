@@ -26,7 +26,7 @@ public class WindowsManager : MonoBehaviour
         FlowManager.instance.sessionFinished = false;
         EventLogger.Instance.LogEvent(new EventData("sr-start_game", new PlayerEvent()));
         SceneManager.LoadScene("Game");
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
     }
 
     public void QuitGame()
