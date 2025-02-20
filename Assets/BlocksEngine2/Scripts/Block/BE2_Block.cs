@@ -58,7 +58,8 @@ namespace MG_BlocksEngine2.Block
 
         void OnDestroy()
         {
-            EventLogger.Instance.LogEvent(new EventData("sr-delete_block", new CreateBlockEvent(ExtractBlockName(this.ToString()), id.ToString())));
+            if (!FlowManager.instance.sessionFinished)
+                EventLogger.Instance.LogEvent(new EventData("sr-delete_block", new CreateBlockEvent(ExtractBlockName(this.ToString()), id.ToString())));
         }
 
         private string ExtractBlockName(string blockInstruction)

@@ -9,6 +9,7 @@ public class FlowManager : MonoBehaviour
     public string session_id;
     public string game_id;
     public SelectedSet selectedSet;
+    public bool sessionFinished = false;
 
     internal void GenerateGameID(bool generate)
     {

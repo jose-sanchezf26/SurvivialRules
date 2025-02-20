@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +22,7 @@ public class WindowsManager : MonoBehaviour
     public void OpenGameScene()
     {
         FlowManager.instance.GenerateGameID(true);
+        FlowManager.instance.sessionFinished = false;
         EventLogger.Instance.LogEvent(new EventData("sr-start_game", new PlayerEvent()));
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
@@ -37,6 +37,7 @@ public class WindowsManager : MonoBehaviour
     public void OpenMenuScene()
     {
         Time.timeScale = 1f;
+        FlowManager.instance.sessionFinished = true;
         EventLogger.Instance.LogEvent(new EventData("sr-end_game", new PlayerEvent()));
         FlowManager.instance.GenerateGameID(false);
         SceneManager.LoadScene("MainMenu");
