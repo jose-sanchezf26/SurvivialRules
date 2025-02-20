@@ -18,7 +18,7 @@
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-drop_env | 17/02/2025 17:29:19 | {"blockType": "WhenPlayClicked", "blockId": "84", "positionX": 209.94165, "positionY": -275.427, "sbr": "<Block>...</Block>"} | Deja un bloque en el entorno |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-select_f_env | 17/02/2025 17:39:45 | {"blockType": "Explore", "blockId": "85", "positionX": -82.62988, "positionY": 44.09955} | Selecciona un bloque que estaba en el entorno |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-pause | 17/02/2025 17:49:53 | {"sbr": "..."} | Pausa el juego y la ejecución de las reglas |
-| Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-continue | 17/02/2025 17:49:54 | {"sbr": "..."} | Reanuda el juego y ejecuta las reglas de ese instante |
+| Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-play | 17/02/2025 17:49:54 | {"sbr": "..."} | Reanuda el juego y ejecuta las reglas de ese instante |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-mod_speed | 17/02/2025 17:43:00 | {"oldSpeed": "x1", "newSpeed": "x2"} | Modifica la velocidad del juego a x1 |
 | Jose  | Survival Rules | ce9a07a5-3a7c-42a8-9460-9941f286cd2e  | sr-open_context_menu  | 20/02/2025 10:44:39  | {"blockType": "WhenPlayClicked", "blockId": "84", "positionX": 215.9338, "positionY": -293.42804} | Abre el menú contextual de un bloque |
 | Jose  | Survival Rules | e5d489e7-22c0-4113-bad6-db84ec77e1fd  | sr-close_context_menu  | 20/02/2025 11:16:53  | {"blockType": "WhenPlayClicked", "blockId": "84", "positionX": 349.798462, "positionY": -398.607544} | Cierra el menú contextual de un bloque |

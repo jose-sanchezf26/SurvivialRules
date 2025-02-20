@@ -217,3 +217,18 @@ public class DuplicateBlockEvent : PlayerEvent
         this.position = position;
     }
 }
+
+[JsonObject(MemberSerialization.OptIn)]
+public class TutorialWindowEvent : PlayerEvent
+{
+    [JsonProperty]
+    public string windowName;
+    [JsonProperty]
+    public int stepsNumber;
+
+    public TutorialWindowEvent(string windowName, int stepsNumber) : base()
+    {
+        this.windowName = windowName;
+        this.stepsNumber = stepsNumber;
+    }
+}

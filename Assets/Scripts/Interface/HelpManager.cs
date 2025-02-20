@@ -35,12 +35,12 @@ public class HelpManager : MonoBehaviour
         {
             currentPanelIndex = 0;
             helpPanels[currentPanelIndex].SetActive(true);
+            EventLogger.Instance.LogEvent(new EventData("sr-start_tutorial", new PlayerEvent()));
+            EventLogger.Instance.LogEvent(new EventData("sr-tutorial_next", new TutorialWindowEvent(helpPanels[currentPanelIndex].GetComponent<TutorialWindow>().windowName, currentPanelIndex+1)));
             KBPanel.SetActive(false);
             DBPanel.SetActive(false);
             isTutorialActive = true;
             Time.timeScale = 0;
-
-            EventLogger.Instance.LogEvent(new EventData("sr-start_tutorial", new PlayerEvent()));
         }
     }
 
@@ -63,6 +63,7 @@ public class HelpManager : MonoBehaviour
 
         if (currentPanelIndex < helpPanels.Length)
         {
+            EventLogger.Instance.LogEvent(new EventData("sr-tutorial_next", new TutorialWindowEvent(helpPanels[currentPanelIndex].GetComponent<TutorialWindow>().windowName, currentPanelIndex+1)));
             helpPanels[currentPanelIndex].SetActive(true);
         }
         else

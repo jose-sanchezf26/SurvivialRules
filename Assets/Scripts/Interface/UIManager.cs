@@ -224,7 +224,7 @@ public class UIManager : MonoBehaviour
     public void Play()
     {
         Time.timeScale = 1f;
-        EventLogger.Instance.LogEvent(new EventData("sr-continue", new ModifySBREvent()));
+        EventLogger.Instance.LogEvent(new EventData("sr-play", new ModifySBREvent()));
     }
 
     public void ModifySpeed()
