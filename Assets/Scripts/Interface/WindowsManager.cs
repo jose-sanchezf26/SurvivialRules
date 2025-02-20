@@ -12,6 +12,7 @@ public class WindowsManager : MonoBehaviour
 {
     public TMP_InputField userInput;
     public GameObject errorMessage;
+    public GameObject saveWindow;
 
     public void Start()
     {
@@ -76,6 +77,13 @@ public class WindowsManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("LogIn");
+    }
+
+    public void SaveWhenExit()
+    {
+        EventLogger.Instance.LogEvent(new EventData("sr-save_sbr", new PlayerEvent()));
+        saveWindow.GetComponentInParent<Canvas>().enabled = true;
+        saveWindow.SetActive(true);
     }
 
 }
