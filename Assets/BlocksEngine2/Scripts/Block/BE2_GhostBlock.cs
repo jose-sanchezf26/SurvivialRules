@@ -26,6 +26,11 @@ namespace MG_BlocksEngine2.Block
 
         public void SetShadowActive(bool value) { }
 
+        public string ExtractBlockName()
+        {
+            throw new System.NotImplementedException();
+        }
+
         //void Start()
         //{
         //
@@ -35,5 +40,6 @@ namespace MG_BlocksEngine2.Block
         //{
         //
         //}
+
     }
 }

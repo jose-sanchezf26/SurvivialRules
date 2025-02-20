@@ -62,6 +62,14 @@ namespace MG_BlocksEngine2.Block
                 EventLogger.Instance.LogEvent(new EventData("sr-delete_block", new CreateBlockEvent(ExtractBlockName(this.ToString()), id.ToString())));
         }
 
+        public string ExtractBlockName()
+        {
+            string pattern = @"Block (Ins|Cst|Op) (\w+)\s*\(";
+            Match match = Regex.Match(this.ToString(), pattern);
+            if (match.Success) { return match.Groups[2].Value; }
+            return string.Empty;
+        }
+
         private string ExtractBlockName(string blockInstruction)
         {
             string pattern = @"Block (Ins|Cst|Op) (\w+)\s*\(";

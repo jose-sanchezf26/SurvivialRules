@@ -11,9 +11,9 @@ public class EventData
     // Usuario
     public string user;
     // ID de la sesión
-    public string session_id;
+    public string sessionId;
     // ID de la partida
-    public string game_id;
+    public string gameId;
     // Tipo de evento
     public string eventType;
     //Fecha del evento
@@ -24,8 +24,8 @@ public class EventData
     public EventData(string eventType, PlayerEvent data)
     {
         user = FlowManager.instance.loggedInUser;
-        game_id = FlowManager.instance.game_id;
-        session_id = FlowManager.instance.session_id;
+        gameId = FlowManager.instance.game_id;
+        sessionId = FlowManager.instance.session_id;
         this.data = data;
         this.eventType = eventType;
         time = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
@@ -180,5 +180,40 @@ public class SelectBlockFromEvent : SelectBlockEvent
     {
         this.parentBlockType = parentBlockType;
         this.parentBlockId = parentBlockId;
+    }
+}
+
+[JsonObject(MemberSerialization.OptIn)]
+public class DuplicateBlockEvent : PlayerEvent
+{
+    [JsonProperty]
+    public string blockType;
+    [JsonProperty]
+    public string blockDuplicatedId;
+    [JsonProperty]
+    public string newBlockId;
+    [JsonProperty]
+    public float positionX;
+    [JsonProperty]
+    public float positionY;
+    [JsonProperty]
+    public string sbr;
+    [JsonIgnore]
+    public Vector2 position
+    {
+        get => new Vector2(positionX, positionY);
+        set
+        {
+            positionX = value.x;
+            positionY = value.y;
+        }
+    }
+
+    public DuplicateBlockEvent(string blockType, string blockDuplicatedId, string newBlockId, Vector2 position) : base()
+    {
+        this.blockType = blockType;
+        this.blockDuplicatedId = blockDuplicatedId;
+        this.newBlockId = newBlockId;
+        this.position = position;
     }
 }

@@ -58,19 +58,21 @@ namespace MG_BlocksEngine2.UI
                     buttons[0].interactable = false;
                 }
             }
-
+            EventLogger.Instance.LogEvent(new EventData("sr-open_context_menu", new SelectBlockEvent(_targetBlock.ExtractBlockName(), _targetBlock.id.ToString(), _targetBlock.Transform.localPosition)));
             gameObject.SetActive(true);
         }
 
         public void Close()
         {
+            EventLogger.Instance.LogEvent(new EventData("sr-close_context_menu", new SelectBlockEvent(_targetBlock.ExtractBlockName(), _targetBlock.id.ToString(), _targetBlock.Transform.localPosition)));
             _targetBlock = null;
             gameObject.SetActive(false);
         }
 
         public void Duplicate()
         {
-            BE2_BlockUtils.DuplicateBlock(_targetBlock);
+            I_BE2_Block newBlock = BE2_BlockUtils.DuplicateBlock(_targetBlock);
+            EventLogger.Instance.LogEvent(new EventData("sr-duplicate_block", new DuplicateBlockEvent(_targetBlock.ExtractBlockName(), _targetBlock.id.ToString(), newBlock.id.ToString(), newBlock.Transform.localPosition)));
             _contextMenuManager.CloseContextMenu();
         }
 

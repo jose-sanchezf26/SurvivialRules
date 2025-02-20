@@ -57,7 +57,7 @@ namespace MG_BlocksEngine2.Utils
             blockGameObject.AddComponent<BE2_DragSelectionBlock>();
         }
 
-        public static void DuplicateBlock(I_BE2_Block block)
+        public static I_BE2_Block DuplicateBlock(I_BE2_Block block)
         {
             I_BE2_ProgrammingEnv programmingEnv = block.Transform.GetComponentInParent<I_BE2_ProgrammingEnv>();
             I_BE2_Block newBlock = BE2_BlocksSerializer.SerializableToBlock(BE2_BlocksSerializer.BlockToSerializable(block), programmingEnv);
@@ -69,6 +69,8 @@ namespace MG_BlocksEngine2.Utils
             {
                 BE2_ExecutionManager.Instance.AddToBlocksStackArray(newBlock.Instruction.InstructionBase.BlocksStack, programmingEnv.TargetObject);
             }
+
+            return newBlock;
         }
 
         // v2.6 - new method added to Block Utils to get root parent block
