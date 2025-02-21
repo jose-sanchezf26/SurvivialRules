@@ -232,3 +232,48 @@ public class TutorialWindowEvent : PlayerEvent
         this.stepsNumber = stepsNumber;
     }
 }
+
+[JsonObject(MemberSerialization.OptIn)]
+public class DeleteBlockEvent : PlayerEvent
+{
+    [JsonProperty]
+    public string blockType;
+    [JsonProperty]
+    public string blockId;
+    [JsonProperty]
+    public float positionX;
+    [JsonProperty]
+    public float positionY;
+    [JsonProperty]
+    public string parentBlockType;
+    [JsonProperty]
+    public string parentBlockId;
+    [JsonProperty]
+    public string parentRelation;
+    [JsonProperty]
+    public string positionInParent;
+    [JsonProperty]
+    public string sbr;
+    [JsonIgnore]
+    public Vector2 position
+    {
+        get => new Vector2(positionX, positionY);
+        set
+        {
+            positionX = value.x;
+            positionY = value.y;
+        }
+    }
+
+    public DeleteBlockEvent(string blockType, string blockId, Vector2 position, string parentBlockId, string parentBlockType, string parentRelation, string positionInParent) : base()
+    {
+        this.blockType = blockType;
+        this.blockId = blockId;
+        this.position = position;
+        this.parentBlockType = parentBlockType;
+        this.parentBlockId = parentBlockId;
+        this.parentRelation = parentRelation;
+        this.positionInParent = positionInParent;
+        this.sbr = "";
+    }
+}

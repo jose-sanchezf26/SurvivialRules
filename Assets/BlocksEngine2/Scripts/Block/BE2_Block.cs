@@ -7,6 +7,8 @@ using MG_BlocksEngine2.DragDrop;
 using MG_BlocksEngine2.Block.Instruction;
 using MG_BlocksEngine2.Core;
 using System.Text.RegularExpressions;
+using System;
+using TMPro;
 
 namespace MG_BlocksEngine2.Block
 {
@@ -59,8 +61,45 @@ namespace MG_BlocksEngine2.Block
         void OnDestroy()
         {
             if (!FlowManager.instance.sessionFinished)
-                EventLogger.Instance.LogEvent(new EventData("sr-delete_block", new CreateBlockEvent(ExtractBlockName(this.ToString()), id.ToString())));
+            {
+                EventLogger.Instance.LogEvent(new EventData("sr-delete_block", new DeleteBlockEvent(ExtractBlockName(this.ToString()), id.ToString(), this.transform.localPosition, GetParentBlockId(), GetParentBlockType(), GetParentRelation(), GetBlockIndex())));
+            }
         }
+
+        private string GetBlockIndex()
+        {
+            if (GetParentRelation() == "body")
+            {
+                return (this.transform.GetSiblingIndex() + 1).ToString();
+            }
+            if (GetParentRelation() == "input")
+            {
+                return GetInputIndex().ToString();
+            }
+            return "";
+        }
+
+        private int GetInputIndex()
+        {
+            Transform parent = this.transform.parent;
+            int index = 1;
+            if (parent != null)
+            {
+                foreach (Transform child in parent)
+                {
+                    if (gameObject.GetInstanceID() == child.gameObject.GetInstanceID())
+                    {
+                        return index;
+                    }
+                    if (child.gameObject.activeSelf && (child.GetComponent<BE2_Block>() != null || child.GetComponent<TMP_InputField>() != null)) // Filtra solo los que tienen el script
+                    {
+                        index++;
+                    }
+                }
+            }
+            return 0;
+        }
+
 
         public string ExtractBlockName()
         {
@@ -129,6 +168,46 @@ namespace MG_BlocksEngine2.Block
                     }
                 }
             }
+        }
+
+        // Función para saber si estaba en el input o debajo
+        public string GetParentRelation()
+        {
+            GameObject gO = this.gameObject;
+            if (gO.transform.parent.GetComponent<BE2_BlockSectionHeader>() != null)
+            {
+                return "input";
+            }
+            if (gO.transform.parent.GetComponent<BE2_BlockSectionBody>() != null)
+            {
+                return "body";
+            }
+            return "";
+        }
+
+        public BE2_Block GetParentBlock()
+        {
+            return this.gameObject.transform.parent.parent.parent.GetComponent<BE2_Block>();
+        }
+
+        public string GetParentBlockType()
+        {
+            BE2_Block parentBlock = GetParentBlock();
+            if (parentBlock != null)
+            {
+                return parentBlock.ExtractBlockName();
+            }
+            return "";
+        }
+
+        public string GetParentBlockId()
+        {
+            BE2_Block parentBlock = GetParentBlock();
+            if (parentBlock != null)
+            {
+                return parentBlock.id.ToString();
+            }
+            return "";
         }
     }
 }

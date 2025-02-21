@@ -85,6 +85,13 @@ public class EventLogger : MonoBehaviour
             eventLog.Add(eventData);
             SendEvent(eventData);
         }
+        else if (eventData.data is DeleteBlockEvent deleteBlockEvent)
+        {
+            string sbr = CreateSBRString(i_BE2_ProgrammingEnv);
+            deleteBlockEvent.sbr = sbr;
+            eventLog.Add(eventData);
+            SendEvent(eventData);
+        }
         else
         {
             eventLog.Add(eventData);
