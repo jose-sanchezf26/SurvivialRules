@@ -283,3 +283,50 @@ public class DeleteBlockEvent : PlayerEvent
         this.sbr = "";
     }
 }
+
+[JsonObject(MemberSerialization.OptIn)]
+public class SelectInputEvent : PlayerEvent
+{
+    [JsonProperty]
+    public string blockType;
+    [JsonProperty]
+    public int blockId;
+    [JsonProperty]
+    public int inputPosition;
+    [JsonProperty]
+    public string textValue;
+
+
+    public SelectInputEvent(string blockType, int blockId, int inputPosition, string textValue) : base()
+    {
+        this.blockType = blockType;
+        this.blockId = blockId;
+        this.inputPosition = inputPosition;
+        this.textValue = textValue;
+    }
+}
+
+[JsonObject(MemberSerialization.OptIn)]
+public class ChangeDropDownEvent : PlayerEvent
+{
+    [JsonProperty]
+    public string blockType;
+    [JsonProperty]
+    public int blockId;
+    [JsonProperty]
+    public int dropDownPosition;
+    [JsonProperty]
+    public string oldValue;
+    [JsonProperty]
+    public string newValue;
+
+
+    public ChangeDropDownEvent(string blockType, int blockId, int dropDownPosition, string oldValue, string newValue) : base()
+    {
+        this.blockType = blockType;
+        this.blockId = blockId;
+        this.dropDownPosition = dropDownPosition;
+        this.oldValue = oldValue;
+        this.newValue = newValue;
+    }
+}

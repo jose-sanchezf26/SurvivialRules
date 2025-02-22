@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using MG_BlocksEngine2.Utils;
+using TMPro;
 
 namespace MG_BlocksEngine2.Block
 {
@@ -20,6 +21,7 @@ namespace MG_BlocksEngine2.Block
         public float FloatValue { get; set; }
         public string StringValue { get; set; }
         public BE2_InputValues InputValues { get; set; }
+        private BE2_Block block;
 
         void OnValidate()
         {
@@ -30,7 +32,52 @@ namespace MG_BlocksEngine2.Block
         {
             _rectTransform = GetComponent<RectTransform>();
             _inputField = BE2_InputField.GetBE2Component(transform);
+
+            // Añadido para los eventos al escribir en inputs
+            if (transform.parent != null &&
+                transform.parent.parent != null &&
+                transform.parent.parent.parent != null)
+                block = transform.parent.parent.parent.GetComponent<BE2_Block>();
+            if (_inputField != null)
+            {
+                _inputField.onSelect?.AddListener(OnInputFieldSelected);
+                _inputField.onDeselect?.AddListener(OnInputFieldDeselected);
+            }
+
             Spot = GetComponent<I_BE2_Spot>();
+        }
+
+        // Función para cuando se selecciona el input
+        void OnInputFieldSelected(string even)
+        {
+            EventLogger.Instance.LogEvent(new EventData("sr-select_input", new SelectInputEvent(block.ExtractBlockName(), block.id, GetInputIndex(), _inputField.text)));
+        }
+        // Función para cuando se deselecciona el input
+        void OnInputFieldDeselected(string even)
+        {
+            EventLogger.Instance.LogEvent(new EventData("sr-deselect_input", new SelectInputEvent(block.ExtractBlockName(), block.id, GetInputIndex(), _inputField.text)));
+        }
+
+        // Función para obtener el indice del input
+        public int GetInputIndex()
+        {
+            Transform parent = this.transform.parent;
+            int index = 1;
+            if (parent != null)
+            {
+                foreach (Transform child in parent)
+                {
+                    if (gameObject.GetInstanceID() == child.gameObject.GetInstanceID())
+                    {
+                        return index;
+                    }
+                    if (child.gameObject.activeSelf && (child.GetComponent<BE2_Block>() != null || child.GetComponent<TMP_InputField>() != null || child.GetComponent<TMP_Dropdown>() != null)) // Filtra solo los que tienen el script
+                    {
+                        index++;
+                    }
+                }
+            }
+            return 0;
         }
 
         void OnEnable()

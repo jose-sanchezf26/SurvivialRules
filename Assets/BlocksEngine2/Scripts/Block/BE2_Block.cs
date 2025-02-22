@@ -91,7 +91,7 @@ namespace MG_BlocksEngine2.Block
                     {
                         return index;
                     }
-                    if (child.gameObject.activeSelf && (child.GetComponent<BE2_Block>() != null || child.GetComponent<TMP_InputField>() != null)) // Filtra solo los que tienen el script
+                    if (child.gameObject.activeSelf && (child.GetComponent<BE2_Block>() != null || child.GetComponent<TMP_InputField>() != null || child.GetComponent<TMP_Dropdown>() != null)) // Filtra solo los que tienen el script
                     {
                         index++;
                     }

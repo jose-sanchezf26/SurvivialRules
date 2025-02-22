@@ -162,6 +162,11 @@ namespace MG_BlocksEngine2.Utils
             }
         }
 
+        public string GetValue()
+        {
+            return _tmpComponent.options[_tmpComponent.value].text;
+        }
+
         public void RefreshShownValue()
         {
             if (_tmpComponent)

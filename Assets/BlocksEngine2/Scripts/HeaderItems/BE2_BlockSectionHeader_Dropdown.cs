@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using MG_BlocksEngine2.Utils;
+using TMPro;
 
 namespace MG_BlocksEngine2.Block
 {
@@ -21,6 +22,8 @@ namespace MG_BlocksEngine2.Block
         public float FloatValue { get; set; }
         public string StringValue { get; set; }
         public BE2_InputValues InputValues { get; set; }
+        private BE2_Block block;
+        private string oldValue;
 
         void OnValidate()
         {
@@ -31,7 +34,46 @@ namespace MG_BlocksEngine2.Block
         {
             _rectTransform = GetComponent<RectTransform>();
             _dropdown = BE2_Dropdown.GetBE2Component(transform);
+            // Añadido para los eventos al escribir en inputs
+            if (transform.parent != null &&
+                transform.parent.parent != null &&
+                transform.parent.parent.parent != null)
+                block = transform.parent.parent.parent.GetComponent<BE2_Block>();
+            if (_dropdown != null)
+            {
+                _dropdown.onValueChanged?.AddListener(OnValueChanged);
+                oldValue = _dropdown.GetValue();
+            }
             Spot = GetComponent<I_BE2_Spot>();
+        }
+
+        // Función para cuando cambia el valor en el dropdown
+        void OnValueChanged(int n)
+        {
+            EventLogger.Instance.LogEvent(new EventData("sr-change_drop_down", new ChangeDropDownEvent(block.ExtractBlockName(), block.id, GetInputIndex(), oldValue.ToString(), _dropdown.GetValue())));
+            oldValue = _dropdown.GetValue();
+        }
+
+        // Función para obtener el indice del input
+        public int GetInputIndex()
+        {
+            Transform parent = this.transform.parent;
+            int index = 1;
+            if (parent != null)
+            {
+                foreach (Transform child in parent)
+                {
+                    if (gameObject.GetInstanceID() == child.gameObject.GetInstanceID())
+                    {
+                        return index;
+                    }
+                    if (child.gameObject.activeSelf && (child.GetComponent<BE2_Block>() != null || child.GetComponent<TMPro.TMP_InputField>() != null || child.GetComponent<TMP_Dropdown>() != null)) // Filtra solo los que tienen el script
+                    {
+                        index++;
+                    }
+                }
+            }
+            return 0;
         }
 
         void OnEnable()
@@ -49,7 +91,7 @@ namespace MG_BlocksEngine2.Block
 
         void Start()
         {
-	    GetComponent<BE2_DropdownDynamicResize>().Resize(0);
+            GetComponent<BE2_DropdownDynamicResize>().Resize(0);
             UpdateValues();
         }
 
@@ -70,7 +112,7 @@ namespace MG_BlocksEngine2.Block
                 StringValue = "";
             }
 
-	    // v2.12 - dropdown input now returns the index of the selected item as FloatValue
+            // v2.12 - dropdown input now returns the index of the selected item as FloatValue
             FloatValue = _dropdown.value;
 
             InputValues = new BE2_InputValues(StringValue, FloatValue, isText);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using MG_BlocksEngine2.Block;
 
 namespace MG_BlocksEngine2.Utils
 {
@@ -18,6 +19,28 @@ namespace MG_BlocksEngine2.Utils
         public BE2_InputField(Transform transform)
         {
             this._transform = transform;
+        }
+
+        public TMPro.TMP_InputField.SelectionEvent onSelect
+        {
+            get
+            {
+                if (_tmpComponent)
+                    return _tmpComponent.onSelect;
+                else
+                    return null;
+            }
+        }
+
+        public TMPro.TMP_InputField.SelectionEvent onDeselect
+        {
+            get
+            {
+                if (_tmpComponent)
+                    return _tmpComponent.onDeselect;
+                else
+                    return null;
+            }
         }
 
         void Init()
