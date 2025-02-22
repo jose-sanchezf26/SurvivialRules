@@ -172,17 +172,18 @@ namespace MG_BlocksEngine2.DragDrop
                 }
                 else
                 {
+                    string blockIndex = block.GetBlockIndex();
                     I_BE2_Block parentBlock = block.Transform.parent.transform.parent.transform.parent.GetComponent<I_BE2_Block>();
                     string parentBlockName = ExtractBlockName(parentBlock.ToString());
                     if (block.Transform.parent.GetComponent<I_BE2_BlockSectionHeader>() != null)
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtInputSpot, block);
-                        EventLogger.Instance.LogEvent(new EventData("sr-drop_input", new DropBlockFromEvent(blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition)));
+                        EventLogger.Instance.LogEvent(new EventData("sr-drop_input", new DropBlockFromEvent(blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition, blockIndex)));
                     }
                     else
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDropAtStack, block);
-                        EventLogger.Instance.LogEvent(new EventData("sr-drop_stack", new DropBlockFromEvent(blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition)));
+                        EventLogger.Instance.LogEvent(new EventData("sr-drop_stack", new DropBlockFromEvent(blockName, block.id.ToString(), parentBlockName, parentBlock.id.ToString(), block.Transform.localPosition, blockIndex)));
                     }
                 }
             }
@@ -205,8 +206,10 @@ namespace MG_BlocksEngine2.DragDrop
         {
             I_BE2_Block parentBlock = null;
             I_BE2_BlockSectionHeader parentHeader = null;
+            string blockIndex = "";
             if (block as Object != null)
             {
+                blockIndex = block.GetBlockIndex();
                 block.Instruction.InstructionBase.BlocksStack = block.Transform.GetComponentInParent<I_BE2_BlocksStack>();
                 block.ParentSection = block.Transform.GetComponentInParent<I_BE2_BlockSection>();
                 parentHeader = block.Transform.parent.GetComponent<I_BE2_BlockSectionHeader>();
@@ -224,7 +227,7 @@ namespace MG_BlocksEngine2.DragDrop
                 if (parentHeader != null)
                 {
                     BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromInputSpot, block);
-                    EventLogger.Instance.LogEvent(new EventData("sr-select_f_input", new SelectBlockFromEvent(blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition)));
+                    EventLogger.Instance.LogEvent(new EventData("sr-select_f_input", new SelectBlockFromEvent(blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition, blockIndex)));
                 }
                 else
                 {
@@ -238,7 +241,7 @@ namespace MG_BlocksEngine2.DragDrop
                     {
                         BE2_MainEventsManager.Instance.TriggerEvent(BE2EventTypesBlock.OnDragFromStack, block);
                         // EventLogger.Instance.LogEvent("Ha añadido el bloque " + blockName + " del stack", "");
-                        EventLogger.Instance.LogEvent(new EventData("sr-select_f_stack", new SelectBlockFromEvent(blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition)));
+                        EventLogger.Instance.LogEvent(new EventData("sr-select_f_stack", new SelectBlockFromEvent(blockName, block.id.ToString(), ExtractBlockName(parentBlock.ToString()), parentBlock.id.ToString(), block.Transform.localPosition, blockIndex)));
                     }
                 }
             }

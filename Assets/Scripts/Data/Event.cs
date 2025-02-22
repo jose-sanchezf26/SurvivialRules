@@ -114,12 +114,15 @@ public class DropBlockFromEvent : DropBlockEvent
     public string parentBlockType;
     [JsonProperty]
     public string parentBlockId;
+    [JsonProperty]
+    public string positionInParent;
 
-    public DropBlockFromEvent(string blockType, string blockId, string parentBlockType, string parentBlockId, Vector2 position) : base(blockType, blockId, position)
+    public DropBlockFromEvent(string blockType, string blockId, string parentBlockType, string parentBlockId, Vector2 position, string positionInParent) : base(blockType, blockId, position)
     {
         this.parentBlockType = parentBlockType;
         this.parentBlockId = parentBlockId;
         this.position = position;
+        this.positionInParent = positionInParent;
     }
 }
 
@@ -175,11 +178,14 @@ public class SelectBlockFromEvent : SelectBlockEvent
     public string parentBlockType;
     [JsonProperty]
     public string parentBlockId;
+    [JsonProperty]
+    public string positionInParent;
 
-    public SelectBlockFromEvent(string blockType, string blockId, string parentBlockType, string parentBlockId, Vector2 position) : base(blockType, blockId, position)
+    public SelectBlockFromEvent(string blockType, string blockId, string parentBlockType, string parentBlockId, Vector2 position, string positionInParent) : base(blockType, blockId, position)
     {
         this.parentBlockType = parentBlockType;
         this.parentBlockId = parentBlockId;
+        this.positionInParent = positionInParent;
     }
 }
 

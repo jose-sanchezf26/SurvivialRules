@@ -31,6 +31,16 @@ namespace MG_BlocksEngine2.Block
             throw new System.NotImplementedException();
         }
 
+        public int GetInputIndex()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetBlockIndex()
+        {
+            throw new System.NotImplementedException();
+        }
+
         //void Start()
         //{
         //
@@ -40,6 +50,8 @@ namespace MG_BlocksEngine2.Block
         //{
         //
         //}
+
+
 
     }
 }

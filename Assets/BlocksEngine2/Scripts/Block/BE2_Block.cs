@@ -66,7 +66,7 @@ namespace MG_BlocksEngine2.Block
             }
         }
 
-        private string GetBlockIndex()
+        public string GetBlockIndex()
         {
             if (GetParentRelation() == "body")
             {
@@ -79,7 +79,7 @@ namespace MG_BlocksEngine2.Block
             return "";
         }
 
-        private int GetInputIndex()
+        public int GetInputIndex()
         {
             Transform parent = this.transform.parent;
             int index = 1;

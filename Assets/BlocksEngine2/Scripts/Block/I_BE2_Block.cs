@@ -26,6 +26,8 @@ namespace MG_BlocksEngine2.Block
         I_BE2_Drag Drag { get; }
         public int id { get; set; }
         public string ExtractBlockName();
+        public int GetInputIndex();
+        public string GetBlockIndex();
 
         /// <summary>
         /// Set visible/hidden the block hilight, used to identify a running/active block  
