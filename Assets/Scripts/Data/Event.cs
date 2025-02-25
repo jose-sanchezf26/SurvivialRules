@@ -330,3 +330,19 @@ public class ChangeDropDownEvent : PlayerEvent
         this.newValue = newValue;
     }
 }
+
+[JsonObject(MemberSerialization.OptIn)]
+public class SaveLoadEvent : PlayerEvent
+{
+    [JsonProperty]
+    public string fileName;
+    [JsonProperty]
+    public string sbr;
+
+
+    public SaveLoadEvent(string fileName, string sbr) : base()
+    {
+        this.fileName = fileName;
+        this.sbr = sbr;
+    }
+}

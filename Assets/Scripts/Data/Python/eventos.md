@@ -6,9 +6,13 @@
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-log_out | 17/02/2025 17:18:20 | {}    | Cierra sesión |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-start_game | 17/02/2025 17:18:20 | {} | Empieza una partida |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-end_game | 17/02/2025 17:20:20 | {} | Termina una partida |
+| Jose | Survival Rules | a8110894-4a66-4309-bdc4-9e650d1b9bb8 |sr-save_sbr| 25/02/2025 09:03:36 | {"fileName": "ArchivoSBR.BE2", "sbr": "<Block>..</Block>"} | Guarda el sbr en un archivo |
+| Jose | Survival Rules | a8110894-4a66-4309-bdc4-9e650d1b9bb8 |sr-load_sbr| 25/02/2025 09:03:36 | {"fileName": "ArchivoSBR.BE2", "sbr": "<Block>..</Block>"} | Carga el sbr en un archivo |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-open_fb | 17/02/2025 17:24:21 | {} | Abre la base de hechos |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-close_fb | 17/02/2025 17:01:43 | {} | Cierra la base de hechos |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-open_kb | 17/02/2025 17:24:20 | {} | Abre la base de conocimientos |
+| Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-open_s/l | 17/02/2025 17:24:25 | {} | Abre el menú de guardar/cargar |
+| Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-close_s/l | 17/02/2025 17:24:50 | {} | Cierra el menú de guardar/cargar |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-open_rules_log | 17/02/2025 17:24:19 | {} | Abre el log de las reglas |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-open_inventory | 17/02/2025 17:24:16 | {} | Abre el inventario |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-start_tutorial | 17/02/2025 17:28:09 | {} | Empieza el tutorial |
@@ -50,6 +54,10 @@ Cambios en la semana del 17/02/2025:
         - Selecciona un input de un bloque (sr-select_input)
         - Deseleccona un input de un bloque (sr-deselect_input)
         - Cambia el valor en un dropdown (sr-change_drop_down)
+        - Guarda el sbr en un archivo (sr-save_sbr)
+        - Carga el sbr de un archivo (sr-load_sbr)
+        - Abre el menú de guardar/cargar (sr-open_s/l)
+        - Cierra el menú de guardar/cargar (sr-close_s/l)
     - Modificaciones:
         - En el event sr-delete_block se muestra el sbr, el bloque padre (si tenía), si se encontraba en el body o en el input del bloque padre y su posición dentro de él
         - El evento sr-continue ahora se llama sr-play

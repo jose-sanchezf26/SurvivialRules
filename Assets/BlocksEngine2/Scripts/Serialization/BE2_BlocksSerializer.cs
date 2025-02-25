@@ -24,11 +24,14 @@ namespace MG_BlocksEngine2.Serializer
     {
         // v2.11 - BE2_BlocksSerializer.SaveCode refactored to use the BlocksCodeToXML method
         // v2.3 - added method SaveCode to facilitate the save of code by script
-        public static void SaveCode(string path, I_BE2_ProgrammingEnv targetProgrammingEnv)
+        public static void SaveCode(string path, string fileName, I_BE2_ProgrammingEnv targetProgrammingEnv)
         {
             StreamWriter sw = new StreamWriter(path, false);
-            sw.WriteLine(BlocksCodeToXML(targetProgrammingEnv));
+            string blocksToXML = BlocksCodeToXML(targetProgrammingEnv); 
+            sw.WriteLine(blocksToXML);
             sw.Close();
+
+            EventLogger.Instance.LogEvent(new EventData("sr-save_sbr", new SaveLoadEvent(fileName+".BE2", blocksToXML)));
 
             // v2.10.2 - bugfix: WebGL saves data not persisting after page reload
             PlayerPrefs.SetString("forceSave", string.Empty);
@@ -204,14 +207,14 @@ namespace MG_BlocksEngine2.Serializer
 
         // v2.11 - BE2_BlocksSerializer.LoadCode refactored to use the XMLToBlocksCode method
         // v2.3 - added method LoadCode to facilitate the load of code by script
-        public static bool LoadCode(string path, I_BE2_ProgrammingEnv targetProgrammingEnv)
+        public static bool LoadCode(string path, string fileName, I_BE2_ProgrammingEnv targetProgrammingEnv)
         {
             if (File.Exists(path))
             {
                 var sr = new StreamReader(path);
                 string xmlCode = sr.ReadToEnd();
                 sr.Close();
-
+                EventLogger.Instance.LogEvent(new EventData("sr-load_sbr", new SaveLoadEvent(fileName+".BE2", xmlCode)));
                 XMLToBlocksCode(xmlCode, targetProgrammingEnv);
 
                 return true;

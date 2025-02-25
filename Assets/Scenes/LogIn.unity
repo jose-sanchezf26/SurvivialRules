@@ -871,6 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userInput: {fileID: 290840560}
   errorMessage: {fileID: 520441818}
+  saveWindow: {fileID: 0}
 --- !u!4 &699878906
 Transform:
   m_ObjectHideFlags: 0
@@ -902,6 +903,7 @@ MonoBehaviour:
   loggedInUser: defaultUser
   session_id: id de sesion
   game_id: 
+  sessionFinished: 0
 --- !u!114 &699878908
 MonoBehaviour:
   m_ObjectHideFlags: 0

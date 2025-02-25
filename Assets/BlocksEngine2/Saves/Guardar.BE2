@@ -1,0 +1,17 @@
+<Block>
+  <blockName>Block Ins WhenPlayClicked</blockName>
+  <position>(209.71, -257.28, 0.00)</position>
+  <varManagerName></varManagerName>
+  <varName />
+  <defineID />
+  <isLocalVar />
+  <defineItems />
+  <sections>
+    <Section>
+      <childBlocks />
+      <inputs />
+    </Section>
+  </sections>
+</Block>
+#
+

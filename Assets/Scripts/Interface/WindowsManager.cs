@@ -17,7 +17,10 @@ public class WindowsManager : MonoBehaviour
     public void Start()
     {
         if (SceneManager.GetActiveScene().name == "LogIn")
+        {
             errorMessage.SetActive(false);
+            userInput.text = "";
+        }
     }
 
     public void OpenGameScene()

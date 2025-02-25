@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SurvivalRules.sln"
+    "dotnet.defaultSolution": "SurvivialRules.sln"
 }

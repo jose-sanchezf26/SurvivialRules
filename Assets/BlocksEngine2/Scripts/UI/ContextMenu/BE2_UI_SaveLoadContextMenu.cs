@@ -61,13 +61,14 @@ namespace MG_BlocksEngine2.UI
             panelConfirmReplaceGO.SetActive(false);
 
             RefreshScrollValues();
-
+            EventLogger.Instance.LogEvent(new EventData("sr-open_s/l", new PlayerEvent()));
             gameObject.SetActive(true);
         }
 
         public void Close()
         {
             _targetProgrammingEnv = null;
+            EventLogger.Instance.LogEvent(new EventData("sr-close_s/l", new PlayerEvent()));
             gameObject.SetActive(false);
         }
 
@@ -124,7 +125,7 @@ namespace MG_BlocksEngine2.UI
 
         public void Save()
         {
-            BE2_BlocksSerializer.SaveCode(GetFullPath(), _targetProgrammingEnv);
+            BE2_BlocksSerializer.SaveCode(GetFullPath(), GetFileName(), _targetProgrammingEnv);
 
             RefreshScrollValues();
 
@@ -173,9 +174,10 @@ namespace MG_BlocksEngine2.UI
 
         public void Load()
         {
-            bool loaded = BE2_BlocksSerializer.LoadCode(GetFullPath(), _targetProgrammingEnv);
+            bool loaded = BE2_BlocksSerializer.LoadCode(GetFullPath(), GetFileName(), _targetProgrammingEnv);
             if (loaded)
             {
+                Debug.Log("Se ha cargado el fichero " + GetFileName());
                 _contextMenuManager.CloseContextMenu();
             }
         }
