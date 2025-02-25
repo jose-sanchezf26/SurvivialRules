@@ -24,7 +24,7 @@ public class ActionBlockTooltip : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     void Update()
     {
-        if (tooltipManager.IsTooltipActive())
+        if (tooltipManager.IsTooltipActive() && this == tooltipManager.GetCurrentBlock())
         {
             if ((Vector3)lastMousePosition != Input.mousePosition)
             {
@@ -37,7 +37,8 @@ public class ActionBlockTooltip : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         if (tooltipManager != null)
         {
-
+            tooltipManager.SetCurrentBlock(this);
+            
             // Iniciar la corutina que muestra el tooltip después de 1 segundo
             tooltipCoroutine = StartCoroutine(ShowTooltipWithDelay(1f));
         }
@@ -54,12 +55,15 @@ public class ActionBlockTooltip : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     private IEnumerator ShowTooltipWithDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); // Espera de 1 segundo
+        yield return new WaitForSecondsRealtime(delay); // Espera de 1 segundo
 
         // Guardamos la posición del ratón
         lastMousePosition = Input.mousePosition;
         // Verificar que el ratón todavía está sobre el bloque después del retardo
-        Vector2 blockPosition = RectTransformUtility.WorldToScreenPoint(null, blockTransform.position);
-        tooltipManager.ShowTooltip(actionDescription, Input.mousePosition);
+        if (this == tooltipManager.GetCurrentBlock())
+        {
+            Vector2 blockPosition = RectTransformUtility.WorldToScreenPoint(null, blockTransform.position);
+            tooltipManager.ShowTooltip(actionDescription, Input.mousePosition);
+        }
     }
 }

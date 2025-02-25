@@ -12,6 +12,8 @@ public class TooltipManager : MonoBehaviour
     public float offsetX = 50f;
     public float offsetY = 0;
 
+    private ActionBlockTooltip currentActionToolTip = null;
+
     void Start()
     {
         // Ocultar tooltip al iniciar
@@ -35,5 +37,15 @@ public class TooltipManager : MonoBehaviour
     public bool IsTooltipActive()
     {
         return tooltipPanel.activeSelf;
+    }
+
+    public void SetCurrentBlock(ActionBlockTooltip currentBlock)
+    {
+        currentActionToolTip = currentBlock;
+    }
+
+    public ActionBlockTooltip GetCurrentBlock()
+    {
+        return currentActionToolTip;
     }
 }
