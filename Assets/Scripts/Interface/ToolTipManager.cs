@@ -14,6 +14,7 @@ public class TooltipManager : MonoBehaviour
 
     private ActionBlockTooltip currentActionToolTip = null;
 
+
     void Start()
     {
         // Ocultar tooltip al iniciar
@@ -21,10 +22,11 @@ public class TooltipManager : MonoBehaviour
     }
 
     // Mostrar el tooltip con el texto proporcionado
-    public void ShowTooltip(string description, Vector2 position)
+    public void ShowTooltip(string description, Vector2 position, Color blockColor)
     {
         tooltipText.text = description;
         tooltipPanel.transform.position = new Vector2(position.x + offsetX, position.y + offsetY);
+        tooltipPanel.GetComponent<Image>().color = blockColor;
         tooltipPanel.SetActive(true);
     }
 

@@ -63,3 +63,8 @@ Cambios en la semana del 17/02/2025:
         - El evento sr-continue ahora se llama sr-play
         - En los eventos sr-select_f_input, sr-select_stack, sr-drop_input y sr-drop_stack muestran la posición en la que se selecciona/suelta el bloque dentro del padre
         - El evento sr-mod_speed sustituye a los anteriores, mostrando ahora la velocidad anterior y la actual
+
+Cambios en la semana del 24/02/2025:
+- Interfaz:
+    - Cambiado el icono de pausa.
+    - Cambiado el color del tooltip según el bloque.

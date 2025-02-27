@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Numerics;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -63,7 +65,7 @@ public class ActionBlockTooltip : MonoBehaviour, IPointerEnterHandler, IPointerE
         if (this == tooltipManager.GetCurrentBlock())
         {
             Vector2 blockPosition = RectTransformUtility.WorldToScreenPoint(null, blockTransform.position);
-            tooltipManager.ShowTooltip(actionDescription, Input.mousePosition);
+            tooltipManager.ShowTooltip(actionDescription, Input.mousePosition, transform.GetChild(0).GetChild(0).GetComponent<UnityEngine.UI.Image>().color);
         }
     }
 }
