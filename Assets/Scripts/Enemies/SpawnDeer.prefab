@@ -47,4 +47,5 @@ MonoBehaviour:
   agentPrefab: {fileID: 7669300631278352441, guid: dea7bfc55e528cd4faaf4b1825f670c3,
     type: 3}
   actualAgent: {fileID: 0}
-  timeToSpawn: 5
+  timeToSpawn: 20
+  timeToActive: 0

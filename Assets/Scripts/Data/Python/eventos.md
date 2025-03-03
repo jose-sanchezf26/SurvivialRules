@@ -68,3 +68,4 @@ Cambios en la semana del 24/02/2025:
 - Interfaz:
     - Cambiado el icono de pausa.
     - Cambiado el color del tooltip según el bloque.
+    - Añadido un timer en la pantalla.

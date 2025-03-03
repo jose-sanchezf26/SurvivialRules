@@ -107,6 +107,8 @@ public class Player : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
+        DifficultyManager.Instance.OnDifficultyChanged += ModifyTimePassage;
+
         //Obtiene los componentes
         detector = GetComponent<Detector>();
         explore = GetComponent<Explore>();
@@ -335,12 +337,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void ModifyTimePassage(int newDifficulty)
+    {
+        damageTaken = damageTaken * 1.5f;
+    }
+    private float damageTaken = 1;
     private bool isDie = false;
     // Simula el paso del tiempo para los atributos del jugador
     public void TimePassage()
     {
-        Hunger -= 2;
-        Thirst -= 2;
+        Hunger -= damageTaken;
+        Thirst -= damageTaken;
         if (Health <= 0)
         {
             Die();
@@ -382,7 +389,7 @@ public class Player : MonoBehaviour
     }
 
     // Método para quitar vida
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         Health -= amount;
         changeHitColor.isHit = true;

@@ -10,17 +10,24 @@ public class Spawn : MonoBehaviour
     public GameObject actualAgent;
     // El tiempo de generación después de su muerte
     public float timeToSpawn;
+    // La dificultad en la que empieza a spawnear enemigos, hecho para la dificultad
+    public int difficultyToActive = 1;
+    private bool active = false;
     private bool waitForSpawn = false;
 
     void Start()
     {
-        GeneratePrefab();
+        if (difficultyToActive <= DifficultyManager.Instance.currentDifficulty)
+        {
+            GeneratePrefab();
+        }
     }
 
     void Update()
     {
+        if (!active) return;
         // Comprueba que el agente siga vivo y en el caso contrario espera x segundos y lo vuelve a crear
-        if (actualAgent == null && !waitForSpawn)
+        if (actualAgent == null && !waitForSpawn && difficultyToActive <= DifficultyManager.Instance.currentDifficulty)
         {
             waitForSpawn = true;
             StartCoroutine(WaitForSpawn(timeToSpawn));
