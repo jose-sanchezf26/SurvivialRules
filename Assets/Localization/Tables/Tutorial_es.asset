@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tutorial_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 39a38d19a26301e41a0ce44ce8c3ec33, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5997043712
+    m_Localized: 'Este juego es un simulador que imita el comportamiento de un Sistema
+      Basado en Reglas. Debes crear reglas que determinen el comportamiento del personaje,
+      con el objetivo de sobrevivir el mayor tiempo posible.
+
+
+      Dentro del juego
+      hay partes que representan los elementos que conforman un SBR: la base de hechos,
+      la base de conocimiento y el motor de inferencia.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 355185434624
+    m_Localized: Siguiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1664424845312
+    m_Localized: "Esta parte del SBR contiene las reglas que determinan el comportamiento
+      del personaje.\n\nLas reglas se crean mediante programaci\xF3n basada en bloques.
+      Los antecedentes son condiciones que deben cumplirse mirando la Base de Hechos
+      y los consecuentes son acciones a ejecutar por el personaje."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1925771927552
+    m_Localized: Base de Conocimiento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3275402485760
+    m_Localized: Base de Hechos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3395871285248
+    m_Localized: "En la Base de Hechos se almacena la informaci\xF3n actual relativa
+      a nuestro problema, sobrevivir. Funciona como la informaci\xF3n que el personaje
+      conoce sobre su entorno y sobre \xE9l mismo, como el estado de sus atributos
+      y los elementos detectados a su alrededor. Por lo tanto, esta informaci\xF3n
+      es din\xE1mica, cambia conforme avanza el tiempo.\nLa BH al comienzo contiene
+      hechos iniciales, en este caso, la situaci\xF3n inicial del personaje. Durante
+      el proceso, se generan hechos inferidos a partir de esa informaci\xF3n inicial.\n\nEsta
+      informaci\xF3n es la que se utiliza en la Base de Conocimientos en la construcci\xF3n
+      de reglas. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5347170557952
+    m_Localized: "Creaci\xF3n de reglas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5517996171264
+    m_Localized: "Para crear un conjunto de reglas, debemos dirigirnos a la parte
+      de la Base de Conocimiento. Haciendo uso del espacio en blanco de la izquierda,
+      iremos seleccionando los bloques y uni\xE9ndolos entre s\xED. Primero debemos
+      usar el bot\xF3n de evento seguido del bloque \"Rules\" para indicar que nuestra
+      estructura es un sistema de reglas.\n\nPara cada una de las reglas que queremos
+      crear debemos utilizar el bloque \"Rule\", insertando en la parte de arriba
+      los antecedentes de la regla y en la de abajo los consecuentes. Aqu\xED se
+      puede ver un ejemplo.\n\n\n\n\n\n\n\n\nSi quieres ver para qu\xE9 sirve cada
+      bloque, sit\xFAa el rat\xF3n sobre \xE9l para que aparezca una breve descripci\xF3n.
+      \n"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

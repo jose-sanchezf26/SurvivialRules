@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tutorial_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 39a38d19a26301e41a0ce44ce8c3ec33, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5997043712
+    m_Localized: 'This game is a simulator that mimics the behavior of a Rule-Based
+      System. You must create rules that determine the character''s behavior with
+      the goal of surviving as long as possible.
+
+
+      Within the game, there are
+      elements that represent the components of an RBS: the fact base, the knowledge
+      base, and the inference engine.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 355185434624
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1664424845312
+    m_Localized: 'This part of the RBS contains the rules that determine the character''s
+      behavior.
+
+
+      Rules are created using block-based programming. The antecedents
+      are conditions that must be met by checking the Fact Base, and the consequents
+      are actions to be executed by the character.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1925771927552
+    m_Localized: Knowledge Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3275402485760
+    m_Localized: Fact Base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3395871285248
+    m_Localized: 'The Fact Base stores the current information related to our problem:
+      survival. It functions as the knowledge the character has about their environment
+      and themselves, including the state of their attributes and the elements detected
+      around them. Therefore, this information is dynamic and changes over time.
+
+
+      At
+      the start, the Fact Base contains initial facts, which represent the character''s
+      initial situation. During the process, inferred facts are generated based on
+      this initial information.
+
+
+      This information is used in the Knowledge
+      Base to construct rules.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5347170557952
+    m_Localized: Rule creation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5517996171264
+    m_Localized: 'To create a set of rules, we must go to the Knowledge Base section.
+      Using the blank space on the left, we will select the blocks and connect them
+      together. First, we need to use the event button followed by the ''Rules''
+      block to indicate that our structure is a rule-based system.
+
+
+      For each
+      rule we want to create, we must use the ''Rule'' block, placing the antecedents
+      of the rule at the top and the consequents at the bottom. Here is an example.
+
+
+
+
+
+
+
+
+
+
+
+
+      If
+      you want to see what each block is for, hover the mouse over it to display
+      a brief description.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
