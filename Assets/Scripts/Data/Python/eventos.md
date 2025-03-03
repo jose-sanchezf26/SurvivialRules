@@ -76,4 +76,4 @@ Cambios en la semana del 24/02/2025:
   - Modificaciones:
     - En el evento end_game, se ha añadido el tiempo que ha sobrevivido el jugador, además de la forma de terminar la partida (le da a exit o muere el personaje).
 
-- Añadida la funcionalidad para aumentar la dificultad del juego.
+- Añadida la funcionalidad para aumentar la dificultad del juego y para guardar el récord de tiempo sobrevivido del jugador.
