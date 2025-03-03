@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.IO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -32,6 +33,18 @@ public class WindowsManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void Restart()
+    {
+        FlowManager.instance.GenerateGameID(true);
+        FlowManager.instance.sessionFinished = false;
+        int timeSurvived = (int)Time.timeSinceLevelLoad;
+        EventLogger.Instance.LogEvent(new EventData("sr-end_game", new EndGameEvent(timeSurvived, "death")));
+        SaveTimeSurvived(timeSurvived);
+        EventLogger.Instance.LogEvent(new EventData("sr-start_game", new PlayerEvent()));
+        SceneManager.LoadScene("Game");
+        Time.timeScale = 0f;
+    }
+
     public void QuitGame()
     {
         EventLogger.Instance.LogEvent(new EventData("sr-log_out", new PlayerEvent()));
@@ -42,7 +55,9 @@ public class WindowsManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         FlowManager.instance.sessionFinished = true;
-        EventLogger.Instance.LogEvent(new EventData("sr-end_game", new PlayerEvent()));
+        int timeSurvived = (int)Time.timeSinceLevelLoad;
+        EventLogger.Instance.LogEvent(new EventData("sr-end_game", new EndGameEvent(timeSurvived, "exit")));
+        SaveTimeSurvived(timeSurvived);
         FlowManager.instance.GenerateGameID(false);
         SceneManager.LoadScene("MainMenu");
     }
@@ -87,6 +102,34 @@ public class WindowsManager : MonoBehaviour
         EventLogger.Instance.LogEvent(new EventData("sr-save_sbr", new PlayerEvent()));
         saveWindow.GetComponentInParent<Canvas>().enabled = true;
         saveWindow.SetActive(true);
+    }
+
+    public int LoadTimeSurvived()
+    {
+        int timeSurvivedRecord = 0;
+        string filePath = Application.persistentDataPath + "/timeSurvived.txt";
+        if (File.Exists(filePath))
+        {
+            // Leemos el archivo y lo convertimos a un entero
+            string timeFromFile = File.ReadAllText(filePath);
+            timeSurvivedRecord = int.Parse(timeFromFile);
+        }
+        return timeSurvivedRecord;
+    }
+
+    public void SaveTimeSurvived(int timeSurvived)
+    {
+        int timeSurvivedRecord = LoadTimeSurvived();
+        if (timeSurvivedRecord < timeSurvived)
+        {
+            string filePath = Application.persistentDataPath + "/timeSurvived.txt";
+            // Convertimos el entero a una cadena
+            string timeToSave = timeSurvived.ToString();
+
+            // Guardamos el archivo en la ruta definida
+            File.WriteAllText(filePath, timeToSave);
+            Debug.Log("Tiempo guardado: " + timeSurvived);
+        }
     }
 
 }

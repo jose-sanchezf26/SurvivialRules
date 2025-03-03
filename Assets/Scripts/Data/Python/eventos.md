@@ -5,7 +5,7 @@
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-log_in  | 17/02/2025 17:01:21 | {}    | Inicia sesión |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-log_out | 17/02/2025 17:18:20 | {}    | Cierra sesión |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-start_game | 17/02/2025 17:18:20 | {} | Empieza una partida |
-| Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-end_game | 17/02/2025 17:20:20 | {} | Termina una partida |
+| Jose  | Survival Rules | 2d2bb501-78f8-4dd9-99a1-ad80160f2792      | sr-end_game | 03/03/2025 12:30:58         | {"timeSurvived": 86, "way": "death"}           | Termina una partida |
 | Jose | Survival Rules | a8110894-4a66-4309-bdc4-9e650d1b9bb8 |sr-save_sbr| 25/02/2025 09:03:36 | {"fileName": "ArchivoSBR.BE2", "sbr": "<Block>..</Block>"} | Guarda el sbr en un archivo |
 | Jose | Survival Rules | a8110894-4a66-4309-bdc4-9e650d1b9bb8 |sr-load_sbr| 25/02/2025 09:03:36 | {"fileName": "ArchivoSBR.BE2", "sbr": "<Block>..</Block>"} | Carga el sbr en un archivo |
 | Jose  | Survival Rules | 13072935-16e3-4483-8f38-73d4e3ecf693 | sr-open_fb | 17/02/2025 17:24:21 | {} | Abre la base de hechos |
@@ -35,6 +35,7 @@
 | Jose  | Survival Rules  | 2c8852fd-9b43-4410-8734-48554fecf868  | sr-select_input  | 22/02/2025 18:48:29   | {"blockType": "SetTarget", "blockId": 84, "inputPosition": 1, "textValue": "hola"}  | Selecciona el input de un bloque   |
 | Jose  | Survival Rules  | 2c8852fd-9b43-4410-8734-48554fecf868  | sr-deselect_input | 22/02/2025 18:48:31   | {"blockType": "SetTarget", "blockId": 84, "inputPosition": 1, "textValue": "adios"} | Deselecciona un input en un bloque |
 | Jose  | Survival Rules  | 0a814f77-04ed-4a9f-ae72-2fe561f2ac9a  | sr-change_drop_down  | 22/02/2025 20:06:26   | {"blockType": "DetectObject", "blockId": 84, "dropDownPosition": 1, "oldValue": "is", "newValue": "is not"}  | Cambia una opción de un desplegable en "DetectObject"  |
+| Jose  | Survival Rules | a742cdde-2d96-4db5-95bf-563028af53aa | sr-modify_difficulty | 03/03/2025 12:02:44 | {"oldDifficulty": 1, "newDifficulty": 2} | Se modifica la dificultad del juego |
 
 
 Cambios en la semana del 17/02/2025:
@@ -68,4 +69,11 @@ Cambios en la semana del 24/02/2025:
 - Interfaz:
     - Cambiado el icono de pausa.
     - Cambiado el color del tooltip según el bloque.
-    - Añadido un timer en la pantalla.
+    - Añadido un timer en la pantalla y un indicador de la dificultad.
+- Eventos
+  - Añadidos:
+    - Evento para cuando se modifica la dificultad del juego
+  - Modificaciones:
+    - En el evento end_game, se ha añadido el tiempo que ha sobrevivido el jugador, además de la forma de terminar la partida (le da a exit o muere el personaje).
+
+- Añadida la funcionalidad para aumentar la dificultad del juego.

@@ -7,15 +7,15 @@ public class DifficultyManager : MonoBehaviour
     public static DifficultyManager Instance { get; private set; }
 
     // Inicia en dificultad 1
-    public int currentDifficulty { get; private set; } = 1;  
+    public int currentDifficulty { get; private set; } = 1;
     public int maxDifficulty = 5;
     // 2 minutos en segundos
-    public float timeBetweenIncreases = 120f; 
+    public float timeBetweenIncreases = 120f;
 
     private float startTime;
 
     // Evento para notificar cambios
-    public event Action<int> OnDifficultyChanged; 
+    public event Action<int> OnDifficultyChanged;
     // Indicador de dificultad
     public TextMeshProUGUI text;
 
@@ -40,12 +40,13 @@ public class DifficultyManager : MonoBehaviour
     {
         // Comprueba si ha pasado el tiempo necesario para aumentar la dificultad
         int newDifficulty = Mathf.Min(1 + Mathf.FloorToInt((Time.time - startTime) / timeBetweenIncreases), maxDifficulty);
-        
+
         if (newDifficulty != currentDifficulty)
         {
+            EventLogger.Instance.LogEvent(new EventData("sr-modify_difficulty", new ModifyDifficultyEvent(currentDifficulty, newDifficulty)));
             currentDifficulty = newDifficulty;
             // Notificar a otros objetos
-            OnDifficultyChanged?.Invoke(currentDifficulty); 
+            OnDifficultyChanged?.Invoke(currentDifficulty);
             text.text = "Dificultad : " + currentDifficulty;
         }
     }

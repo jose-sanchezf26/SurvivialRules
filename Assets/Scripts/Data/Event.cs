@@ -346,3 +346,34 @@ public class SaveLoadEvent : PlayerEvent
         this.sbr = sbr;
     }
 }
+
+[JsonObject(MemberSerialization.OptIn)]
+public class ModifyDifficultyEvent : PlayerEvent
+{
+    [JsonProperty]
+    public int oldDifficulty;
+    [JsonProperty]
+    public int newDifficulty;
+
+
+    public ModifyDifficultyEvent(int oldDifficulty, int newDifficulty) : base()
+    {
+        this.oldDifficulty = oldDifficulty;
+        this.newDifficulty = newDifficulty;
+    }
+}
+
+public class EndGameEvent : PlayerEvent
+{
+    [JsonProperty]
+    public int timeSurvived;
+    [JsonProperty]
+    public string way;
+
+
+    public EndGameEvent(int timeSurvived, string way) : base()
+    {
+        this.timeSurvived = timeSurvived;
+        this.way = way;
+    }
+}

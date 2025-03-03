@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        float timeElapsed = Time.time; 
+        float timeElapsed = Time.timeSinceLevelLoad; 
 
         // Calcular horas, minutos y segundos
         int hours = Mathf.FloorToInt(timeElapsed / 3600); // 3600 segundos en una hora
