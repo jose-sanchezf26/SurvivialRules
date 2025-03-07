@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class FlowManager : MonoBehaviour
@@ -14,9 +15,9 @@ public class FlowManager : MonoBehaviour
     internal void GenerateGameID(bool generate)
     {
         if (generate)
-            game_id = loggedInUser + System.DateTime.Now.ToString(" - dd/MM/yyyy HH:mm:ss");
+            game_id = "Survival Rules";
         else
-            game_id = "";
+            game_id = "Survival Rules";
 
     }
 
@@ -32,7 +33,17 @@ public class FlowManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SetUsername(string username)
+    {
+        loggedInUser = username;
+        session_id = Guid.NewGuid().ToString();
+        EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
+        EventLogger.Instance.LogEvent(logInEvent);
+    }
 }
+
+
 
 public class SelectedSet
 {
