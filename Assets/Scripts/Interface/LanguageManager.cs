@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
+using System.Collections;
 
 public class LanguageManager : MonoBehaviour
 {
@@ -10,8 +11,20 @@ public class LanguageManager : MonoBehaviour
 
     void Start()
     {
+        // Llamamos a la corrutina para esperar que se inicialice la localización antes de proceder
+        StartCoroutine(WaitForLocalizationAndPopulate());
+    }
+
+    // Corrutina para esperar que la localización se haya cargado correctamente
+    IEnumerator WaitForLocalizationAndPopulate()
+    {
+        // Esperar hasta que la operación de inicialización de la localización haya terminado
+        yield return LocalizationSettings.InitializationOperation;
+
+        // Ahora que la localización está lista, llenamos el Dropdown
         PopulateDropdown();
 
+        // Agregar el listener para el cambio de idioma
         languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
     }
 

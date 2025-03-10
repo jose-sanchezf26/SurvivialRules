@@ -28,6 +28,7 @@ public class WindowsManager : MonoBehaviour
     {
         FlowManager.instance.GenerateGameID(true);
         FlowManager.instance.sessionFinished = false;
+        FlowManager.instance.session_id = Guid.NewGuid().ToString();
         EventLogger.Instance.LogEvent(new EventData("sr-start_game", new PlayerEvent()));
         SceneManager.LoadScene("Game");
         Time.timeScale = 0f;
@@ -40,6 +41,7 @@ public class WindowsManager : MonoBehaviour
         int timeSurvived = (int)Time.timeSinceLevelLoad;
         EventLogger.Instance.LogEvent(new EventData("sr-end_game", new EndGameEvent(timeSurvived, "death")));
         SaveTimeSurvived(timeSurvived);
+        FlowManager.instance.session_id = Guid.NewGuid().ToString();
         EventLogger.Instance.LogEvent(new EventData("sr-start_game", new PlayerEvent()));
         SceneManager.LoadScene("Game");
         Time.timeScale = 0f;
@@ -53,13 +55,13 @@ public class WindowsManager : MonoBehaviour
 
     public void OpenMenuScene()
     {
-        Time.timeScale = 1f;
         FlowManager.instance.sessionFinished = true;
         int timeSurvived = (int)Time.timeSinceLevelLoad;
         EventLogger.Instance.LogEvent(new EventData("sr-end_game", new EndGameEvent(timeSurvived, "exit")));
         SaveTimeSurvived(timeSurvived);
         FlowManager.instance.GenerateGameID(false);
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
     }
 
     public void OpenMenuSceneInLogIn()

@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 699878905}
+      - m_Target: {fileID: 1971355961}
         m_TargetAssemblyTypeName: WindowsManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -706,10 +706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -857,34 +857,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 699878906}
-  - component: {fileID: 699878905}
   - component: {fileID: 699878910}
   - component: {fileID: 699878909}
   - component: {fileID: 699878908}
-  - component: {fileID: 699878907}
-  - component: {fileID: 699878911}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &699878905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699878904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271935468e3e5e84e8a810fa1ece4cae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  userInput: {fileID: 0}
-  errorMessage: {fileID: 0}
-  saveWindow: {fileID: 0}
 --- !u!4 &699878906
 Transform:
   m_ObjectHideFlags: 0
@@ -900,19 +882,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &699878907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699878904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b2ed1d4d055b640a01f3d912b3f81f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  languageDropdown: {fileID: 1725044898}
 --- !u!114 &699878908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,18 +924,6 @@ MonoBehaviour:
   session_id: 
   game_id: 
   sessionFinished: 0
---- !u!114 &699878911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699878904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aabaac1cb3103942ade3ae5446bbbfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &739058518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,7 +1007,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 699878905}
+      - m_Target: {fileID: 1971355961}
         m_TargetAssemblyTypeName: WindowsManager, Assembly-CSharp
         m_MethodName: OpenGameScene
         m_Mode: 1
@@ -2127,6 +2084,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817118603}
   m_CullTransparentMesh: 1
+--- !u!1 &1971355958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1971355960}
+  - component: {fileID: 1971355959}
+  - component: {fileID: 1971355961}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1971355959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971355958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b2ed1d4d055b640a01f3d912b3f81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languageDropdown: {fileID: 1725044898}
+--- !u!4 &1971355960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971355958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1268.5264, y: 501.94955, z: 0.87028694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1971355961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971355958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271935468e3e5e84e8a810fa1ece4cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userInput: {fileID: 0}
+  errorMessage: {fileID: 0}
+  saveWindow: {fileID: 0}
 --- !u!1 &1984732753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,3 +2498,4 @@ SceneRoots:
   - {fileID: 199467388}
   - {fileID: 568342724}
   - {fileID: 699878906}
+  - {fileID: 1971355960}

@@ -37,9 +37,9 @@ public class FlowManager : MonoBehaviour
     public void SetUsername(string username)
     {
         loggedInUser = username;
-        session_id = Guid.NewGuid().ToString();
-        EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
-        EventLogger.Instance.LogEvent(logInEvent);
+        // session_id = Guid.NewGuid().ToString();
+        // EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
+        // EventLogger.Instance.LogEvent(logInEvent);
     }
 }
 
