@@ -36,7 +36,8 @@
 | Jose  | Survival Rules  | 2c8852fd-9b43-4410-8734-48554fecf868  | sr-deselect_input | 22/02/2025 18:48:31   | {"blockType": "SetTarget", "blockId": 84, "inputPosition": 1, "textValue": "adios"} | Deselecciona un input en un bloque |
 | Jose  | Survival Rules  | 0a814f77-04ed-4a9f-ae72-2fe561f2ac9a  | sr-change_drop_down  | 22/02/2025 20:06:26   | {"blockType": "DetectObject", "blockId": 84, "dropDownPosition": 1, "oldValue": "is", "newValue": "is not"}  | Cambia una opción de un desplegable en "DetectObject"  |
 | Jose  | Survival Rules | a742cdde-2d96-4db5-95bf-563028af53aa | sr-modify_difficulty | 03/03/2025 12:02:44 | {"oldDifficulty": 1, "newDifficulty": 2} | Se modifica la dificultad del juego |
-
+| Jose  | Survival Rules | a742cdde-2d96-4db5-95bf-563028af53aa | sr-open_help_objects | 03/03/2025 12:02:44 | {"} | Abre la ventana de ayuda de objetos |
+| Jose  | Survival Rules | a742cdde-2d96-4db5-95bf-563028af53aa | sr-close_help_objects | 03/03/2025 12:02:44 | {"} | Cierra la ventana de ayuda de objetos |
 
 Cambios en la semana del 17/02/2025:
 - Interfaz:
@@ -78,3 +79,9 @@ Cambios en la semana del 24/02/2025:
 
 - Añadida la funcionalidad para aumentar la dificultad del juego y para guardar el récord de tiempo sobrevivido del jugador.
 - Añadida la funcionalidad para traducir el juego al inglés (se podría ampliar a más idiomas en un futuro), traducidos los dos primeros menús y el tutorial.
+
+
+Cambios en la semana del 10/03/2025:
+- Juego traducido por completo.
+- Añadida una ventana donde aparecen todos los nombres de los objetos, con también un evento para cuando abre y cierra dicha ventana.
+- Añadido en la web un botón para salir de nuevo a la selección de los juegos.

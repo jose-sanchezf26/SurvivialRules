@@ -77,6 +77,26 @@ MonoBehaviour:
       \n"
     m_Metadata:
       m_Items: []
+  - m_Id: 3576887506083840
+    m_Localized: Dificultad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592663994703872
+    m_Localized: Objetos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592707099566080
+    m_Localized: Detectables
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592825731260416
+    m_Localized: Equipables
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592905817300992
+    m_Localized: Comestibles
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

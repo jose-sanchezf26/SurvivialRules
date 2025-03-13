@@ -5,9 +5,11 @@ public class HelpManager : MonoBehaviour
 {
     // Paneles de ayuda del juego
     public GameObject[] helpPanels;
+    public GameObject helpObjectPanel;
     private int currentPanelIndex = 0;
     // Botón para abrir la ayuda
     public Button helpButton;
+    public Button exitHelpObjectButton;
 
     // Paneles del juego, representando un SBR
     public GameObject KBPanel;
@@ -25,6 +27,7 @@ public class HelpManager : MonoBehaviour
         }
 
         helpButton.onClick.AddListener(OpenHelp);
+        exitHelpObjectButton.onClick.AddListener(CloseHelpObjects);
         isTutorialActive = false;
     }
 
@@ -36,12 +39,29 @@ public class HelpManager : MonoBehaviour
             currentPanelIndex = 0;
             helpPanels[currentPanelIndex].SetActive(true);
             EventLogger.Instance.LogEvent(new EventData("sr-start_tutorial", new PlayerEvent()));
-            EventLogger.Instance.LogEvent(new EventData("sr-tutorial_next", new TutorialWindowEvent(helpPanels[currentPanelIndex].GetComponent<TutorialWindow>().windowName, currentPanelIndex+1)));
+            EventLogger.Instance.LogEvent(new EventData("sr-tutorial_next", new TutorialWindowEvent(helpPanels[currentPanelIndex].GetComponent<TutorialWindow>().windowName, currentPanelIndex + 1)));
             KBPanel.SetActive(false);
             DBPanel.SetActive(false);
             isTutorialActive = true;
             Time.timeScale = 0;
         }
+    }
+
+    public void OpenHelpObjects()
+    {
+        helpObjectPanel.SetActive(true);
+        EventLogger.Instance.LogEvent(new EventData("sr-open_help_objects", new PlayerEvent()));
+        KBPanel.SetActive(false);
+        DBPanel.SetActive(false);
+        Time.timeScale = 0;
+    }
+
+    public void CloseHelpObjects()
+    {
+        helpObjectPanel.SetActive(false);
+        EventLogger.Instance.LogEvent(new EventData("sr-close_help_objects", new PlayerEvent()));
+        KBPanel.SetActive(true);
+        DBPanel.SetActive(true);
     }
 
 
@@ -63,7 +83,7 @@ public class HelpManager : MonoBehaviour
 
         if (currentPanelIndex < helpPanels.Length)
         {
-            EventLogger.Instance.LogEvent(new EventData("sr-tutorial_next", new TutorialWindowEvent(helpPanels[currentPanelIndex].GetComponent<TutorialWindow>().windowName, currentPanelIndex+1)));
+            EventLogger.Instance.LogEvent(new EventData("sr-tutorial_next", new TutorialWindowEvent(helpPanels[currentPanelIndex].GetComponent<TutorialWindow>().windowName, currentPanelIndex + 1)));
             helpPanels[currentPanelIndex].SetActive(true);
         }
         else

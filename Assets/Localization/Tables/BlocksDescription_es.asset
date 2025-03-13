@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: BlocksDescription_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: d78a63878c1602f438c40eef170003a0, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 28201689088
+    m_Localized: "Debe ser el primero en tu sistema, es el encargado de ejecutar
+      las reglas cuando le das al bot\xF3n de play."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 953444179968
+    m_Localized: El personaje se mueve de forma aleatoria para explorar el mapa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1182809694208
+    m_Localized: "El personaje huye en direcci\xF3n contraria a la de un enemigo
+      detectado."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1713686945792
+    m_Localized: Se dirige hacia el objetivo establecido.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2166009077760
+    m_Localized: "Cambia el tipo de da\xF1o a \"attack\", hace da\xF1o a un enemigo
+      o animal si lo tiene muy cerca."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2705300103168
+    m_Localized: "Cambia el tipo de da\xF1o a \"mine\", rompe una roca si la tiene
+      muy cerca."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2982455517184
+    m_Localized: "Cambia el tipo de da\xF1o a \"cut down\", rompe un \xE1rbol si
+      lo tiene muy cerca."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3217063911424
+    m_Localized: Equipa el objeto indicado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3600163250176
+    m_Localized: "El personaje descansa si tiene una caba\xF1a cerca, recuperando
+      energ\xEDa y protegi\xE9ndose de los enemigos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3900731269120
+    m_Localized: Cocina toda la carne de su inventario si tiene una hoguera cerca.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4139030650880
+    m_Localized: Come el objeto indicado para disminuir el hambre.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4321155719168
+    m_Localized: Bebe agua si tiene cerca un pozo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4443272880128
+    m_Localized: "Cancela cualquier movimiento para quedarse quieto y recuperar energ\xEDa
+      lentamente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4613884583936
+    m_Localized: Usa una venda para recuperar algo de salud.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4792838758400
+    m_Localized: "Este bloque debe ir despu\xE9s de \"when play clicked\", debes
+      incluir dentro de \xE9l todas tus reglas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5275255021568
+    m_Localized: Igual que "Rules", pero ejecuta las reglas cada x segundos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5552565624832
+    m_Localized: "Este bloque es la parte principal de una regla, incluye en \xE9l
+      las condiciones y las acciones que desees."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5783608860672
+    m_Localized: Igual que "Rule" pero con un identificador, para ver el orden de
+      las reglas que se han ejecutado en el log.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6239907192832
+    m_Localized: "Obtiene el estado (num\xE9rico) de una propiedad del personaje,
+      como el hambre y la sed."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6555406934016
+    m_Localized: Devuelve verdadero si en ese instante se ha detectado el objeto
+      o entidad indicado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6805907546112
+    m_Localized: "Devuelve verdadero si est\xE1 el objeto indicado en el inventario
+      ."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

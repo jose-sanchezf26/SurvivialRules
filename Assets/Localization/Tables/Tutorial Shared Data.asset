@@ -47,6 +47,26 @@ MonoBehaviour:
     m_Key: createrulespanel
     m_Metadata:
       m_Items: []
+  - m_Id: 3576887506083840
+    m_Key: difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592663994703872
+    m_Key: objects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592707099566080
+    m_Key: detectable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592825731260416
+    m_Key: equippable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3592905817300992
+    m_Key: edible
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

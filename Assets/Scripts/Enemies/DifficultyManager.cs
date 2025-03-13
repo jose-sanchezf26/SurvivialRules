@@ -47,7 +47,7 @@ public class DifficultyManager : MonoBehaviour
             currentDifficulty = newDifficulty;
             // Notificar a otros objetos
             OnDifficultyChanged?.Invoke(currentDifficulty);
-            text.text = "Dificultad : " + currentDifficulty;
+            text.text = ":" + currentDifficulty;
         }
     }
 }

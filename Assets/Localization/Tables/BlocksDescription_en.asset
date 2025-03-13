@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: BlocksDescription_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d78a63878c1602f438c40eef170003a0, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 28201689088
+    m_Localized: It must be the first in your system; it is responsible for executing
+      the rules when you press the play button.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 953444179968
+    m_Localized: The character moves randomly to explore the map.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1182809694208
+    m_Localized: Upon detecting an enemy, the character moves away in the opposite
+      direction.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1713686945792
+    m_Localized: It is heading towards the established goal.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2166009077760
+    m_Localized: '"Changes the damage type to ''attack'', dealing damage to an enemy
+      or animal if it is very close.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2705300103168
+    m_Localized: Changes the damage type to 'mine', breaking a rock if it is very
+      close.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2982455517184
+    m_Localized: Changes the damage type to 'cut down', breaking a tree if it is
+      very close.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3217063911424
+    m_Localized: Equip the indicated item.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3600163250176
+    m_Localized: The character rests if there is a cabin nearby, recovering energy
+      and protecting themselves from enemies.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3900731269120
+    m_Localized: Cooks all the meat in their inventory if there is a campfire nearby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4139030650880
+    m_Localized: Eat the specified item to reduce hunger.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4321155719168
+    m_Localized: Drink water if there is a well nearby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4443272880128
+    m_Localized: Cancel any movement to stay still and recover energy slowly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4613884583936
+    m_Localized: Use a bandage to recover some health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4792838758400
+    m_Localized: This block must go after 'when play clicked'. You should include
+      all your rules within it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5275255021568
+    m_Localized: Just like 'Rules', but execute the rules every x seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5552565624832
+    m_Localized: This block is the main part of a rule, include within it the conditions
+      and actions you desire.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5783608860672
+    m_Localized: Just like 'Rule', but with an identifier, to see the order of the
+      rules that have been executed in the log.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6239907192832
+    m_Localized: Gets the numerical status of a character's property, such as hunger
+      and thirst.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6555406934016
+    m_Localized: Returns true if the specified object or entity has been detected
+      at that moment.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6805907546112
+    m_Localized: Returns true if the specified object is in the inventory.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

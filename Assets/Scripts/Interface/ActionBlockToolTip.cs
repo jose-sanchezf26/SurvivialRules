@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.Localization;
 
 public class ActionBlockTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public string actionDescription; // Descripción de la acción para este bloque
+    public LocalizedString actionDescription; // Descripción de la acción para este bloque
     private TooltipManager tooltipManager;
     // Para obtener la posición del bloque
     private RectTransform blockTransform;
@@ -64,7 +65,7 @@ public class ActionBlockTooltip : MonoBehaviour, IPointerEnterHandler, IPointerE
         if (this == tooltipManager.GetCurrentBlock())
         {
             Vector2 blockPosition = RectTransformUtility.WorldToScreenPoint(null, blockTransform.position);
-            tooltipManager.ShowTooltip(actionDescription, Input.mousePosition, transform.GetChild(0).GetChild(0).GetComponent<UnityEngine.UI.Image>().color);
+            tooltipManager.ShowTooltip(actionDescription.GetLocalizedString(), Input.mousePosition, transform.GetChild(0).GetChild(0).GetComponent<UnityEngine.UI.Image>().color);
         }
     }
 }
