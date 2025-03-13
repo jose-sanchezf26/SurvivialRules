@@ -12,13 +12,9 @@ public class FlowManager : MonoBehaviour
     public SelectedSet selectedSet;
     public bool sessionFinished = false;
 
-    internal void GenerateGameID(bool generate)
+    void Start()
     {
-        if (generate)
-            game_id = "Survival Rules";
-        else
-            game_id = "Survival Rules";
-
+        game_id = "Survival Rules";
     }
 
     private void Awake()
@@ -38,8 +34,8 @@ public class FlowManager : MonoBehaviour
     {
         loggedInUser = username;
         // session_id = Guid.NewGuid().ToString();
-        EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
-        EventLogger.Instance.LogEvent(logInEvent);
+        // EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
+        // EventLogger.Instance.LogEvent(logInEvent);
     }
 }
 

@@ -384,6 +384,8 @@ public class DbReporter : MonoBehaviour
         webSocket.OnOpen += () =>
     {
         Debug.Log("Connection open!");
+        EventData logInEvent = new EventData("sr-log_in", new PlayerEvent());
+        EventLogger.Instance.LogEvent(logInEvent);
     };
 
         webSocket.OnError += (e) =>
