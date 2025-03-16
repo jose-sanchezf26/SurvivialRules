@@ -67,6 +67,14 @@ MonoBehaviour:
     m_Key: edible
     m_Metadata:
       m_Items: []
+  - m_Id: 4739192864350208
+    m_Key: controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4742231184613376
+    m_Key: controlsdata
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

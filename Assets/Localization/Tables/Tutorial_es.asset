@@ -97,6 +97,16 @@ MonoBehaviour:
     m_Localized: Comestibles
     m_Metadata:
       m_Items: []
+  - m_Id: 4739192864350208
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4742231184613376
+    m_Localized: "Abrir Base de Conocimientos\tFlecha de abajo\nAbrir Base de Hechos\tFlecha
+      de izquierda\nAbrir inventario\t\tFlecha de arriba\nAbrir log de reglas\t\tFlecha
+      de derecha\nConstruir caba\xF1a\t\tC\nConstruir hoguera\t\tH"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

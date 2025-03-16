@@ -592,18 +592,20 @@ public class Player : MonoBehaviour
         return false;
     }
 
+    public GameObject inventoryPannel;
+
     // Función que comprueba si se coloca una hoguera o refugio mediante la presión de teclas
     public void Controls()
     {
         // Si presionas C se creará una hoguera cerca del jugador
-        if (Input.GetKeyDown(KeyCode.Comma) && inventory.HasItemData(inventory.campfireData))
+        if (Input.GetKeyDown(KeyCode.Comma) && inventory.HasItemData(inventory.campfireData) && inventoryPannel.activeSelf)
         {
             if (Build(campfirePrefab, 1.5f))
             {
                 inventory.Remove(inventory.campfireData);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Period) && inventory.HasItemData(inventory.cabageData))
+        if (Input.GetKeyDown(KeyCode.Period) && inventory.HasItemData(inventory.cabageData) && inventoryPannel.activeSelf)
         {
             if (Build(cabagePrefab, 1.5f))
             {
@@ -614,7 +616,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        ManualControl();
+        // ManualControl();
 
         timeO += Time.deltaTime;
         if (timeO >= interval)

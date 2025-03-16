@@ -119,6 +119,16 @@ MonoBehaviour:
     m_Localized: Edible
     m_Metadata:
       m_Items: []
+  - m_Id: 4739192864350208
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4742231184613376
+    m_Localized: "Open Knowledge Base\t\tDown Arrow\nOpen Fact Base\t\tLeft Arrow\nOpen
+      Inventory\t\tUp Arrow\nOpen Rule Log\t\tRight Arrow\nBuild Cabin\t\tC\nBuild
+      Campfire\t\tH"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
