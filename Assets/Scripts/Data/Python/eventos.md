@@ -83,5 +83,7 @@ Cambios en la semana del 24/02/2025:
 
 Cambios en la semana del 10/03/2025:
 - Juego traducido por completo.
-- Añadida una ventana donde aparecen todos los nombres de los objetos, con también un evento para cuando abre y cierra dicha ventana.
+- Solución de error de no poder iniciar una segunda partida, además de incluir el evento log_in en la web.
+- Quitar el control manual del personaje.
+- Añadida una ventana donde aparecen todos los nombres de los objetos y los controles del juego, con también un evento para cuando abre y cierra dicha ventana.
 - Añadido en la web un botón para salir de nuevo a la selección de los juegos.
